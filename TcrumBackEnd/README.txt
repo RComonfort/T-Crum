@@ -1,5 +1,15 @@
 For both models, migrations and controllers, the names will be those present in the Relational Diagram of the project, same goes for attribute names.
 
+To setup the node_modules folder and project files:
+
+    npm i -S express body-parser morgan
+    npm i -D nodemon
+    npm install -g sequelize-cli
+    npm install --save sequelize pg pg-hstore
+    sequelize init
+
+The last command will generate the config file, where the local database and user credentials must be entered to make the DB connection
+
 To initiate the server:
     npm run start:dev 
 
