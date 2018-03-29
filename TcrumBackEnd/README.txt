@@ -1,4 +1,4 @@
-For both models, migrations and controllers, the names will be those present in the Relational Diagram of the project, same goes for attribute names.
+For both models, migrations and controllers, the names will be those for the tables present in the Relational Diagram of the project, same goes for attribute names.
 
 To setup the node_modules folder and project files:
 
@@ -8,7 +8,7 @@ To setup the node_modules folder and project files:
     npm install --save sequelize pg pg-hstore
     sequelize init
 
-The last command will generate the config file, where the local database and user credentials must be entered to make the DB connection
+The last command will generate the config file, where the local database and user credentials must be entered to make the DB connection. It will also throw an error message, given that server/models/index.js already exists. No need to force the command to overwrite. If so, take the same file as given in the scotch.io tutorial
 
 To initiate the server:
     npm run start:dev 
