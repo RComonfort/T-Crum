@@ -1,4 +1,5 @@
 const tareasController = require('../controllers').tareas;
+const logsController = require('../controllers').logs;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -11,4 +12,9 @@ module.exports = (app) => {
   app.get('/api/tareas/:id', tareasController.retrieve);
   app.put('/api/tareas/:id', tareasController.update);
   app.delete('/api/tareas/:id', tareasController.destroy);
+
+  //Routes for the LOGS table
+  app.post('/api/logs', logsController.create);  
+  app.get('/api/logs', logsController.list);
+  app.get('/api/logs/:id', logsController.retrieve);
 };
