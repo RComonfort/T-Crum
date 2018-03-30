@@ -308,7 +308,7 @@ describe('Projectos model', () => {
     });
 
     //Update opertion
-    describe('Update: #retrieve(vision, name, begin_date, end_date, background, risks, reach) | parameters: id, body: vision, name, begin_date, end_date, background, risks, reach', () => {
+    describe('Update: #update(vision, name, begin_date, end_date, background, risks, reach) | parameters: id, body: vision, name, begin_date, end_date, background, risks, reach', () => {
 
         // Update with wrong begin_date 
         it('Update with wrong dates', (done) => {
@@ -670,33 +670,100 @@ describe('Projectos model', () => {
                 })
             };
 
-            // Define POST request parameters and body
+            var projectID;
+
+            // Make post request
+            request.post(postOptionsProject, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(200); // if response is successful
+                let newProyecto = JSON.parse(body);
+                projectID = newProyecto.id;
+            });
+
+
             let postOptionsUser_stories = {
                 url: URL + '/user-stories',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     weight: 1,
-                    scrum_board_status: 1,
+                    scrum_board_status: 2,
                     description: 'Test description',
-                    priority: 1,
-                    sprint_id: ,
-                    project_id: 
+                    priority: 2,
+                    sprint_id: 1,
+                    project_id: projectID
                 })
             };
 
+            var user_storyID;
+
             // Make post request
-            request.post(postOptions, (error, response, body) => {
+            request.post(postOptionsUser_stories, (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); // if response is successful
-                let newProyecto = JSON.parse(body);
-
-                // Make get request to get the inserted object
-                request.get( URL + '/projects/' + newProyecto.id, (error, response, body) => {
-                    expect(response.statusCode).to.be.equal(200); // if response is successful
-                    expect(newProyecto).to.deep.equal(JSON.parse(body)); // check that the object we created and the one obtain are equal
-                });
-
-                done();
+                let newUser_story = JSON.parse(body);
+                user_storyID = newUser_story.id;
             });
+
+            let postOptionsTasks = {
+                url: URL + '/tasks',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    duration: 1,
+                    name: 'Test name',
+                    completed: 'False',
+                    user_story_id: user_storyID
+                })
+            };
+
+            var taskID;
+
+            // Make post request
+            request.post(postOptionsTasks, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(200); // if response is successful
+                let newTask = JSON.parse(body);
+                taskID = newTask.id;
+            });
+            
+            let postOptionsAcceptance_criteria = {
+                url: URL + '/acceptance-criteria',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    name: 'Test name',
+                    type: 'Test type',
+                    user_story_id: user_storyID
+                })
+            };
+
+            var acceptanceID;
+
+            // Make post request
+            request.post(postOptionsAcceptance_criteria, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(200); // if response is successful
+                let newAcceptance = JSON.parse(body);
+                acceptanceID = newAcceptance.id;
+            });
+            
+            // Make delete request to delte the inserted project
+            request.delete( URL + '/projects/' + projectID, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(200); // if response is successful
+            });
+
+
+            // Make get request to get the deleted project
+            request.get( URL + '/projects/' + projectID, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); // if response is unsuccessful
+            });
+            // Make get request to get the deleted user_story
+            request.get( URL + '/user-stories/' + user_storyID, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); // if response is unsuccessful
+            });
+            // Make get request to get the deleted task
+            request.get( URL + '/tasks/' + taskID, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); // if response is unsuccessful
+            });
+            // Make get request to get the deleted acceptance_criteria
+            request.get( URL + '/acceptance-criteria/' + taskID, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); // if response is unsuccessful
+            });
+            done();
         });
     });
 });
