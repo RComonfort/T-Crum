@@ -245,8 +245,35 @@ describe('Member model', () => {
     describe('Retrieve: #retrieve() | parameters: id', () => {
 
         // Successfully retrieve a member
-        it('characteristic', (done) => {
-            // test logic
+        it('Retrieve an existent member', (done) => {
+            
+            let member = {
+
+                id: 'A00000000',
+                department_major: 'ITC',
+                name: 'firstName lastName',
+                photo_URL: 'photo_URL',
+                //Should the password field be here as well?
+            };
+
+            request.get(URL + '/members/' + member.id, (error, response, body) => {
+
+                expect(response.statusCode).to.be.equal(200); //If response is successful
+                expect(JSON.parse(body)).to.be.deep(member);
+            });
+            
+            done();
+        });
+
+        // Try to retrieve a member that does not exist
+        it('Retrieve an non-existent member', (done) => {
+            
+            //Try to retrieve a member whose ID is 0 (fake id)
+            request.get(URL + '/members/0', (error, response, body) => {
+
+                expect(response.statusCode).to.be.equal(400); //If response failed
+            });
+            
             done();
         });
     });
