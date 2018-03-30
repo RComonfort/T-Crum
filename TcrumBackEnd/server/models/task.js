@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     });
 
-    Task.belongsToMany(models.miembros, {through: 'Member_task', foreignKey: 'task_id', otherKey: 'member_id'});
+    Task.belongsToMany(models.Member, {through: 'Member_task', foreignKey: 'task_id', otherKey: 'member_id'});
   };
   return Task;
 };
