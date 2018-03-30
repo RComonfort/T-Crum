@@ -57,7 +57,7 @@ describe('Task model', () => {
 		});
 
 		//Unsuccesful insertion due to null duration parameter
-		it ('null duration', (done) => {
+		it ('Null duration', (done) => {
 			
 			//Declare post request
 			let postOptions = {
@@ -78,15 +78,113 @@ describe('Task model', () => {
 					//Should be able to get all tasks
 					expect (response.statusCode).to.be.equal(200);
 
-					
+					//the new task shouldn't be present
 					let list = JSON.parse(body);
 					let found = findTask(list, newTask);
 					expect (found).to.be.false;
 				});
 			});
+
+			done();
+		});
+
+		//Unsuccesful insertion due to null name parameter
+		it ('Null name', (done) => {
+				
+			//Declare post request
+			let postOptions = {
+				url: URL + '/tasks',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ duration: 6,name: null, completed:  'false', user_story_id: 3})
+			};
+
+			//Make post request
+			request.post (postOptions, (error, response, body) => {
+				//Request should fail
+				expect (response.statusCode).to.be.equal(400);
+
+				let newTask = postOptions.body;
+
+				//Verify it wasn't inserted
+				request.get (URL + '/tasks', (error, response, body) => {
+					//Should be able to get all tasks
+					expect (response.statusCode).to.be.equal(200);
+
+					//the new task shouldn't be present
+					let list = JSON.parse(body);
+					let found = findTask(list, newTask);
+					expect (found).to.be.false;
+				});
+			});
+
+			done();
+		});
+
+		//Unsuccesful insertion due to null completed parameter
+		it ('Null completed', (done) => {
+				
+			//Declare post request
+			let postOptions = {
+				url: URL + '/tasks',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ duration: 6,name: "End task", completed:  null, user_story_id: 2})
+			};
+
+			//Make post request
+			request.post (postOptions, (error, response, body) => {
+				//Request should fail
+				expect (response.statusCode).to.be.equal(400);
+
+				let newTask = postOptions.body;
+
+				//Verify it wasn't inserted
+				request.get (URL + '/tasks', (error, response, body) => {
+					//Should be able to get all tasks
+					expect (response.statusCode).to.be.equal(200);
+
+					//the new task shouldn't be present
+					let list = JSON.parse(body);
+					let found = findTask(list, newTask);
+					expect (found).to.be.false;
+				});
+			});
+
+			done();
 		});
 
 
-	});
+		//Unsuccesful insertion due to null user_story_id parameter
+		it ('Null user_story_id', (done) => {
+				
+			//Declare post request
+			let postOptions = {
+				url: URL + '/tasks',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ duration: 6,name: 
+				'Close repos' , completed:  'true', user_story_id: null})
+			};
 
+			//Make post request
+			request.post (postOptions, (error, response, body) => {
+				//Request should fail
+				expect (response.statusCode).to.be.equal(400);
+
+				let newTask = postOptions.body;
+
+				//Verify it wasn't inserted
+				request.get (URL + '/tasks', (error, response, body) => {
+					//Should be able to get all tasks
+					expect (response.statusCode).to.be.equal(200);
+
+					//the new task shouldn't be present
+					let list = JSON.parse(body);
+					let found = findTask(list, newTask);
+					expect (found).to.be.false;
+				});
+			});
+
+			done();
+		});
+
+	});
 });
