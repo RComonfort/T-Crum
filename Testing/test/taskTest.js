@@ -58,12 +58,32 @@ describe('Task model', () => {
 
 		//Unsuccesful insertion due to null duration parameter
 		it ('null duration', (done) => {
+			
 			//Declare post request
 			let postOptions = {
 				url: URL + '/tasks',
 				headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ duration: 5,name: 'Comprar churros', completed:  'true', user_story_id: 1})
+                body: JSON.stringify({ duration: null,name: 'Terminar  test de tasks', completed:  'false', user_story_id: 1})
 			};
+
+			//Make post request
+			request.post (postOptions, (error, response, body) => {
+				//Request should fail
+				expect (response.statusCode).to.be.equal(400);
+
+				let newTask = postOptions.body;
+
+				//Verify it wasn't inserted
+				request.get (URL + '/tasks', (error, response, body) => {
+					//Should be able to get all tasks
+					expect (response.statusCode).to.be.equal(200);
+
+					
+					let list = JSON.parse(body);
+					let found = findTask(list, newTask);
+					expect (found).to.be.false;
+				});
+			});
 		});
 
 
