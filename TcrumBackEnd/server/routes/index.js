@@ -1,5 +1,6 @@
 const tareasController = require('../controllers').tareas;
 const logsController = require('../controllers').logs;
+const sprintsController = require('../controllers').sprints;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -17,4 +18,11 @@ module.exports = (app) => {
   app.post('/api/logs', logsController.create);  
   app.get('/api/logs', logsController.list);
   app.get('/api/logs/:id', logsController.retrieve);
+
+  //Routes fot the SPRINTS table
+  app.post('/api/sprints', sprintsController.create);  
+  app.get('/api/sprints', sprintsController.list);
+  app.get('/api/sprints/:id', sprintsController.retrieve);
+  app.put('/api/sprints/:id', sprintsController.update);
+  app.delete('/api/sprints/:id', sprintsController.destroy);
 };
