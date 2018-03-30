@@ -1,7 +1,6 @@
 const expect = require('chai').expect;
 const request = require('request');
-const URL = 'http://localhost:8080/api';
-
+const URL = 'http://localhost:8000/api';
 
 /**
  * Tests for Member model and controller.
@@ -274,6 +273,56 @@ describe('Member model', () => {
                 expect(response.statusCode).to.be.equal(400); //If response failed
             });
             
+            done();
+        });
+    });
+
+    // Update operation
+    describe('Update: #update(' +
+        'id, department_major, name, photo_URL, password) | ' +
+        'body: id, department_major, name, photo_URL, password', () => {
+
+        // Try to update a member. Make the department_major field a non-existent value.
+        it('Update a member with a non-existent department_major field', (done) => {
+            
+            done();
+        });
+
+        // Try to update a member. Make the name field an empty string.
+        it('Update a member with an empty name field', (done) => {
+            
+            done();
+        });
+
+        // Update the password and make sure it was hashed
+        it('Update the password of a member. Make sure it was hashed.', (done) => {
+            
+            done();
+        });
+
+        // Update some or all of the fields of a member. Make sure that the update was successful.
+        it('Update some or all of the fields of a member. Make sure that the update was successful.', (done) => {
+            
+            done();
+        });
+        
+    });
+
+    //Delete operation
+    describe('Delete: #delete() | parameters: id', () => {
+
+        // Delete an existent member, response: successful
+        // Cascade deletion should be implemented
+        it('Delete an existent member', (done) => {
+            
+            done();
+        });
+
+        // Delete a non-existent member, response: unsuccesful
+        it('Delete non existent member', (done) => {
+            request.delete(URL + '/members/0', (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); //response should be unsuccesful
+            });
             done();
         });
     });
