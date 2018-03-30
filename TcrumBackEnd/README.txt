@@ -1,4 +1,6 @@
-For both models, migrations and controllers, the names will be those for the tables present in the Relational Diagram of the project, same goes for attribute names.
+The model naming convention will be the singular version of the table, with the first letter capitalized. The tables in the migration file will be named as they are in the relational diagram, same for attributes. 
+
+For simplicity, in controllers we are using only codes 200 for succesful operations and 400 on failures.
 
 To setup the node_modules folder and project files:
 

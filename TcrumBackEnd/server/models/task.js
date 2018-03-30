@@ -1,34 +1,34 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var tareas = sequelize.define('tareas', {
+  var Task = sequelize.define('Task', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    duracion: {
+    duration: {
       type: DataTypes.INTEGER,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING
     },
-    completado: {
+    completed: {
       type: DataTypes.BOOLEAN,
     },
-    historia_de_usuario_id: {
+    user_story_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       onDelete: 'CASCADE',
     },
   }, {});
-  tareas.associate = function(models) {
-    tareas.belongsTo (models.historia_de_usuario, {
-      foreignKey: 'historia_de_usuario_id', 
+  Task.associate = function(models) {
+    Task.belongsTo (models.User_story, {
+      foreignKey: 'user_story_id', 
       onDelete: 'CASCADE',
     });
 
-    tareas.belongsToMany(models.miembros, {through: 'tarea_miembro', foreignKey: 'tarea_id', otherKey: 'miembro_id'});
+    Task.belongsToMany(models.miembros, {through: 'Member_task', foreignKey: 'task_id', otherKey: 'member_id'});
   };
-  return tareas;
+  return Task;
 };
