@@ -240,7 +240,7 @@ describe('Member model', () => {
             });
         });
 
-    //Retrieve opertion
+    //Retrieve operation
     describe('Retrieve: #retrieve() | parameters: id', () => {
 
         // Successfully retrieve a member
@@ -510,7 +510,7 @@ describe('Member model', () => {
     describe('Delete: #delete() | parameters: id', () => {
 
         // Delete an existent member, response: successful
-        // Cascade deletion should be implemented
+        // Careful: Cascade deletion should be implemented and verified!
         it('Delete an existent member', (done) => {
             
             // Define POST request parameters and body
@@ -558,7 +558,7 @@ describe('Member model', () => {
 
 
         // Try to delete a non-existent member, response: unsuccesful
-        it('Delete non existent member', (done) => {
+        it('Delete a non-existent member', (done) => {
             request.delete(URL + '/members/0', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(400); //response should be unsuccesful
             });
