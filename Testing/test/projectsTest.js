@@ -587,7 +587,7 @@ describe('Projectos model', () => {
         });
 
         // Update with no reach
-        it('Update with no risk', (done) => {
+        it('Update with no reach', (done) => {
 
             request.get(URL + '/projects/1', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); // if response is successful
@@ -653,8 +653,8 @@ describe('Projectos model', () => {
             done();
         });
 
-        // Retrieve an existent project , request succesfull
-        it('Retrieve non existent project', (done) => {
+        // Delete an existent project
+        it('Delete existent project', (done) => {
             // Define POST request parameters and body
             let postOptionsProject = {
                 url: URL + '/projects',
