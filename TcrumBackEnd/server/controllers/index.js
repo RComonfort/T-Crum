@@ -1,7 +1,7 @@
-const tareas = require('./tareas');
+const tasks = require('./tasks');
 const logs = require('./logs');
 
 module.exports = {
-    tareas,
+    tasks,
     logs
 };
