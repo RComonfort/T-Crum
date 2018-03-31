@@ -91,3 +91,81 @@ We will need a model (to develop the CRUD) and migration (to actually having the
 For 1:1 or 1:n relationships, both models have to declare the association inside its associate function. For 1:1 relantionships, use belongTo in source table (the one that has the Foreign Key) and later declare this column in the migration file. The target table must have a hasOne association. For a 1:n, it is the same, but the target table needs a hasMany association instead in its model file (like scotch.io's tutorial).
 
 More on associations: http://docs.sequelizejs.com/manual/tutorial/associations.html 
+
+####################################################################################################################
+
+SEEDING YOUR DATABASE
+
+When developing databases with it a team, it can be important that everyone is working with the same data. Or you might have information that you want to enter in your database initally, like admin accounts or something like that. You can do this with Seeders.
+
+Using sequelize-cli you can easily create and manage your seed files. It has a useful command called seed:create, which will generate 2 files for you: a seed .
+
+It has a couple handy options so that you can create your schemas from the command line:
+
+Example Usage
+
+sequelize seed:create --name my-seed-file
+Running this command will result in a file in yoru seeders directory with code that looks like this:
+
+'use strict';
+
+module.exports = {
+  up: function (queryInterface, Sequelize) {
+    /*
+      Add altering commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.bulkInsert('Person', [{
+        name: 'John Doe',
+        isBetaMember: false
+      }], {});
+    */
+  },
+
+  down: function (queryInterface, Sequelize) {
+    /*
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.bulkDelete('Person', null, {});
+    */
+  }
+};
+
+As with your model. it's important to always have both up and down methods in your seed script.
+
+After filling in the up and down functions, your migration file looks like this:
+
+'use strict';
+
+module.exports = {
+  up : function (queryInterface, Sequelize) {
+    return queryInterface.bulkInsert('Users', [{
+      first_name : 'John',
+      last_name : 'Doe',
+      bio : 'I am a new user to this application',
+      createdAt : new Date(),
+      updatedAt : new Date(),
+      email : 'johnDoe@test.com'
+    }], {});
+  },
+
+  down : function (queryInterface, Sequelize) {
+    queryInterface.bulkDelete('Users', [{
+      first_name :'John'
+    }])
+  }
+};
+
+You can seed your database with this data by running this sequelize-cli command:
+$ sequelize db:seed:all
+
+After this command, and check your database, you should have something that looks like this:
+
+sequelize_express=# SELECT * FROM "Users";
+  id | first_name | last_name |                 bio                 |         createdAt          |         updatedAt          |      email
+----+------------+-----------+-------------------------------------+----------------------------+----------------------------+------------------
+  1 | John       | Doe       | I am a new user to this application | 2016-04-25 14:35:06.269-10 | 2016-04-25 14:35:06.269-10 | johnDoe@test.com
+(1 rows)
