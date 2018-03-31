@@ -1,6 +1,7 @@
 const tasksController = require('../controllers').tasks;
 const logsController = require('../controllers').logs;
 const sprintsController = require('../controllers').sprints;
+const acceptance_criteriaController = require('../controllers').acceptance_criteria;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -25,4 +26,11 @@ module.exports = (app) => {
   app.get('/api/sprints/:id', sprintsController.retrieve);
   app.put('/api/sprints/:id', sprintsController.update);
   app.delete('/api/sprints/:id', sprintsController.destroy);
+
+  //Routes for the ACCEPTANCE_CRITERIA table
+  app.post('/api/acceptance-criteria', acceptance_criteriaController.create);  
+  app.get('/api/acceptance-criteria', acceptance_criteriaController.list);
+  app.get('/api/acceptance-criteria/:id', acceptance_criteriaController.retrieve);
+  app.put('/api/acceptance-criteria/:id', acceptance_criteriaController.update);
+  app.delete('/api/acceptance-criteria/:id', acceptance_criteriaController.destroy);
 };
