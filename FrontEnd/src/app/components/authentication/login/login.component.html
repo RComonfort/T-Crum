@@ -1,0 +1,10 @@
+<form (submit)="login()">
+  <label for="id">Matricula</label>
+  <input type="text" id="id" name="id" [(ngModel)]="id">
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" [(ngModel)]="password">
+
+  <button type="submit">Ingresar</button>
+  <p *ngIf="message">{{message}}</p>
+</form>

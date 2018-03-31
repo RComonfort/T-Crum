@@ -12,7 +12,7 @@ module.exports = (app) => {
 
   // Authentication routes
   app.post('/api/login', authController.login);
-  
+
   //Routes for the TAREAS table
   app.post('/api/tasks', tasksController.create);  
   app.get('/api/tasks', tasksController.list);
@@ -30,5 +30,5 @@ module.exports = (app) => {
   app.get('/api/sprints', sprintsController.list);
   app.get('/api/sprints/:id', sprintsController.retrieve);
   app.put('/api/sprints/:id', sprintsController.update);
-  app.delete('/api/sprints/:id', sprintsController.destroy);
+  app.delete('/api/sprints/:id', sprintsController.dlogsestroy);
 };

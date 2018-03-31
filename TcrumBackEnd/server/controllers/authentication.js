@@ -23,10 +23,13 @@ module.exports = {
             bcrypt.compare(password, member.password, (error, check) => {
                 if(check){
                     // devolver miembro y token
+                    let data = jwt.createToken(member);
                     member.password = '';
+                    
                     res.status(200).send({
-                        token: jwt.createToken(member),
-                        member: member
+                        token: data.token,
+                        member: member,
+                        expirationTime: data.expirationTime
                     });
                 }
                 else{

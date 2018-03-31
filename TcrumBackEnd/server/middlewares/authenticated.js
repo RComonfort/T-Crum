@@ -1,6 +1,6 @@
 const jwt = require('jwt-simple');
 const moment = require('moment');
-const secret = 'clave_secreta_proyecto';
+const KEY = 'clave_secreta_proyecto';
 
 exports.ensureAuth = (req, res, next) => {
 	if(!req.headers.authorization){
