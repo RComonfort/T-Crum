@@ -32,4 +32,11 @@ module.exports = (app) => {
   app.get('/api/members', membersController.retrieve);
   app.put('/api/members', membersController.update);
   app.delete('/api/members', membersController.destroy);
+  //Routes for the Project table
+  app.post('/api/projects', tareasController.create);  
+  app.get('/api/projects', tareasController.list);
+  app.get('/api/projects/:id', tareasController.retrieve);
+  app.put('/api/projects/:id', tareasController.update);
+  app.delete('/api/projects/:id', tareasController.destroy);
+
 };
