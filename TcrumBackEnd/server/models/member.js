@@ -32,8 +32,21 @@ module.exports = (sequelize, DataTypes) => {
 
   Member.associate = function (models) {
 
-    // Member.belongsToMany(models.Project, {through: 'member_task'})
-  }
+    Member.belongsToMany(models.Project, {
+      through: 'member_project',
+      foreignKey: 'member_id',
+      otherKey: 'project_id'
+    })
+  };
+
+  Member.associate = function (models) {
+
+    Member.belongsToMany(models.Task, {
+      through: 'member_task',
+      foreignKey: 'member_id',
+      otherKey: 'task_id'
+    })
+  };
 
   return Member;
 };
