@@ -15,7 +15,6 @@ module.exports = {
     if (!req.body.user_story_id || !Numbers.isInteger(res.body.user_story_id))
       return res.status(400).send({message: 'El atributo user_story_id no puede estar vacio y debe ser un numero entero.'});
 
-
     return tasks
       .create({
         duration: req.body.duration,
@@ -29,10 +28,12 @@ module.exports = {
   list(req, res) {
     return tasks
       .findAll( {
+        /*Removed so i can check easier the tests, not really necessary to get the user story from here
         include: [{
           model: User_story,
           as: 'user_story'
-        }],
+        }], 
+        */
       })
       .then(tasks => res.status(200).send(tasks))
       .catch(error => res.status(400).send(error));
@@ -44,10 +45,12 @@ module.exports = {
 
     return tasks
       .findById(req.params.id, {
+        /*Removed so i can check easier the tests, not really necessary to get the user story from here
         include: [{
           model: User_story,
           as: 'user_story'
-        }],
+        }], 
+        */
       })
       .then(tasks => {
         if (!tasks) {
