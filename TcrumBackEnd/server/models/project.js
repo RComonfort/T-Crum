@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey:true,
-      type: DataTypes.INETEGER
+      type: DataTypes.INTEGER
     },
     vision: {
       allowNull: false,
