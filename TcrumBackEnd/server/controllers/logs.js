@@ -1,5 +1,5 @@
 const Log = require('../models').Log;
-const Log = require('../models').Member;
+const Member = require('../models').Member;
 
 module.exports = {
     create(req, res) {

@@ -1,4 +1,4 @@
-const Log = require('../models').Log;
+const Project = require('../models').Project;
 
 module.exports = {
     create(req, res) {
@@ -47,10 +47,10 @@ module.exports = {
     },
 
     list(req, res) {
-        return Projects
+        return Project
             .findAll({
             })
-            .then(Projects => res.status(200).send(Projects))
+            .then(project => res.status(200).send(project))
             .catch(error => res.status(400).send(error));
     },
 
