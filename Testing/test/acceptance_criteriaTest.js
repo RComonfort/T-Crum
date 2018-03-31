@@ -216,7 +216,6 @@ describe('Acceptance_criteria model', () => {
                     url: URL + '/acceptance-criteria/' + body.id,
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        id: body.id,
                         name: '',
                         type: body.type,
                         user_story_id: 1
@@ -252,7 +251,6 @@ describe('Acceptance_criteria model', () => {
                     url: URL + '/acceptance-criteria/' + body.id,
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        id: body.id,
                         name: body.name,
                         type: '',
                         user_story_id: 1
@@ -288,7 +286,6 @@ describe('Acceptance_criteria model', () => {
                     url: URL + '/acceptance-criteria/' + body.id,
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        id: body.id,
                         name: body.name,
                         type: body.type
                         //user_story_id is missing, and will be undefined.
@@ -324,7 +321,6 @@ describe('Acceptance_criteria model', () => {
                     url: URL + '/acceptance-criteria/' + body.id,
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        id: body.id,
                         name: body.name,
                         type: body.type,
                         user_story_id: 0
