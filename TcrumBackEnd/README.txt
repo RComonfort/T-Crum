@@ -20,7 +20,7 @@ _____________________________
 
 To create a new model and migration file for a new table with SequelizeCli, use: 
     
-    sequelize model:create --name table_name --attributes "column1_name: column1_type, column2_name: column2_type,..."
+    sequelize model:create --name table_name --attributes "column1_name:column1_type, column2_name:column2_type,..."
 
 A model is the file that tells sequelize how to manipulate a table. A migration file, is the actual definition that gets translated into Postgres
 
@@ -90,9 +90,9 @@ For 1:1 or 1:n relationships, both models have to declare the association inside
 
 More on associations: http://docs.sequelizejs.com/manual/tutorial/associations.html 
 
-####################################################################################################################
-
-SEEDING YOUR DATABASE
+-----------------------------
+SEEDERS 
+_____________________________
 
 When developing databases with it a team, it can be important that everyone is working with the same data. Or you might have information that you want to enter in your database initally, like admin accounts or something like that. You can do this with Seeders.
 
@@ -102,7 +102,8 @@ It has a couple handy options so that you can create your schemas from the comma
 
 Example Usage
 
-sequelize seed:create --name my-seed-file
+  sequelize seed:create --name my-seed-file
+
 Running this command will result in a file in yoru seeders directory with code that looks like this:
 
 'use strict';
