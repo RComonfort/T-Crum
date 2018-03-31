@@ -7,7 +7,7 @@ module.exports = (app) => {
     message: 'Welcome to the TCRUM Project API!',
   }));
 
-  //Routes for the TAREAS table
+  //Routes for the TASKS table
   app.post('/api/tasks', tasksController.create);  
   app.get('/api/tasks', tasksController.list);
   app.get('/api/tasks/:id', tasksController.retrieve);
