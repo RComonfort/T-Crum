@@ -1,6 +1,7 @@
 const tasksController = require('../controllers').tasks;
 const logsController = require('../controllers').logs;
 const sprintsController = require('../controllers').sprints;
+const membersController = require('../controllers').members;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -25,4 +26,10 @@ module.exports = (app) => {
   app.get('/api/sprints/:id', sprintsController.retrieve);
   app.put('/api/sprints/:id', sprintsController.update);
   app.delete('/api/sprints/:id', sprintsController.destroy);
+  //Routes for the MEMBERS table
+  app.post('/api/members', membersController.create);
+  app.get('/api/members', membersController.list);
+  app.get('/api/members', membersController.retrieve);
+  app.put('/api/members', membersController.update);
+  app.delete('/api/members', membersController.destroy);
 };
