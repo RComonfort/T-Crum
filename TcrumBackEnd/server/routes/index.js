@@ -1,3 +1,6 @@
+const authMiddleware = require('../middlewares/authenticated');
+
+const authController = require('../controllers').authentication;
 const tasksController = require('../controllers').tasks;
 const logsController = require('../controllers').logs;
 const sprintsController = require('../controllers').sprints;
@@ -7,6 +10,9 @@ module.exports = (app) => {
     message: 'Welcome to the TCRUM Project API!',
   }));
 
+  // Authentication routes
+  app.post('/api/login', authController.login);
+  
   //Routes for the TAREAS table
   app.post('/api/tasks', tasksController.create);  
   app.get('/api/tasks', tasksController.list);
@@ -15,9 +21,9 @@ module.exports = (app) => {
   app.delete('/api/tasks/:id', tasksController.destroy);
 
   //Routes for the LOGS table
-  app.post('/api/logs', logsController.create);  
-  app.get('/api/logs', logsController.list);
-  app.get('/api/logs/:id', logsController.retrieve);
+  app.post('/api/logs', authMiddleware.ensureAuth, logsController.create);  
+  app.get('/api/logs', authMiddleware.ensureAuth, logsController.list);
+  app.get('/api/logs/:id', authMiddleware.ensureAuth, logsController.retrieve);
 
   //Routes fot the SPRINTS table
   app.post('/api/sprints', sprintsController.create);  
