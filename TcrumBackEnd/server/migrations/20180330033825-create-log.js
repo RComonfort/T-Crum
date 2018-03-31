@@ -19,13 +19,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      miembro_matricula: {
+      member_id: {
         type: Sequelize.STRING,
         onDelete: 'CASCADE',
         references: {
-          model: 'Miembros',
-          key: 'matrciula',
-          as: 'miembro_matricula',
+          model: 'Members',
+          key: 'id',
+          as: 'member_id',
         }
       }
     }),

@@ -1,22 +1,23 @@
 const Log = require('../models').Log;
+const Log = require('../models').Member;
 
 module.exports = {
     create(req, res) {
         // check that params are not null, undefined or empty string
         if(!req.body.query){ 
-            return res.status(400).send({message: 'El atributo query no puede estar vacio.'});
+            return res.status(400).send({message: 'The post body must contain a query field.'});
         }
 
-        if(!req.body.miembro_matricula){
-            return res.status(400).send({message: 'El atributo miembro_matricula no puede estar vacio.'});
+        if(!req.body.member_id){
+            return res.status(400).send({message: 'The post body must contain a member_id field.'});
         }
 
         return Log
             .create({
                 query: req.body.query,
-                miembro_matricula: req.body.miembro_matricula
+                member_id: req.body.member_id
             })
-            .then(log => res.status(201).send(log))
+            .then(log => res.status(200).send(log))
             .catch(error => res.status(400).send(error));
     },
 
@@ -24,8 +25,8 @@ module.exports = {
         return Log
             .findAll({
                 include: [{
-                    model: Miembro,
-                    as: 'miembro'
+                    model: Member,
+                    as: 'member'
                 }],
             })
             .then(logs => res.status(200).send(logs))
@@ -33,21 +34,21 @@ module.exports = {
     },
 
     retrieve(req, res) {
-        // check that log_id is not null, undefined, not an integer or 0
-        if(!req.body.id || !Numbers.isInteger(res.body.id)) { 
-            return res.status(400).send({message: 'El parametro log_id no puede estar vacio.'});
+        // check that id is not null, undefined, not an integer or 0
+        if(!req.params.id || !Numbers.isInteger(res.params.id)) { 
+            return res.status(400).send({message: 'The request must contain the parameter id field.'});
         }
 
         return Log
-            .findById(req.params.log_id, {
+            .findById(req.params.id, {
                 include: [{
-                    model: Miembro,
-                    as: 'miembro'
+                    model: Member,
+                    as: 'member'
                 }],
             })
             .then(log => {
                 if(!log) {
-                    return res.status(404).send({ message: 'Log not found.'});
+                    return res.status(400).send({ message: 'Log not found.'});
                 }
                 return res.status(200).send(log);
             })

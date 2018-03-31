@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   
   Log.associate = (models) => {
     // associations can be defined here
-    Log.belongsTo(models.Miembro, {
-      foreignKey: 'miembro_matricula',
+    Log.belongsTo(models.Member, {
+      foreignKey: 'member_id',
       onDelete: 'CASCADE'
     });
   };

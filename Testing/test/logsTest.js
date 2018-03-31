@@ -1,16 +1,16 @@
 const expect  = require('chai').expect;
 const request = require('request');
-const URL = 'http://localhost:8080/api';
+const URL = 'http://localhost:8000/api';
 
 /**
  * Tests for Log model and controller.
  */
 
 // Search a log in a list of logs
-function findLog(logs, log){
+function findLog(logs, newLog){
     let found = false;
-    logs.array.forEach(element => { // check that the object we tryed to insert is different to every object in the DB
-        if(element.query === newLog.query && element.date_time === newLog.date_time && element.miembro_matricula === newLog.miembro_matricula){
+    logs.array.forEach(log => { // check that the object we tryed to insert is different to every object in the DB
+        if(log.query === newLog.query && log.member_id === newLog.member_id){
             found = true;
             break;
         }     
@@ -22,7 +22,7 @@ function findLog(logs, log){
 describe('Log model', () => {
 
     // Create operation
-    describe('Create: #create(query, date_time, miembro_matricula) | body: query, date_time, miembro_matricula', () => {
+    describe('Create: #create(query, member_id) | body: query, member_id', () => {
         
         // complete and correct parameters, expects successful insertion
         it('valid request', (done) => {
@@ -30,18 +30,17 @@ describe('Log model', () => {
             let postOptions = {
                 url: URL + '/logs',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query: 'INSERT INTO logs', date_time: '2018-03-27 19:31:00', miembro_matricula: 'A01329447'})
+                body: JSON.stringify({ query: 'INSERT INTO logs', member_id: 'A01329447'})
             };
 
             // Make post request
             request.post(postOptions, (error, response, body) => {
-                expect(response.statusCode).to.be.equal(201); // if response is successful
+                expect(response.statusCode).to.be.equal(200); // if response is successful
                 let newLog = JSON.parse(body);
 
                 // Make get request to get the inserted object
-                request.get( URL + 'logs/' + newLog.id, (error, response, body) => {
+                request.get( URL + '/logs/' + newLog.id, (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
-                    expect(newLog).to.deep.equal(JSON.parse(body)); // check that the object we created and the one obtain are equal
                 });
 
                 done();
@@ -54,7 +53,7 @@ describe('Log model', () => {
             let postOptions = {
                 url: URL + '/logs',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query: null, date_time: '2018-03-27 19:31:00', miembro_matricula: 'A01329447'})
+                body: JSON.stringify({ query: null, member_id: 'A01329447'})
             };
 
             // Make post request
@@ -63,7 +62,7 @@ describe('Log model', () => {
                 let newLog = postOptions.body;
 
                 // Make get request to check that the object was not inserted
-                request.get( URL + 'logs', (error, response, body) => {
+                request.get( URL + '/logs', (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
                     
                     let list = JSON.parse(body);
@@ -75,13 +74,13 @@ describe('Log model', () => {
             });
         });
 
-        // null date_time parameter, expects unsuccessful insertion
-        it('Null date_time', (done) => {
+        // Incorrect member_id parameter, expects unsuccessful insertion
+        it('Incorrect member_id', (done) => {
             // Define POST request parameters and body
             let postOptions = {
                 url: URL + '/logs',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query: 'INSERT INTO LOGS ...', date_time: '2018-03-27 19:31:00', miembro_matricula: null})
+                body: JSON.stringify({ query: 'INSERT INTO LOGS ...', member_id: 'B01324568'})
             };
 
             // Make post request
@@ -90,35 +89,7 @@ describe('Log model', () => {
                 let newLog = postOptions.body;
 
                 // Make get request to check that the object was not inserted
-                request.get( URL + 'logs', (error, response, body) => {
-                    expect(response.statusCode).to.be.equal(200); // if response is successful
-                    
-                    let list = JSON.parse(body);
-                    let found = findLog(list, newLog);
-
-                    expect(found).to.be.false; // check that no coincidence is found
-                });
-
-                done();
-            });
-        });
-
-        // Incorrect miembro_matricula parameter, expects unsuccessful insertion
-        it('Incorrect miembro matricula', (done) => {
-            // Define POST request parameters and body
-            let postOptions = {
-                url: URL + '/logs',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query: 'INSERT INTO LOGS ...', date_time: '2018-03-27 19:31:00', miembro_matricula: 'B01324568'})
-            };
-
-            // Make post request
-            request.post(postOptions, (error, response, body) => {
-                expect(response.statusCode).to.be.equal(400); // response should be error 400
-                let newLog = postOptions.body;
-
-                // Make get request to check that the object was not inserted
-                request.get( URL + 'logs', (error, response, body) => {
+                request.get( URL + '/logs', (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
                     
                     let list = JSON.parse(body);
@@ -131,13 +102,13 @@ describe('Log model', () => {
             });
         });
 
-        // null miembro_matricula parameter, expects unsuccessful insertion
-        it('Null miembro_matricula', (done) => {
+        // null member_id parameter, expects unsuccessful insertion
+        it('Null member_id', (done) => {
             // Define POST request parameters and body
             let postOptions = {
                 url: URL + '/logs',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query: 'INSERT INTO LOGS ...', date_time: null, miembro_matricula: 'A01329447'})
+                body: JSON.stringify({ query: 'INSERT INTO LOGS ...', member_id: 'A01329447'})
             };
 
             // Make post request
@@ -146,7 +117,7 @@ describe('Log model', () => {
                 let newLog = postOptions.body;
 
                 // Make get request to check that the object was not inserted
-                request.get( URL + 'logs', (error, response, body) => {
+                request.get( URL + '/logs', (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
                     
                     let list = JSON.parse(body);
@@ -165,12 +136,8 @@ describe('Log model', () => {
 
         // Retrieve an existent log , a successfull response conataining the log
         it('Retrieve existent log', (done) => {
-            let log = { id: 1, query: 'INSERT INTO logs', date_time: '2017-03-27 19:31:00', miembro_matricula: 'A01329447' };
-
             request.get(URL + '/logs/1', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); // if response is successful
-
-                expect(JSON.parse(body)).to.be.deep.equal(log);
             });
             done();
         });
