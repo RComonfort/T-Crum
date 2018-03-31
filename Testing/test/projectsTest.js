@@ -353,10 +353,10 @@ describe('Projectos model', () => {
                         expect(response.statusCode).to.be.equal(200); // if response is successful
                         
                         let list = JSON.parse(body);
-                        let found1 = findProject(list, newProyecto);
+                        let found1 = findProject(list, newProject);
                         expect(found1).to.be.false; // check that no coincidence is found
 
-                        let found2 = findProject(list, oldProyecto);
+                        let found2 = findProject(list, oldProject);
                         expect(found2).to.be.true; // check that a coincidence is found
                     });
 
@@ -409,10 +409,10 @@ describe('Projectos model', () => {
                         expect(response.statusCode).to.be.equal(200); // if response is successful
                         
                         let list = JSON.parse(body);
-                        let found1 = findProject(list, newProyecto);
+                        let found1 = findProject(list, newProject);
                         expect(found1).to.be.false; // check that no coincidence is found
 
-                        let found2 = findProject(list, oldProyecto);
+                        let found2 = findProject(list, oldProject);
                         expect(found2).to.be.true; // check that a coincidence is found
                     });
 
@@ -464,10 +464,10 @@ describe('Projectos model', () => {
                         expect(response.statusCode).to.be.equal(200); // if response is successful
                         
                         let list = JSON.parse(body);
-                        let found1 = findProject(list, newProyecto);
+                        let found1 = findProject(list, newProject);
                         expect(found1).to.be.false; // check that no coincidence is found
 
-                        let found2 = findProject(list, oldProyecto);
+                        let found2 = findProject(list, oldProject);
                         expect(found2).to.be.true; // check that a coincidence is found
                     });
 
@@ -519,10 +519,10 @@ describe('Projectos model', () => {
                         expect(response.statusCode).to.be.equal(200); // if response is successful
                         
                         let list = JSON.parse(body);
-                        let found1 = findProject(list, newProyecto);
+                        let found1 = findProject(list, newProject);
                         expect(found1).to.be.false; // check that no coincidence is found
 
-                        let found2 = findProject(list, oldProyecto);
+                        let found2 = findProject(list, oldProject);
                         expect(found2).to.be.true; // check that a coincidence is found
                     });
 
@@ -574,10 +574,10 @@ describe('Projectos model', () => {
                         expect(response.statusCode).to.be.equal(200); // if response is successful
                         
                         let list = JSON.parse(body);
-                        let found1 = findProject(list, newProyecto);
+                        let found1 = findProject(list, newProject);
                         expect(found1).to.be.false; // check that no coincidence is found
 
-                        let found2 = findProject(list, oldProyecto);
+                        let found2 = findProject(list, oldProject);
                         expect(found2).to.be.true; // check that a coincidence is found
                     });
 
@@ -629,10 +629,10 @@ describe('Projectos model', () => {
                         expect(response.statusCode).to.be.equal(200); // if response is successful
                         
                         let list = JSON.parse(body);
-                        let found1 = findProject(list, newProyecto);
+                        let found1 = findProject(list, newProject);
                         expect(found1).to.be.false; // check that no coincidence is found
 
-                        let found2 = findProject(list, oldProyecto);
+                        let found2 = findProject(list, oldProject);
                         expect(found2).to.be.true; // check that a coincidence is found
                     });
 
