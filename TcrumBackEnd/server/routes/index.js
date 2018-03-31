@@ -2,6 +2,10 @@ const tasksController = require('../controllers').tasks;
 const logsController = require('../controllers').logs;
 const sprintsController = require('../controllers').sprints;
 const membersController = require('../controllers').members;
+<<<<<<< HEAD
+=======
+const acceptance_criteriaController = require('../controllers').acceptance_criteria;
+>>>>>>> model_acceptance-criteria
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -26,17 +30,35 @@ module.exports = (app) => {
   app.get('/api/sprints/:id', sprintsController.retrieve);
   app.put('/api/sprints/:id', sprintsController.update);
   app.delete('/api/sprints/:id', sprintsController.destroy);
+<<<<<<< HEAD
+=======
+
+>>>>>>> model_acceptance-criteria
   //Routes for the MEMBERS table
   app.post('/api/members', membersController.create);
   app.get('/api/members', membersController.list);
   app.get('/api/members', membersController.retrieve);
   app.put('/api/members', membersController.update);
   app.delete('/api/members', membersController.destroy);
+<<<<<<< HEAD
+=======
+
+>>>>>>> model_acceptance-criteria
   //Routes for the Project table
   app.post('/api/projects', tareasController.create);  
   app.get('/api/projects', tareasController.list);
   app.get('/api/projects/:id', tareasController.retrieve);
   app.put('/api/projects/:id', tareasController.update);
   app.delete('/api/projects/:id', tareasController.destroy);
+<<<<<<< HEAD
 
+=======
+  
+  //Routes for the ACCEPTANCE_CRITERIA table
+  app.post('/api/acceptance-criteria', acceptance_criteriaController.create);  
+  app.get('/api/acceptance-criteria', acceptance_criteriaController.list);
+  app.get('/api/acceptance-criteria/:id', acceptance_criteriaController.retrieve);
+  app.put('/api/acceptance-criteria/:id', acceptance_criteriaController.update);
+  app.delete('/api/acceptance-criteria/:id', acceptance_criteriaController.destroy);
+>>>>>>> model_acceptance-criteria
 };
