@@ -4,10 +4,8 @@ For simplicity, in controllers we are using only codes 200 for succesful operati
 
 To setup the node_modules folder and project files:
 
-    npm i -S express body-parser morgan
-    npm i -D nodemon
+    npm install
     npm install -g sequelize-cli
-    npm install --save sequelize pg pg-hstore
     sequelize init
 
 The last command will generate the config file, where the local database and user credentials must be entered to make the DB connection. It will also throw an error message, given that server/models/index.js already exists. No need to force the command to overwrite. If so, take the same file as given in the scotch.io tutorial
