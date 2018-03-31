@@ -1,9 +1,11 @@
-const tasks = require('./tasks');
 const logs = require('./logs');
+const members = require('./members');
 const projects = require('./projects');
+const tasks = require('./tasks');
 
 module.exports = {
-    tasks,
     logs,
-    projects
+    members,
+    projects,
+    tasks,
 };
