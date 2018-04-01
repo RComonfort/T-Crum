@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'projects',
+          model: 'Projects',
           key: 'id',
           as: 'project_id'
         }
@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'technologies',
+          model: 'Technologies',
           key: 'id',
           as: 'technology_id'
         }

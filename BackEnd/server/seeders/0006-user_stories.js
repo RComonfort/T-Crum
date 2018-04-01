@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('user_stories', 
+    return queryInterface.bulkInsert('User_stories', 
     [
       {
         weight: 10,
@@ -58,7 +58,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('user_stories', 
+    return queryInterface.bulkDelete('User_stories', 
     [
       {
         id: 1
