@@ -1,24 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
   const Member = sequelize.define('Member', {
-
-    // id: {
-    //   allowNull: false,
-    //   primaryKey: true,
-    //   type: DataTypes.STRING
-    // },
-
     department_major: {
-
       type: DataTypes.STRING,
       allowNull: false,
     },
     name: {
-
       type: DataTypes.STRING,
       allowNull: false,
     },
     photo_URL: {
-
       type: DataTypes.STRING,
       defaultValue: "",
     },
@@ -50,8 +40,6 @@ module.exports = (sequelize, DataTypes) => {
   Member.associate = function (models) {
 
     Member.hasMany(models.Log, {
-
-      through: 'logs',
       foreignKey: 'member_id',
       as: 'member'
     })

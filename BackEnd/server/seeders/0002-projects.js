@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Projects', 
+    return queryInterface.bulkInsert('projects', 
       [
         {
           vision: 'Test vision',
@@ -11,7 +11,9 @@ module.exports = {
           end_date: '2019-01-01 01:01:01',
           background: 'Test background',
           risks: 'Test risks',
-          reach: 'Test reach'      
+          reach: 'Test reach',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
         {
           vision: 'Test vision 2',
@@ -20,7 +22,9 @@ module.exports = {
           end_date: '2019-01-01 01:01:01',
           background: 'Test background 2',
           risks: 'Test risks 2',
-          reach: 'Test reach 2'      
+          reach: 'Test reach 2',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')      
         },
         {
           vision: 'Test vision 3',
@@ -29,7 +33,9 @@ module.exports = {
           end_date: '2019-01-01 01:01:01',
           background: 'Test background 3',
           risks: 'Test risks 3',
-          reach: 'Test reach 3'      
+          reach: 'Test reach 3',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')      
         },
         {
           vision: 'Test vision 4',
@@ -38,7 +44,9 @@ module.exports = {
           end_date: '2019-01-01 01:01:01',
           background: 'Test background 4',
           risks: 'Test risks 4',
-          reach: 'Test reach 4'      
+          reach: 'Test reach 4',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')      
         },
         {
           vision: 'Test vision 5',
@@ -47,13 +55,15 @@ module.exports = {
           end_date: '2019-01-01 01:01:01',
           background: 'Test background 5',
           risks: 'Test risks 5',
-          reach: 'Test reach 5'      
+          reach: 'Test reach 5',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')      
         }
       ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Projects', 
+    return queryInterface.bulkDelete('projects', 
       [
         {
           id: 1

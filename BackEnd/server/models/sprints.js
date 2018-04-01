@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
 
-	var Sprints = sequelize.define('Sprints', {
+	var Sprint = sequelize.define('Sprint', {
 	  	id: {
 		    allowNull: false,
 		    autoIncrement: true,
@@ -19,12 +19,12 @@ module.exports = (sequelize, DataTypes) => {
 	    }
   	}, {});
 
-  	Sprints.associate = function (models) {
-    	Project.hasMany(models.User_story, {
+  	Sprint.associate = function (models) {
+    	Sprint.hasMany(models.User_story, {
 	      	foreignKey: 'sprint_id',
 	      	as: 'sprint'
     	})
   	};
 
-  	return Sprints;
+  	return Sprint;
 };
