@@ -1,24 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-  const Member_task = sequelize.define('Member_task', {
+    const Member_task = sequelize.define('Member_task', {
 
-      id: {
-          allowNull: false,
-          autoIncrement: true,
-          primaryKey: true,
-          type: DataTypes.INTEGER
-      },
-      member_id: {
+        id: {
+            allowNull: false,
+            autoIncrement: true,
+            primaryKey: true,
+            type: DataTypes.INTEGER
+        },
+        member_id: {
 
-          allowNull: false,
-          type: DataTypes.INTEGER
-      },
+            allowNull: false,
+            type: DataTypes.INTEGER
+        },
 
-      task_id: {
+        task_id: {
 
-          allowNull: false,
-          type: DataTypes.INTEGER
-      },
-  });
+            allowNull: false,
+            type: DataTypes.INTEGER
+        },
+    });
 
-  return Member_task;
+    return Member_task;
 };
