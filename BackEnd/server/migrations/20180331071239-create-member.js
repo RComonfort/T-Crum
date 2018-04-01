@@ -1,30 +1,28 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('tasks', {
+    return queryInterface.createTable('Members', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      duration: {
-        type: Sequelize.INTEGER
-      },
-      name: {
         type: Sequelize.STRING
       },
-      completed: {
-        type: Sequelize.BOOLEAN
-      },
-      user_story_id: {
-        type: Sequelize.INTEGER,
+      department_major: {
         allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'user_stories',
-          key: 'id',
-        }
+        type: Sequelize.ENUM,
+        values: ['ITC', 'ISD', 'INT', 'Departamento de Tecnologias de Informacion']
+      },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      photo_URL: {
+        type: Sequelize.STRING
+      },
+      password: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +35,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('tasks');
+    return queryInterface.dropTable('Members');
   }
 };

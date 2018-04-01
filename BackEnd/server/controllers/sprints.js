@@ -1,4 +1,4 @@
-const Log = require('../models').Sprint;
+const Sprint = require('../models').Sprint;
 
 module.exports = {
     create(req, res) {
@@ -39,8 +39,7 @@ module.exports = {
                 return res.status(200).send(sprint);
             })
             .catch(error => res.status(400).send(error));
-    }
-
+    },
     update(req, res) {
 
         if (!req.params.id || !Numbers.isInteger(res.params.id))
