@@ -1,12 +1,41 @@
 const Member = require('../models').Member;
 
+function isAValidMemberId(memberId){
+    
+    var memberIdStr = String(memberId).toLowerCase();
+    var memberIdStrSize = memberIdStr.length;
+    var memberIdFirstChar = memberIdStr.charAt(0);
+
+    //All student or professor ids have 9 characters and start with 'A' or 'L'
+    return memberIdStrSize == 9 && (memberIdFirstChar == 'a' || memberIdFirstChar == 'l');
+}
+
+function isAValidDepartment_Major(department_major){
+
+    //TODO: implement this function to validate against the department_major enum
+    return true;
+}
+
 module.exports = {
 
     create(req, res) {
+
+        if(!req.body.id || !isAValidMemberId(req.body.id))
+            return res.status(400).send({message: 'The attribute id must match the format of a student or professor id: 9 characters long and starting with a letter A or L'});
+
+        if(!req.body.department_major || !isAValidDepartment_Major(req.body.department_major))
+            return res.status(400).send({message: 'The attribute department_major is invalid. It must match a value in the enum.'});
+
+        if(!req.body.name)
+            return res.status(400).send({message: 'The attribute name cannot be null or empty.'});
+
+        if(!req.body.password)
+            return res.status(400).send({message: 'The attribute password cannot be null or empty.'});
+
         return Member
             .create({
-                id: req.body.id,
-                deparment_major: req.body.department_major,
+                id: String(req.body.id).toLowerCase(), //Store this as lower case
+                department_major: req.body.department_major,
                 name: req.body.name,
                 photo_URL: req.body.photo_URL,
                 password: req.body.password
@@ -51,8 +80,11 @@ module.exports = {
 
     update(req, res){
 
+        if(!req.body.department_major || !isAValidDepartment_Major(req.body.department_major))
+            return res.status(400).send({message: 'The attribute department_major is invalid. It must match a value in the enum.'});
+
         return Member
-            .findById(req.params.memberId, {
+            .findById(req.params.id, {
 
                 include: [{
 
@@ -73,7 +105,7 @@ module.exports = {
                 return member
                     .update({
 
-                        deparment_major: req.body.department_major || member.deparment_major,
+                        department_major: req.body.department_major || member.deparment_major,
                         name: req.body.name || member.name,
                         photo_URL: req.body.photo_URL || member.photo_URL,
                         password: req.body.password || member.password,
@@ -103,6 +135,6 @@ module.exports = {
                     .then(() => res.status(204).send())
                     .catch(error => res.status(400).send(error));
             })
-            .catch(error => res.status(4004).send(error));
+            .catch(error => res.status(404).send(error));
     }
 };

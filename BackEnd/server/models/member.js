@@ -1,6 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Member = sequelize.define('Member', {
 
+    // id: {
+    //   allowNull: false,
+    //   primaryKey: true,
+    //   type: DataTypes.STRING
+    // },
+
     department_major: {
 
       type: DataTypes.STRING,
@@ -38,6 +44,16 @@ module.exports = (sequelize, DataTypes) => {
       through: 'member_task',
       foreignKey: 'member_id',
       otherKey: 'task_id'
+    })
+  };
+
+  Member.associate = function (models) {
+
+    Member.hasMany(models.Log, {
+
+      through: 'logs',
+      foreignKey: 'member_id',
+      as: 'member'
     })
   };
 
