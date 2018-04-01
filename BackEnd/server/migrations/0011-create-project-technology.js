@@ -1,9 +1,7 @@
 'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('member_project', {
-
+    return queryInterface.createTable('project_technologies', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,24 +13,36 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'project',
+          model: 'Projects',
           key: 'id',
+          as: 'project_id'
         }
       },
-      member_id: {
+      technology_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'member',
+          model: 'Technologies',
           key: 'id',
+          as: 'technology_id'
         }
       },
-    })
+      version: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
   },
-
   down: (queryInterface, Sequelize) => {
-    
-    return queryInterface.dropTable('member_project');
+    return queryInterface.dropTable('project_technologies');
   }
 };

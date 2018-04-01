@@ -1,19 +1,30 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('sprints', {
+    return queryInterface.createTable('Tasks', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      days: {
+      duration: {
         type: Sequelize.INTEGER
       },
-      comment: {
-        allowNull: true,
+      name: {
         type: Sequelize.TEXT
+      },
+      completed: {
+        type: Sequelize.BOOLEAN
+      },
+      user_story_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'User_stories',
+          key: 'id',
+        }
       },
       createdAt: {
         allowNull: false,
@@ -26,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('sprints');
+    return queryInterface.dropTable('Tasks');
   }
 };

@@ -1,5 +1,3 @@
-
-
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -13,7 +11,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.ENUM,
         values: ['ITC', 'ISD', 'INT', 'Departamento de Tecnologias de Informacion']
-        
       },
       name: {
         allowNull: false,
