@@ -6,6 +6,7 @@ const acceptance_criteriaController = require('../controllers').acceptance_crite
 const member_taskController = require('../controllers').member_task;
 const member_projectController = require('../controllers').member_project;
 const project_technologyController = require('../controllers').project_technology;
+const userStoriesController = require('../controllers').user_stories;
 
 
 module.exports = (app) => {
@@ -73,4 +74,13 @@ module.exports = (app) => {
   app.get('/api/project-technology/:id', project_technologyController.retrieve);
   app.put('/api/project-technology/:id', project_technologyController.update);
   app.delete('/api/project-technology/:id', project_technologyController.destroy);
+
+  //Routes for the USER_STORIES table
+  app.post('/api/user_stories', userStoriesController.create);  
+  app.get('/api/user_stories', userStoriesController.listWithSprint);
+  app.get('/api/user_stories', userStoriesController.listWithProject);
+  app.get('/api/user_stories/:id', userStoriesController.retrieveWithSprint);
+  app.get('/api/user_stories/:id', userStoriesController.retrieveWithProject);
+  app.put('/api/user_stories/:id', userStoriesController.update);
+  app.delete('/api/user_stories/:id', userStoriesController.destroy);
 };
