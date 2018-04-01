@@ -45,8 +45,8 @@ module.exports = {
         if (!req.params.id || !Numbers.isInteger(req.params.id))
             return res.status(400).send({message: 'ID attribute can not be an empty field.'});
 
-        if (!req.body.days)
-          return res.status(400).send({message: 'Days attribute can not be an empty field.'});
+        if (!req.body.days || !Numbers.isInteger(req.params.days))
+          return res.status(400).send({message: 'Days attribute must be a valid field.'});
 
         return Sprint
             .findById(req.params.id, {})
