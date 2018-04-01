@@ -50,8 +50,6 @@
   Member.associate = function (models) {
 
     Member.hasMany(models.Log, {
-
-      through: 'logs',
       foreignKey: 'member_id',
       as: 'member'
     })

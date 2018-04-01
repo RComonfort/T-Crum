@@ -6,6 +6,7 @@ const acceptance_criteriaController = require('../controllers').acceptance_crite
 const member_taskController = require('../controllers').member_task;
 const member_projectController = require('../controllers').member_project;
 const project_technologyController = require('../controllers').project_technology;
+const userStoriesController = require('../controllers').user_stories;
 
 
 module.exports = (app) => {
@@ -40,11 +41,11 @@ module.exports = (app) => {
   app.delete('/api/members', membersController.destroy);
 
   //Routes for the Project table
-  app.post('/api/projects', tareasController.create);  
-  app.get('/api/projects', tareasController.list);
-  app.get('/api/projects/:id', tareasController.retrieve);
-  app.put('/api/projects/:id', tareasController.update);
-  app.delete('/api/projects/:id', tareasController.destroy);
+  app.post('/api/projects', tasksController.create);  
+  app.get('/api/projects', tasksController.list);
+  app.get('/api/projects/:id', tasksController.retrieve);
+  app.put('/api/projects/:id', tasksController.update);
+  app.delete('/api/projects/:id', tasksController.destroy);
   
   //Routes for the ACCEPTANCE_CRITERIA table
   app.post('/api/acceptance-criteria', acceptance_criteriaController.create);  
@@ -73,4 +74,13 @@ module.exports = (app) => {
   app.get('/api/project-technology/:id', project_technologyController.retrieve);
   app.put('/api/project-technology/:id', project_technologyController.update);
   app.delete('/api/project-technology/:id', project_technologyController.destroy);
+
+  //Routes for the USER_STORIES table
+  app.post('/api/user_stories', userStoriesController.create);  
+  app.get('/api/user_stories', userStoriesController.listWithSprint);
+  app.get('/api/user_stories', userStoriesController.listWithProject);
+  app.get('/api/user_stories/:id', userStoriesController.retrieveWithSprint);
+  app.get('/api/user_stories/:id', userStoriesController.retrieveWithProject);
+  app.put('/api/user_stories/:id', userStoriesController.update);
+  app.delete('/api/user_stories/:id', userStoriesController.destroy);
 };
