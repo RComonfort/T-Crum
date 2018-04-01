@@ -1,4 +1,4 @@
- module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const Member = sequelize.define('Member', {
 
     // id: {
@@ -50,6 +50,8 @@
   Member.associate = function (models) {
 
     Member.hasMany(models.Log, {
+
+      through: 'logs',
       foreignKey: 'member_id',
       as: 'member'
     })
