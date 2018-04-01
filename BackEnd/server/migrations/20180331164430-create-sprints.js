@@ -9,10 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       days: {
-        type: Sequelize.
+        type: Sequelize.INTEGER
       },
       comment: {
-        type: Sequelize.
+        allowNull: true,
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
