@@ -56,11 +56,9 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Project.associate = function (models) {
-
     Project.hasMany(models.User_story, {
-      through: 'user_stories',
       foreignKey: 'project_id',
-      otherKey: 'project'
+      as: 'project'
     })
   };
 

@@ -41,11 +41,11 @@ module.exports = (app) => {
   app.delete('/api/members', membersController.destroy);
 
   //Routes for the Project table
-  app.post('/api/projects', tareasController.create);  
-  app.get('/api/projects', tareasController.list);
-  app.get('/api/projects/:id', tareasController.retrieve);
-  app.put('/api/projects/:id', tareasController.update);
-  app.delete('/api/projects/:id', tareasController.destroy);
+  app.post('/api/projects', tasksController.create);  
+  app.get('/api/projects', tasksController.list);
+  app.get('/api/projects/:id', tasksController.retrieve);
+  app.put('/api/projects/:id', tasksController.update);
+  app.delete('/api/projects/:id', tasksController.destroy);
   
   //Routes for the ACCEPTANCE_CRITERIA table
   app.post('/api/acceptance-criteria', acceptance_criteriaController.create);  

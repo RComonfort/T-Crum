@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey:true,
       type: DataTypes.INTEGER
-    }
+    },
     weight: {
 
       type: DataTypes.INTEGER,
@@ -27,18 +27,6 @@ module.exports = (sequelize, DataTypes) => {
 
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    sprint_id: {
-
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      onDelete: 'CASCADE',
-    },
-    project_id: {
-
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      onDelete: 'CASCADE',
     }
   });
 

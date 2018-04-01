@@ -21,6 +21,7 @@ module.exports = {
       },
       member_id: {
         type: Sequelize.STRING,
+        allowNull:false,
         onDelete: 'CASCADE',
         references: {
           model: 'Members',
