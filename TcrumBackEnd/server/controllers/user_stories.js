@@ -34,7 +34,7 @@ module.exports = {
       .then(user_stories => res.status(200).send(user_stories))
       .catch(error => res.status(400).send(error));
   },
-  list(req, res) {
+  listWithSprint(req, res) {
     return user_stories
             .findAll({
                 include: [{
@@ -45,7 +45,7 @@ module.exports = {
             .then(user_stories => res.status(200).send(user_stories))
             .catch(error => res.status(400).send(error));
   },
-  list(req, res) {
+  listWithProject(req, res) {
     return user_stories
             .findAll({
                 include: [{
@@ -56,7 +56,7 @@ module.exports = {
             .then(user_stories => res.status(200).send(user_stories))
             .catch(error => res.status(400).send(error));
   },
-  retrieve(req, res){
+  retrieveWithSprint(req, res){
     // check that id is not null, undefined, not an integer nor 0
      if(!req.params.id || !Numbers.isInteger(res.params.id)) { 
             return res.status(400).send({message: 'The request must contain the parameter id field.'});
@@ -79,7 +79,7 @@ module.exports = {
       })
       .catch(error => res.status(400).send(user_stories));
   },
-  retrieve(req, res){
+  retrieveWithProject(req, res){
     // check that id is not null, undefined, not an integer nor 0
      if(!req.params.id || !Numbers.isInteger(res.params.id)) { 
             return res.status(400).send({message: 'The request must contain the parameter id field.'});
