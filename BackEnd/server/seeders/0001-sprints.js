@@ -7,27 +7,37 @@ module.exports = {
 
       [{
           days: 1,
-          comment: 'Test comment'
+          comment: 'Test comment',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
 
         {
           days: 2,
-          comment: 'Test comment'
+          comment: 'Test comment',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
 
         {
           days: 3,
-          comment: 'Test comment'
+          comment: 'Test comment',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
 
         {
           days: 4,
-          comment: 'Test comment'
+          comment: 'Test comment',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
 
         {
           days: 5,
-          comment: 'Test comment'
+          comment: 'Test comment',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         }
       ], {});
   },

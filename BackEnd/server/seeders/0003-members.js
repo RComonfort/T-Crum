@@ -10,36 +10,46 @@ module.exports = {
           id: "A00000000",
           department_major: 'ITC',
           name: 'John Doe',
-          photoURL: 'test_url',
-          password: '12345'
+          photo_URL: 'test_url',
+          password: '12345',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
         {
           id: "A11111111",
           department_major: 'INT',
           name: 'Billy Joel',
-          photoURL: 'test_url',
-          password: '11111'
+          photo_URL: 'test_url',
+          password: '11111',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
         {
           id: "A22222222",
           department_major: 'ITC',
           name: 'Billy Joel',
-          photoURL: 'test_url',
-          password: '11111'
+          photo_URL: 'test_url',
+          password: '11111',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
         {
           id: "A33333333",
           department_major: 'ISD',
           name: 'Juanito Banana',
-          photoURL: 'test_url',
-          password: '22222'
+          photo_URL: 'test_url',
+          password: '22222',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
         {
           id: "A44444444",
           department_major: 'INT',
           name: 'Mary Vargas',
-          photoURL: 'test_url',
-          password: '33333'
+          photo_URL: 'test_url',
+          password: '33333',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         }
       ], {});
   },

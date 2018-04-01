@@ -3,14 +3,14 @@ const project_technology = require('../models').Project_technology;
 module.exports = {
   create(req, res) {
 
-    if (!req.body.technology_id || !Numbers.isInteger(res.body.technology_id))
-      return res.status(400).send({message: 'El atributo technology_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.technology_id || !Numbers.isInteger(req.body.technology_id))
+      return res.status(400).send({message: 'The post body must contain a valid technology_id field.'});
 
     if (!req.body.project_id || !Numbers.isInteger(res.body.project_id))
-      return res.status(400).send({message: 'El atributo project_id no puede estar vacio y debe ser un numero entero.'});
+      return res.status(400).send({message: 'The post body must contain a valid project_id field.'});
 
     if (!req.body.version)
-        return res.status(400).send({message: 'El atributo version no puede estar vacio.'});
+        return res.status(400).send({message: 'The post body must contain a valid version field.'});
 
     return project_technology
       .create({
@@ -30,8 +30,8 @@ module.exports = {
   },
   retrieve(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
-      return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     return project_technology
       .findById(req.params.id, {
@@ -48,14 +48,14 @@ module.exports = {
   },
   update(req, res) {
 
-    if (!req.body.technology_id || !Numbers.isInteger(res.body.technology_id))
-      return res.status(400).send({message: 'El atributo technology_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.technology_id || !Numbers.isInteger(req.body.technology_id))
+      return res.status(400).send({message: 'The post body must contain a valid technology_id field.'});
 
-    if (!req.body.project_id || !Numbers.isInteger(res.body.project_id))
-      return res.status(400).send({message: 'El atributo project_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.project_id || !Numbers.isInteger(req.body.project_id))
+      return res.status(400).send({message: 'The post body must contain a valid project_id field.'});
 
     if (!req.body.version)
-      return res.status(400).send({message: 'El atributo version no puede estar vacio.'});
+      return res.status(400).send({message: 'The post body must contain a valid version field.'});
 
     return project_technology
       .findById(req.params.id, {
@@ -79,8 +79,8 @@ module.exports = {
   },
   destroy(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
-      return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     return project_technology
       .findById(req.params.id)

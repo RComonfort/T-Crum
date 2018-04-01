@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
   }, {});
-  
+
   Log.associate = (models) => {
     // associations can be defined here
     Log.belongsTo(models.Member, {

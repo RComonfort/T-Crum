@@ -4,16 +4,16 @@ module.exports = {
   create(req, res) {
 
     if (!req.body.duration || !Numbers.isInteger(res.body.duration))
-      return res.status(400).send({message: 'El atributo duration no puede estar vacio y debe ser un numero entero.'});
+      return res.status(400).send({message: 'The post body must contain a valid duration field.'});
 
     if (!req.body.name)
-      return res.status(400).send({message: 'El atributo name no puede estar vacio.'});
+      return res.status(400).send({message: 'The post body must contain a valid name field.'});
 
     if (!req.body.completed)
-      return res.status(400).send({message: 'El atributo completed no puede estar vacio.'});
+      return res.status(400).send({message: 'The post body must contain a valid completed field.'});
 
-    if (!req.body.user_story_id || !Numbers.isInteger(res.body.user_story_id))
-      return res.status(400).send({message: 'El atributo user_story_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.user_story_id || !Numbers.isInteger(req.body.user_story_id))
+      return res.status(400).send({message: 'The post body must contain a valid user_story_id field.'});
 
     return tasks
       .create({
@@ -40,8 +40,8 @@ module.exports = {
   },
   retrieve(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
-      return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     return tasks
       .findById(req.params.id, {
@@ -64,20 +64,20 @@ module.exports = {
   },
   update(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
-      return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     if (!req.body.duration)
-      return res.status(400).send({message: 'El atributo duration no puede estar vacio.'});
+      return res.status(400).send({message: 'The post body must contain a valid duration field.'});
 
     if (!req.body.name)
-      return res.status(400).send({message: 'El atributo name no puede estar vacio.'});
+      return res.status(400).send({message: 'The post body must contain a valid name field.'});
 
     if (!req.body.completed)
-      return res.status(400).send({message: 'El atributo completed no puede estar vacio.'});
+      return res.status(400).send({message: 'The post body must contain a valid completed field.'});
 
-    if (!req.body.user_story_id || !Numbers.isInteger(res.body.user_story_id))
-      return res.status(400).send({message: 'El atributo user_story_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.user_story_id || !Numbers.isInteger(req.body.user_story_id))
+      return res.status(400).send({message: 'The post body must contain a valid user_story_id field.'});
 
     return tasks
       .findById(req.params.id, {
@@ -102,8 +102,8 @@ module.exports = {
   },
   destroy(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
-      return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     return tasks
       .findById(req.params.id)

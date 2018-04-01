@@ -26,7 +26,7 @@ module.exports = {
     retrieve(req, res) {
 
         // check that log_id is not null, undefined, not an integer or 0
-        if(!req.body.id || !Numbers.isInteger(res.body.id)) { 
+        if(!req.body.id || !Numbers.isInteger(req.body.id)) { 
             return res.status(400).send({message: 'ID attribute can not be an empty field.'});
         }
 
@@ -42,11 +42,11 @@ module.exports = {
     },
     update(req, res) {
 
-        if (!req.params.id || !Numbers.isInteger(res.params.id))
+        if (!req.params.id || !Numbers.isInteger(req.params.id))
             return res.status(400).send({message: 'ID attribute can not be an empty field.'});
 
-        if (!req.body.days)
-          return res.status(400).send({message: 'Days attribute can not be an empty field.'});
+        if (!req.body.days || !Numbers.isInteger(req.params.days))
+          return res.status(400).send({message: 'Days attribute must be a valid field.'});
 
         return Sprint
             .findById(req.params.id, {})

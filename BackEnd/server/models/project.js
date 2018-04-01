@@ -36,8 +36,31 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     },
   }, {});
-  Project.associate = function(models) {
-    Project.belongsToMany(models.member, {through: 'member_project', foreignKey: 'project_id', otherKey: 'member_id', onDelete: 'CASCADE'});
+
+  Project.associate = function (models) {
+
+    Project.belongsToMany(models.Member, {
+      through: 'member_project',
+      foreignKey: 'project_id',
+      otherKey: 'member_id'
+    })
   };
+
+  Project.associate = function (models) {
+
+    Project.belongsToMany(models.Technology, {
+      through: 'project_technology',
+      foreignKey: 'project_id',
+      otherKey: 'technology_id'
+    })
+  };
+
+  Project.associate = function (models) {
+    Project.hasMany(models.User_story, {
+      foreignKey: 'project_id',
+      as: 'project'
+    })
+  };
+
   return Project;
 };

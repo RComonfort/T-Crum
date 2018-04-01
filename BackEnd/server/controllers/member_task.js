@@ -3,11 +3,11 @@ const member_task = require('../models').Member_task;
 module.exports = {
   create(req, res) {
 
-    if (!req.body.member_id || !Numbers.isInteger(res.body.member_id))
-      return res.status(400).send({message: 'El atributo member_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.member_id)
+      return res.status(400).send({message: 'The post body must contain a valid member_id field.'});
 
-    if (!req.body.task_id || !Numbers.isInteger(res.body.task_id))
-      return res.status(400).send({message: 'El atributo task_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.task_id || !Numbers.isInteger(req.body.task_id))
+      return res.status(400).send({message: 'The post body must contain a valid task_id field.'});
 
     return member_task
       .create({
@@ -26,8 +26,8 @@ module.exports = {
   },
   retrieve(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
-      return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     return member_task
       .findById(req.params.id, {
@@ -44,11 +44,11 @@ module.exports = {
   },
   update(req, res) {
 
-    if (!req.body.member_id || !Numbers.isInteger(res.body.member_id))
-      return res.status(400).send({message: 'El atributo member_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.member_id)
+      return res.status(400).send({message: 'The post body must contain a valid member_id field.'});
 
-    if (!req.body.task_id || !Numbers.isInteger(res.body.task_id))
-      return res.status(400).send({message: 'El atributo task_id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.body.task_id || !Numbers.isInteger(req.body.task_id))
+      return res.status(400).send({message: 'The post body must contain a valid task_id field.'});
 
     return member_task
       .findById(req.params.id, {
@@ -71,8 +71,8 @@ module.exports = {
   },
   destroy(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
-      return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     return member_task
       .findById(req.params.id)

@@ -1,38 +1,48 @@
 'use strict';
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('member_task', {
-
+    return queryInterface.createTable('project_technologies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      task_id: {
+      project_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'task', 
+          model: 'Projects',
           key: 'id',
+          as: 'project_id'
         }
       },
-      member_id: {
+      technology_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'member',
+          model: 'Technologies',
           key: 'id',
+          as: 'technology_id'
         }
       },
-    })
+      version: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
   },
-
   down: (queryInterface, Sequelize) => {
-    
-    return queryInterface.dropTable('member_task');
+    return queryInterface.dropTable('project_technologies');
   }
 };

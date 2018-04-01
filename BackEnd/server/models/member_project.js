@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     const Member_project = sequelize.define('Member_project', {
-
         id: {
             allowNull: false,
             autoIncrement: true,
@@ -8,13 +7,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER
         },
         member_id: {
-
             allowNull: false,
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING
         },
-
         project_id: {
-
             allowNull: false,
             type: DataTypes.INTEGER
         },

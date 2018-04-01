@@ -22,13 +22,18 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     },
   }, {});
+
   Task.associate = function(models) {
     Task.belongsTo (models.User_story, {
       foreignKey: 'user_story_id', 
       onDelete: 'CASCADE',
     });
 
-    Task.belongsToMany(models.Member, {through: 'Member_task', foreignKey: 'task_id', otherKey: 'member_id'});
+    Task.belongsToMany(models.Member, {
+      through: 'member_task', 
+      foreignKey: 'task_id', 
+      otherKey: 'member_id'
+    });
   };
   return Task;
 };
