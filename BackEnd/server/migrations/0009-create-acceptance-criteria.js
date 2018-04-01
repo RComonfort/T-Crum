@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Acceptance_criteria', {
+    return queryInterface.createTable('acceptance_criteria', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
-          model: 'User_stories',
+          model: 'user_stories',
           key: 'id',
           as: 'user_story_id',
         }
@@ -36,6 +36,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Acceptance_criteria');
+    return queryInterface.dropTable('acceptance_criteria');
   }
 };

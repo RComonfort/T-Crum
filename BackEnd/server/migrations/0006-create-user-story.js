@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('User_stories', {
+    return queryInterface.createTable('user_stories', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'Sprints',
+          model: 'sprints',
           key: 'id',
           as: 'sprint_id',
         }
@@ -39,7 +39,7 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'Projects',
+          model: 'projects',
           key: 'id',
           as: 'project_id',
         }
@@ -55,6 +55,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('User_stories');
+    return queryInterface.dropTable('user_stories');
   }
 };

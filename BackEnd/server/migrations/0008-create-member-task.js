@@ -15,8 +15,9 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'Tasks', 
+          model: 'tasks', 
           key: 'id',
+          as: 'task_id'
         }
       },
       member_id: {
@@ -24,8 +25,9 @@ module.exports = {
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
-          model: 'Members',
+          model: 'members',
           key: 'id',
+          as: 'member_id'
         }
       },
     })

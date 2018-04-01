@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => 
-    queryInterface.createTable('Logs', {
+    queryInterface.createTable('logs', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,11 +24,11 @@ module.exports = {
         allowNull:false,
         onDelete: 'CASCADE',
         references: {
-          model: 'Members',
+          model: 'members',
           key: 'id',
           as: 'member_id',
         }
       }
     }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Logs'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('logs'),
 };
