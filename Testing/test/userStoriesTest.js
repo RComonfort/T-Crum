@@ -3,10 +3,10 @@ const request = require('request');
 const URL = 'http://localhost:8000/api';
 
 /**
- * Tests for Log model and controller.
+ * Tests for User Story model and controller.
  */
 
-// Search a log in a list of logs
+// Search a user story in a list of stories
 function findUserStory(user_stories, user_story){
     let found = false;
     user_stories.array.forEach(element => { // check that the object we tryed to insert is different to every object in the DB
