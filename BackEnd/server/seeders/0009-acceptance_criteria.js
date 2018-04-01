@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('acceptance_criteria', [{
+    return queryInterface.bulkInsert('Acceptance_criteria', [{
       name: 'Criterion 1',
       type: 'Ac type 1',
       user_story_id: 1,
@@ -40,7 +40,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('acceptance_criteria', [{
+    return queryInterface.bulkDelete('Acceptance_criteria', [{
       id: 1
     },
     {
