@@ -9,13 +9,11 @@ module.exports = (sequelize, DataTypes) => {
   },
     project_id: {
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
   },
     technology_id: {
       allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
   },

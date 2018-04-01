@@ -1,6 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Member = sequelize.define('Member', {
 
+    // id: {
+    //   allowNull: false,
+    //   primaryKey: true,
+    //   type: DataTypes.STRING
+    // },
+
     department_major: {
 
       type: DataTypes.STRING,

@@ -1,13 +1,13 @@
 const Member = require('../models').Member;
 
 function isAValidMemberId(memberId){
-
-    var memberIdStr = String(memberId);
+    
+    var memberIdStr = String(memberId).toLowerCase();
     var memberIdStrSize = memberIdStr.length;
     var memberIdFirstChar = memberIdStr.charAt(0);
 
     //All student or professor ids have 9 characters and start with 'A' or 'L'
-    return memberIdStrSize == 9 && (memberIdFirstChar == 'A' || memberIdFirstChar == 'L');
+    return memberIdStrSize == 9 && (memberIdFirstChar == 'a' || memberIdFirstChar == 'l');
 }
 
 function isAValidDepartment_Major(department_major){
@@ -34,7 +34,7 @@ module.exports = {
 
         return Member
             .create({
-                id: req.body.id,
+                id: String(req.body.id).toLowerCase(), //Store this as lower case
                 department_major: req.body.department_major,
                 name: req.body.name,
                 photo_URL: req.body.photo_URL,
