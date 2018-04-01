@@ -41,5 +41,15 @@ module.exports = (sequelize, DataTypes) => {
     })
   };
 
+  Member.associate = function (models) {
+
+    Member.hasMany(models.Log, {
+
+      through: 'logs',
+      foreignKey: 'member_id',
+      as: 'member'
+    })
+  };
+
   return Member;
 };
