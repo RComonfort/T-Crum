@@ -56,8 +56,8 @@ module.exports = {
 
     retrieve(req, res) {
         // check that project id is not null, undefined, not an integer or 0
-        if(!req.body.id || !Numbers.isInteger(res.body.id)) { 
-            return res.status(400).send({message: 'Id must be an integer bigger than 0'});
+        if(!req.body.id || !Numbers.isInteger(req.body.id)) { 
+            return res.status(400).send({message: 'ID must be an integer bigger than 0'});
         }
 
         return Project
