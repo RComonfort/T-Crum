@@ -13,37 +13,22 @@ export class AuthService {
     this.URL = 'http://localhost:8000/api';
     this.headers = new HttpHeaders();
     this.headers.append('ContentType', 'application/json');
+    this.headers.append('Access-Control-Allow-Origin', '*');
   }
 
   // Make the post request with the id and password provided, if successful, sets session data
   login(id:string, password:string) {
     let member;
     let body = {
-      id: id,
+      member_id: id,
       password: password
     }
 
-    let result = {
-      success: false,
-      errors: null,
-    };
-
-    this.http.post(
+    return this.http.post(
       this.URL + '/login',
-      JSON.stringify(body),
+      body,
       { headers: this.headers }
-    )
-    .subscribe(
-      resp => {
-        this.setSession(resp);
-        result.success = true;
-      },
-      err => {
-        result.errors = err;    
-      }
     );  
-
-    return result;
   }
 
   // Sets session data with the login response
