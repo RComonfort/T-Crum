@@ -7,10 +7,11 @@ exports.ensureAuth = (req, res, next) => {
 		return res.status(403).send({ message: 'The request does not contain the authorization header.'});
 	}
 
+	let payload;
 	let token = req.headers.authorization.replace(/['"]+/g, '');
 
 	try{
-		let payload = jwt.decode(token, secret);
+		payload = jwt.decode(token, KEY);
 
 		if(payload.exp <= moment().unix()){
 			return res.status(401).send({message: 'The token has expired.'});

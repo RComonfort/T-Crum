@@ -1,3 +1,5 @@
+const authMiddleware = require('../middlewares/authenticated');
+
 const tasksController = require('../controllers').tasks;
 const logsController = require('../controllers').logs;
 const sprintsController = require('../controllers').sprints;
