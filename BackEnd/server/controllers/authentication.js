@@ -1,4 +1,4 @@
-const Log = require('../models').Member;
+const Member = require('../models').Member;
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt-nodejs');
@@ -11,10 +11,10 @@ module.exports = {
             return res.status(400).send({message: 'The post body must contain a member_id and password field.'});
         }
 
-        let member_id = body.member_id;
-        let password = body.password;
+        let member_id = req.body.member_id;
+        let password = req.body.password;
 
-        Member.findById( body.member)
+        Member.findById(member_id)
         .then(member => {
             if(!member){
                 res.status(400).send({ message: 'Authentication failed. Member not found.'});

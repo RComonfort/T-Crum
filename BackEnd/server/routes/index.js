@@ -7,12 +7,16 @@ const member_taskController = require('../controllers').member_task;
 const member_projectController = require('../controllers').member_project;
 const project_technologyController = require('../controllers').project_technology;
 const userStoriesController = require('../controllers').user_stories;
+const authenticationController = require('../controllers').authentication;
 
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
     message: 'Welcome to the TCRUM Project API!',
   }));
+
+  //Autentication routes
+  app.post('/api/login', authenticationController.login);
 
   //Routes for the TASKS table
   app.post('/api/tasks', tasksController.create);  
