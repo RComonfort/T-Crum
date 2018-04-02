@@ -10,8 +10,8 @@ module.exports = {
         if(!req.body.member_id || !req.body.password){ 
             return res.status(400).send({message: 'The post body must contain a member_id and password field.'});
         }
-
-        let member_id = req.body.member_id;
+        
+        let member_id = (String)(req.body.member_id).toLocaleLowerCase();
         let password = req.body.password;
 
         Member.findById(member_id)
