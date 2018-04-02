@@ -33,7 +33,7 @@ describe('Technology model', () => {
                 url: URL + '/technology',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    name: 'ENUM'})
+                    name: 'NODEJS'})
             };
 
             // Make post request
@@ -88,7 +88,7 @@ describe('Technology model', () => {
         it('Retrieve existent technology', (done) => {
             let technology = {
                 id = 1;
-                name = 'ENUM'
+                name = 'NODEJS'
             };
 
             request.get(URL + '/technology/' + newTechnologie.id, (error, response, body) => {
@@ -175,51 +175,40 @@ describe('Technology model', () => {
             
             // Define POST request parameters and body
             let postOptions = {
-                url: URL + '/members',
+                url: URL + '/technology',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id: 'A99999999',
-                    department_major: 'ITC',
-                    name: 'firstName lastName',
-                    photo_URL: 'foto_URL',
-                    password: '12345'
+                    id: '1',
+                    name: 'NODEJS',
                 })
             };
 
-            // Make post request to create a new member
+            // Make post request to create a new technology
             request.post(postOptions, (error, response, body) => {
                 expect(response.statusCode).to.be.equal(201); // if response is successful
-                let newMember = JSON.parse(body);
+                let newTechnologie = JSON.parse(body);
 
                 // Make get request to get the inserted object
-                request.get(URL + 'members/' + newMember.id, (error, response, body) => {
+                request.get(URL + 'technology/' + newTechnologie.id, (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
-                    expect(newMember).to.deep.equal(JSON.parse(body)); // check that the object we created and the one obtain are equal
+                    expect(newTechnologie).to.deep.equal(JSON.parse(body)); // check that the object we created and the one obtain are equal
                 });
             });
 
             // Make delete request to delete the inserted member
-            request.delete( URL + '/members/' + postOptions.id, (error, response, body) => {
+            request.delete( URL + '/technology/' + postOptions.id, (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); // if response is successful
             });
-
-            //Now verify that the items associated to this member (member_project, member_task) were also deleted in the DB
-
-            // Query the instances of member_project of the member that was deleted
-            // request.get();
-
-            // Query the instances of member_task of the member that was deleted
-            // request.get();
 
             done();
         });
 
 
-        // Try to delete a non-existent member, response: unsuccesful
-        it('Delete a non-existent member', (done) => {
-            request.delete(URL + '/members/0', (error, response, body) => {
+        // Try to delete a non-existent technology, response: unsuccesful
+        it('Delete a non-existent technology', (done) => {
+            request.delete(URL + '/technology/0', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(400); //response should be unsuccesful
             });
             done();
