@@ -2,23 +2,28 @@ module.exports = (sequelize, DataTypes) => {
   const Member = sequelize.define('Member', {
     department_major: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     photo_URL: {
       type: DataTypes.STRING,
-      defaultValue: "",
+      defaultValue: ""
     },
     password: {
 
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
+    },
+    system_role: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
+  //One user can belong to many project
   Member.associate = function (models) {
 
     Member.belongsToMany(models.Project, {
@@ -28,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     })
   };
 
+  //One user can have many tasks
   Member.associate = function (models) {
 
     Member.belongsToMany(models.Task, {
@@ -37,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     })
   };
 
+  //One user can be associated to many logs
   Member.associate = function (models) {
 
     Member.hasMany(models.Log, {
@@ -44,6 +51,16 @@ module.exports = (sequelize, DataTypes) => {
       as: 'member'
     })
   };
+
+  //One user can be the scrum master of several projects
+  Member.associate = function (models) {
+
+    Member.hasMany(models.Project, {
+
+      foreignKey: 'project_id', 
+      as: 'project'
+    })
+  }
 
   return Member;
 };

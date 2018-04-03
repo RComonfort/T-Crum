@@ -43,7 +43,8 @@ module.exports = {
                     department_major: req.body.department_major,
                     name: req.body.name,
                     photo_URL: req.body.photo_URL,
-                    password: hashed
+                    password: hashed,
+                    system_role: 'user'
                 })
                 .then(member => res.status(201).send(member))
                 .catch(error => res.status(400).send(error));
