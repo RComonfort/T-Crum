@@ -10,6 +10,8 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { AuthService } from './services/auth.service';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
+import { CrudService } from './services/crud.service';
+import { LogService } from './services/log.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    CrudService,
+    LogService
   ],
   bootstrap: [AppComponent]
 })

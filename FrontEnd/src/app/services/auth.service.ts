@@ -61,4 +61,8 @@ export class AuthService {
   getMember(){
     return JSON.parse(localStorage.getItem('member'))
   }
+
+  getToken(){
+    return localStorage.getItem('token');
+  }
 }
