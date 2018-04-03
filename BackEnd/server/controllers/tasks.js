@@ -28,29 +28,25 @@ module.exports = {
   list(req, res) {
     return tasks
       .findAll( {
-        /*Removed so i can check easier the tests, not really necessary to get the user story from here
         include: [{
           model: User_story,
           as: 'user_story'
         }], 
-        */
       })
       .then(tasks => res.status(200).send(tasks))
       .catch(error => res.status(400).send(error));
   },
   retrieve(req, res) {
-
+    
     if (!req.params.id || !Numbers.isInteger(req.params.id))
       return res.status(400).send({message: 'The post body must contain a valid id field.'});
 
     return tasks
       .findById(req.params.id, {
-        /*Removed so i can check easier the tests, not really necessary to get the user story from here
         include: [{
           model: User_story,
           as: 'user_story'
         }], 
-        */
       })
       .then(tasks => {
         if (!tasks) {
@@ -61,6 +57,27 @@ module.exports = {
         return res.status(200).send(tasks);
       })
       .catch(error => res.status(400).send(tasks));
+  },
+  listTaskWithUsers (req, res) //All users (members) that participate in a particular task
+  {
+    if (!req.params.id || !Numbers.isInteger(req.params.id))
+      return res.status(400).send({message: 'The post body must contain a valid id field.'});
+
+    return tasks.findById (req.params.id, {
+      include: [{
+        model: Member,
+        as: 'users'
+      }]
+    })
+    .then(tasks => {
+      if (!tasks) {
+        return res.status(400).send({
+          message: 'Task not found',
+        });
+      }
+      return res.status(200).send(tasks);
+    })
+    .catch(error => res.status(400).send(tasks));
   },
   update(req, res) {
 

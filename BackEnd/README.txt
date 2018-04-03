@@ -89,6 +89,7 @@ We will need a model (to develop the CRUD) and migration (to actually having the
 For 1:1 or 1:n relationships, both models have to declare the association inside its associate function. For 1:1 relantionships, use belongTo in source table (the one that has the Foreign Key) and later declare this column in the migration file. The target table must have a hasOne association. For a 1:n, it is the same, but the target table needs a hasMany association instead in its model file (like scotch.io's tutorial).
 
 More on associations: http://docs.sequelizejs.com/manual/tutorial/associations.html 
+To see some methods for models and its associations: http://docs.sequelizejs.com/class/lib/associations/base.js~Association.html
 
 -----------------------------
 SEEDERS 
