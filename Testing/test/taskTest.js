@@ -235,7 +235,7 @@ describe('Task model', () => {
 			request.get(URL + '/tasks/1', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); 
 
-                expect(JSON.parse(body)).to.be.deep.equal(task);
+				expect (containsSameData(JSON.parse(body), task)).to.be.true;
             });
             done();
 		});
