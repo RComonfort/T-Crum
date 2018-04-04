@@ -30,6 +30,11 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      system_role: {
+        allowNull: false,
+        type: Sequelize.ENUM,
+        values: ['root', 'user']
       }
     });
   },

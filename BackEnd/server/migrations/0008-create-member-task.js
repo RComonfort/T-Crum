@@ -29,7 +29,7 @@ module.exports = {
           key: 'id',
           as: 'member_id'
         }
-      },
+      }
     })
   },
 

@@ -13,7 +13,8 @@ module.exports = {
           risks: 'Test risks',
           reach: 'Test reach',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')
+          updatedAt: Sequelize.fn('NOW'),
+          scrum_master_id: 'a00000000'
         },
         {
           vision: 'Test vision 2',
@@ -24,7 +25,8 @@ module.exports = {
           risks: 'Test risks 2',
           reach: 'Test reach 2',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')      
+          updatedAt: Sequelize.fn('NOW'),
+          scrum_master_id: 'a00000000'     
         },
         {
           vision: 'Test vision 3',
@@ -35,7 +37,8 @@ module.exports = {
           risks: 'Test risks 3',
           reach: 'Test reach 3',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')      
+          updatedAt: Sequelize.fn('NOW'),
+          scrum_master_id: 'a00000000'       
         },
         {
           vision: 'Test vision 4',
@@ -46,7 +49,8 @@ module.exports = {
           risks: 'Test risks 4',
           reach: 'Test reach 4',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')      
+          updatedAt: Sequelize.fn('NOW'),
+          scrum_master_id: 'a00000000'       
         },
         {
           vision: 'Test vision 5',
@@ -57,7 +61,8 @@ module.exports = {
           risks: 'Test risks 5',
           reach: 'Test reach 5',
           createdAt: Sequelize.fn('NOW'),
-          updatedAt: Sequelize.fn('NOW')      
+          updatedAt: Sequelize.fn('NOW'),
+          scrum_master_id: 'a00000000'       
         }
       ], {});
   },

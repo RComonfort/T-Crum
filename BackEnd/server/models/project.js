@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     reach:{
       allowNull: false,
       type: DataTypes.TEXT
-    },
+    }
   }, {});
 
   Project.associate = function (models) {
@@ -61,6 +61,15 @@ module.exports = (sequelize, DataTypes) => {
       as: 'project'
     })
   };
+
+  Project.associate = function (models) {
+
+    Project.belongsTo(models.Member, {
+
+      foreignKey: 'scrum_master_id',
+      as: 'scrum_master'
+    })
+  }
 
   return Project;
 };

@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             type: DataTypes.INTEGER
         },
+        project_role: {
+            allowNull: false,
+            type: DataTypes.TEXT
+        }
     });
 
     return Member_project;
