@@ -20,9 +20,10 @@ function isAValidDepartment_Major(department_major){
 
 module.exports = {
 
+    //Method for creating a member
     create(req, res) {
 
-        if(!req.body.id)
+        if(!req.body.id || !isAValidMemberId(req.body.id))
             return res.status(400).send({message: 'The attribute id must match the format of a student or professor id: 9 characters long and starting with a letter A or L'});
 
         if(!req.body.department_major)
@@ -51,6 +52,7 @@ module.exports = {
         });
     },
 
+    //Method for listing members
     list(req, res) {
 
         return Member
@@ -59,16 +61,11 @@ module.exports = {
             .catch(error => res.status(400).send(error));
     },
 
+    //Method for retrieving a single member
     retrieve(req, res) {
 
         return Member
-            .findById(req.params.memberId, {
-
-                include: [{
-
-                    model: Member,
-                    as: 'members',
-                }],
+            .findById(req.params.id, {
             })
             .then(member => {
 
@@ -85,6 +82,7 @@ module.exports = {
             .catch(error => res.status(404).send(error));
     },
 
+    //Method to update a member
     update(req, res){
 
         if(!req.body.department_major || !isAValidDepartment_Major(req.body.department_major))
@@ -92,12 +90,6 @@ module.exports = {
 
         return Member
             .findById(req.params.id, {
-
-                include: [{
-
-                    model: Member,
-                    as: 'member',
-                }],
             })
             .then(member => {
 
@@ -123,6 +115,7 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
     },
 
+    //Method to delete a member
     destroy(req, res) {
 
         return Member

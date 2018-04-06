@@ -43,9 +43,9 @@ module.exports = (app) => {
   //Routes for the MEMBERS table
   app.post('/api/members', membersController.create);
   app.get('/api/members', membersController.list);
-  app.get('/api/members', membersController.retrieve);
-  app.put('/api/members', membersController.update);
-  app.delete('/api/members', membersController.destroy);
+  app.get('/api/members/:id', membersController.retrieve);
+  app.put('/api/members/:id', membersController.update);
+  app.delete('/api/members/:id', membersController.destroy);
 
   //Routes for the Project table
   app.post('/api/projects', tasksController.create);  
