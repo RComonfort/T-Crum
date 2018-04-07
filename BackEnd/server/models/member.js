@@ -29,14 +29,15 @@ module.exports = (sequelize, DataTypes) => {
     Member.belongsToMany(models.Project, {
       through: 'member_project',
       foreignKey: 'member_id',
-      otherKey: 'project_id'
+      // otherKey: 'project_id'
+      as: 'projects'
     })
 
     //One user can have many tasks
     Member.belongsToMany(models.Task, {
       through: 'member_task',
       foreignKey: 'member_id',
-      otherKey: 'task_id',
+      // otherKey: 'task_id',
       as: 'tasks'
     })
 

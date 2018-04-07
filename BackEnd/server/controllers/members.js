@@ -1,6 +1,7 @@
 const Member = require('../models').Member;
 const Task = require('../models').Task;
 const Log = require('../models').Log;
+const Project = require('../models').Project;
 const bcrypt = require('bcrypt-nodejs');
 //const Validation = require('../helpers/validations').Validation;
 
@@ -73,11 +74,18 @@ module.exports = {
                         model: Log,
                         as: 'logs',
                     },
-                    // {
-                    //     // association: 'tasks'
-                    //     model: Task,
-                    //     as: 'tasks',
-                    // },
+                    {
+                        // association: 'tasks'
+                        model: Task,
+                        as: 'tasks',
+                        required: false,
+                    },
+                    {
+                        // association: 'projects'
+                        model: Project,
+                        as: 'projects',
+                        required: false,
+                    },
                 ],
             })
             .then(members => res.status(200).send(members))
@@ -94,7 +102,27 @@ module.exports = {
     retrieve(req, res) {
 
         return Member
-            .findById(req.params.id, {})
+            .findById(req.params.id, {
+
+                include: [
+                    {
+                        model: Log,
+                        as: 'logs',
+                    },
+                    {
+                        // association: 'tasks'
+                        model: Task,
+                        as: 'tasks',
+                        required: false,
+                    },
+                    {
+                        // association: 'projects'
+                        model: Project,
+                        as: 'projects',
+                        required: false,
+                    },
+                ],
+            })
             .then(member => {
 
                 if (!member) {
@@ -113,7 +141,8 @@ module.exports = {
     //Method to update a member
     update(req, res) {
 
-        if (!req.body.department_major || !isAValidDepartment_Major(req.body.department_major))
+        //If I'm trying to update the department_major, it has to exist in the department_major enum
+        if (req.body.department_major && !isAValidDepartment_Major(req.body.department_major))
             return res.status(400).send({
                 message: 'The attribute department_major is invalid. It must match a value in the enum.'
             });
