@@ -1,4 +1,6 @@
 const user_stories = require('../models').User_story;
+const Sprint = require('../models').Sprint;
+const Project = require('../models').Project;
 
 module.exports = {
   create(req, res) {
@@ -37,30 +39,26 @@ module.exports = {
   list(req, res) {
     return user_stories
             .findAll({
-                include: [{
-                    model: Sprint,
-                    as: 'Sprint',
-                    model: Project,
-                    as: 'Project'
-                }],
+              include: [
+                //{ model: Project, as: 'project' },
+                { model: Sprint, as: 'sprint' }  
+              ],
             })
             .then(user_stories => res.status(200).send(user_stories))
             .catch(error => res.status(400).send(error));
   },
   retrieve(req, res){
     // check that id is not null, undefined, not an integer nor 0
-     if(!req.params.id || !Numbers.isInteger(res.params.id)) { 
+     if(!req.params.id || !Number.isInteger(res.params.id)) { 
             return res.status(400).send({message: 'The request must contain the parameter id field.'});
           }
 
     return user_stories
       .findById(req.params.id, {
-        include: [{
-          model: Sprint,
-          as: 'Sprint',
-          model: Project,
-          as: 'Project'
-        }],
+        include: [
+          { model: Sprint, as: 'sprint' },
+          //{ model: Project, as: 'project'},  
+        ],
       })
       .then(user_stories => {
         if (!user_stories) {
@@ -74,7 +72,7 @@ module.exports = {
   },
   update(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(res.params.id))
+    if (!req.params.id || !Number.isInteger(res.params.id))
       return res.status(400).send({message: 'attribute id can not be empty and must be an integer.'});
 
     if (!req.body.weight)
@@ -89,10 +87,10 @@ module.exports = {
     if (!req.body.priority)
       return res.status(400).send({message: 'priority attribute can not be empty.'});
 
-    if (!req.body.sprint_id || !Numbers.isInteger(res.body.sprint_id))
+    if (!req.body.sprint_id || !Number.isInteger(res.body.sprint_id))
       return res.status(400).send({message: 'sprint_id attribute can not be empty and must be an integer.'});
 
-    if (!req.body.project_id || !Numbers.isInteger(res.body.project_id))
+    if (!req.body.project_id || !Number.isInteger(res.body.project_id))
       return res.status(400).send({message: 'project_id attribute can not be empty and must be an integer.'});
 
 
