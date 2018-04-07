@@ -52,7 +52,7 @@ module.exports = {
     update(req, res) {
 
         // If user is passing days parameter, we have to validate that it is a positive number
-        if (req.body.days && req.body.days === parseInt(req.body.days, 10))
+        if (req.body.days && !req.body.days === parseInt(req.body.days, 10))
             return res.status(400).send(
                 { message: 'Days attribute must be a valid field' }
             );
