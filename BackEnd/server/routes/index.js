@@ -10,7 +10,7 @@ const member_projectController = require('../controllers').member_project;
 const project_technologyController = require('../controllers').project_technology;
 const userStoriesController = require('../controllers').user_stories;
 const authenticationController = require('../controllers').authentication;
-
+const userStoriesController = requiere('../controllers').technology;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -90,4 +90,11 @@ module.exports = (app) => {
   app.get('/api/user-stories-proect/:id', userStoriesController.retrieveWithProject);
   app.put('/api/user-stories/:id', userStoriesController.update);
   app.delete('/api/user-stories/:id', userStoriesController.destroy);
+  
+  //Routes for the TECHNOLOGIES table
+  app.post('/api/technology', technologiesController.create);  
+  app.get('/api/technology', technologiesController.list);
+  app.get('/api/technology/:id', technologiesController.retrieve);
+  app.put('/api/technology/:id', technologiesController.update);
+  app.delete('/api/technology/:id', technologiesController.destroy);
 };
