@@ -85,17 +85,13 @@ module.exports = {
                         model: Project,
                         as: 'projects',
                         required: false,
+                        //Without this line of attributes, it fails!!
+                        attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
                     },
                 ],
             })
             .then(members => res.status(200).send(members))
             .catch(error => res.status(400).send(error));
-
-        // To list them without any associated models (tasks, projects)
-        // return Member
-        //     .all()
-        //     .then(members => res.status(200).send(members))
-        //     .catch(error => res.status(400).send(error));
     },
 
     //Method for retrieving a single member
@@ -120,6 +116,8 @@ module.exports = {
                         model: Project,
                         as: 'projects',
                         required: false,
+                        //Without this line of attributes, it fails!!
+                        attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
                     },
                 ],
             })
@@ -177,7 +175,7 @@ module.exports = {
     destroy(req, res) {
 
         return Member
-            .findById(req.params.memberId)
+            .findById(req.params.id)
             .then(member => {
 
                 if (!member) {
