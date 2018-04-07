@@ -34,21 +34,12 @@ module.exports = {
       .then(user_stories => res.status(200).send(user_stories))
       .catch(error => res.status(400).send(error));
   },
-  listWithSprint(req, res) {
+  list(req, res) {
     return user_stories
             .findAll({
                 include: [{
                     model: Sprint,
-                    as: 'Sprint'
-                }],
-            })
-            .then(user_stories => res.status(200).send(user_stories))
-            .catch(error => res.status(400).send(error));
-  },
-  listWithProject(req, res) {
-    return user_stories
-            .findAll({
-                include: [{
+                    as: 'Sprint',
                     model: Project,
                     as: 'Project'
                 }],
@@ -56,7 +47,7 @@ module.exports = {
             .then(user_stories => res.status(200).send(user_stories))
             .catch(error => res.status(400).send(error));
   },
-  retrieveWithSprint(req, res){
+  retrieve(req, res){
     // check that id is not null, undefined, not an integer nor 0
      if(!req.params.id || !Numbers.isInteger(res.params.id)) { 
             return res.status(400).send({message: 'The request must contain the parameter id field.'});
@@ -66,28 +57,7 @@ module.exports = {
       .findById(req.params.id, {
         include: [{
           model: Sprint,
-          as: 'Sprint'
-        }],
-      })
-      .then(user_stories => {
-        if (!user_stories) {
-          return res.status(400).send({
-            message: 'User_story not found',
-          });
-        }
-        return res.status(200).send(user_stories);
-      })
-      .catch(error => res.status(400).send(user_stories));
-  },
-  retrieveWithProject(req, res){
-    // check that id is not null, undefined, not an integer nor 0
-     if(!req.params.id || !Numbers.isInteger(res.params.id)) { 
-            return res.status(400).send({message: 'The request must contain the parameter id field.'});
-          }
-                
-    return user_stories
-      .findById(req.params.id, {
-        include: [{
+          as: 'Sprint',
           model: Project,
           as: 'Project'
         }],
