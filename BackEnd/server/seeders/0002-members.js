@@ -74,22 +74,22 @@ module.exports = {
     return queryInterface.bulkDelete('Members', 
     [
       {
-        id: "L00000000"
+        id: "l00000000"
       },
       {
-        id: "A00000000"
+        id: "a00000000"
       },
       {
-        id: "A11111111"
+        id: "a11111111"
       },
       {
-        id: "A22222222"
+        id: "a22222222"
       },
       {
-        id: "A33333333"
+        id: "a33333333"
       },
       {
-        id: "A44444444"
+        id: "a44444444"
       },
     ]);
   }

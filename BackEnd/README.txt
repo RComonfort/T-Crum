@@ -69,6 +69,18 @@ To perform the migration for unmigrated files, use:
 
 Automatically, Sequelize adds an id, createdAt and updatedAt columns. The id can be renamed or discarded if we do not want a primary key, just remember to reflect those changes on the model file. Both date colums are managed by Sequelize and by default, will generate an error if no present. 
 
+To return the dabase to its initial state, use:
+
+  sequelize db:migrate:undo:all
+
+Alternatively, use:
+
+  sequelize db:drop
+
+But remember to have the credentials in the config.json file, for the user that created the database locally. Then, recreate the database with: 
+
+  sequelize db:create
+
 -----------------------------
 ASSOCIATIONS 
 _____________________________
@@ -184,7 +196,12 @@ module.exports = {
 };
 
 You can seed your database with this data by running this sequelize-cli command:
+
 $ sequelize db:seed:all
+
+To remove all insertions, use:
+
+$ sequelize db:seed:undo:all
 
 After this command, and check your database, you should have something that looks like this:
 
