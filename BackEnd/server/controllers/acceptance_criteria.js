@@ -40,7 +40,7 @@ module.exports = {
 
     retrieve(req, res) {
         // check that id is not null, undefined, not an integer or 0
-        if(!req.params.id || !Numbers.isInteger(req.params.id)) { 
+        if(!req.params.id) { 
             return res.status(400).send({message: 'The request must contain the parameter id field.'});
         }
 
