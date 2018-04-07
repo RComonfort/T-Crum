@@ -42,14 +42,14 @@ module.exports = (sequelize, DataTypes) => {
     Project.belongsTo(models.Member, {
 
       foreignKey: 'scrum_master_id',
-      as: 'member',
+      as: 'scrum_master',
       onDelete: 'CASCADE',
     }),
 
     Project.belongsToMany(models.Member, {
       through: 'member_project',
       foreignKey: 'project_id',
-      otherKey: 'member_id',
+      //otherKey: 'member_id',
       as: 'members'
     }),
 

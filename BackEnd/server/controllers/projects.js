@@ -33,7 +33,7 @@ module.exports = {
         if(!req.body.reach){ 
             return res.status(400).send({message: 'Attribute reach cannot be empty'});
         }
-        if(!req.body.scrum_master_id){
+        if(!req.body.scrum_master_id && req.body.scrum_master_id === parseInt(req.body.scrum_master_id, 10)){
             return res.status(400).send({message: 'Attribute reach cannot be empty'});
         }
         return Project
@@ -56,11 +56,18 @@ module.exports = {
             .findAll({
                 include: [
                     {model: User_story,
-                    as: 'user_stories'},
+                    as: 'user_stories',
+                    required: false},
                     {model: Member,
-                    as: 'member'},
-                    //{model: Member,
-                    //as: 'members'}
+                    as: 'scrum_master',
+                    required: false,
+                    attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
+                    },
+                    {model: Member,
+                    as: 'members',
+                    required: false,
+                    attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
+                    }
                 ],
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
@@ -70,12 +77,27 @@ module.exports = {
 
     retrieve(req, res) {
         // check that project id is not null, undefined, not an integer or 0
-        if(!req.body.id || !Numbers.isInteger(req.body.id)) { 
+        if(!req.body.id && req.body.id === parseInt(req.body.id, 10)) { 
             return res.status(400).send({message: 'ID must be an integer bigger than 0'});
         }
 
         return Project
             .findById(req.params.id, {
+                include: [
+                    {model: User_story,
+                    as: 'user_stories',
+                    required: false},
+                    {model: Member,
+                    as: 'scrum_master',
+                    required: false,
+                    attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
+                    },
+                    {model: Member,
+                    as: 'members',
+                    required: false,
+                    attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
+                    }
+                ],
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
             .then(Project => {
@@ -88,6 +110,10 @@ module.exports = {
     },
 
     update(req, res) {
+        // check that project id is not null, undefined, not an integer or 0
+        if(!req.body.id && req.body.id === parseInt(req.body.id, 10)) { 
+            return res.status(400).send({message: 'ID must be an integer bigger than 0'});
+        }
         // check that params are not null, undefined or empty string
         if(!req.body.vision){ 
             return res.status(400).send({message: 'Attribute vision cannot be empty'});
@@ -148,6 +174,10 @@ module.exports = {
     },
 
     destroy(req, res) {
+        // check that project id is not null, undefined, not an integer or 0
+        if(!req.body.id && req.body.id === parseInt(req.body.id, 10)) { 
+            return res.status(400).send({message: 'ID must be an integer bigger than 0'});
+        }
         return Project
             .findById(req.params.id)
             .then(Project => {
