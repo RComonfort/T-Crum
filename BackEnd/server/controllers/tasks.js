@@ -1,10 +1,12 @@
 const tasks = require('../models').Task;
+const User_story = require('../models').User_story;
+const Member = require('../models').Member;
 
 module.exports = {
   create(req, res) {
 
-    if (!req.body.duration || !Numbers.isInteger(res.body.duration))
-      return res.status(400).send({message: 'The post body must contain a valid duration field.'});
+    if (!req.body.duration || (isNaN(req.body.duration)))
+      return res.status(400).send({message: 'The post body must contain a valid duration field. '}  );
 
     if (!req.body.name)
       return res.status(400).send({message: 'The post body must contain a valid name field.'});
@@ -12,7 +14,7 @@ module.exports = {
     if (!req.body.completed)
       return res.status(400).send({message: 'The post body must contain a valid completed field.'});
 
-    if (!req.body.user_story_id || !Numbers.isInteger(req.body.user_story_id))
+    if (!req.body.user_story_id || (isNaN(req.body.user_story_id)))
       return res.status(400).send({message: 'The post body must contain a valid user_story_id field.'});
 
     return tasks
@@ -38,8 +40,8 @@ module.exports = {
   },
   retrieve(req, res) {
     
-    if (!req.params.id || !Numbers.isInteger(req.params.id))
-      return res.status(400).send({message: 'The post body must contain a valid id field.'});
+    if (!req.params.id || (isNaN(req.params.id)))
+      return res.status(400).send({message: 'The id field must be a valid integer.'});
 
     return tasks
       .findById(req.params.id, {
@@ -60,8 +62,8 @@ module.exports = {
   },
   listTaskWithUsers (req, res) //All users (members) that participate in a particular task
   {
-    if (!req.params.id || !Numbers.isInteger(req.params.id))
-      return res.status(400).send({message: 'The post body must contain a valid id field.'});
+    if (!req.params.id || isNaN(req.params.id))
+      return res.status(400).send({message: 'The must contain a valid id field.'});
 
     return tasks.findById (req.params.id, {
       include: [{

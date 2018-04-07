@@ -2,7 +2,7 @@ const Technology = require('../models').Technologies;
 
 module.exports = {
     create(req, res) {
-       if(!req.body.name || !Validation.isAValidName(req.body.name))
+       if(!req.body.name /*|| !Validation.isAValidName(req.body.name)*/)
 			return res.status(400).send({message: 'The attribute name is invalid. It must match a value in the enum.'});
 
         return Technology
