@@ -35,38 +35,25 @@ module.exports = (sequelize, DataTypes) => {
   User_story.associate = function (models) {
     
     User_story.belongsTo(models.Sprint, {
-      foreignKey: 'sprint_id',
+      foreignKey: {name: 'sprint_id', allowNull: false},
       onDelete: 'CASCADE',
-    })
-  };
-
-  //Relation between User_story and Project
-  User_story.associate = function (models) {
-
+      as: 'sprint'
+    }),
     User_story.belongsTo(models.Project, {
-      foreignKey: 'project_id',
+      foreignKey: {name: 'project_id', allowNull: false},
       onDelete: 'CASCADE',
-    })
-  };
-
-  //Relation between User_story and Task
-  User_story.associate = function (models) {
-
-    User_story.hasMany(models.Task, {
-      as: 'Tasks',
-      foreignKey: 'user_story_id', //Is this the foreign key??
-      onDelete: 'CASCADE',
-    })
-  };
-
-  //Relation between User_story and Acceptance_criteria
-  User_story.associate = function (models) {
-
+      as: 'project'
+    }),
     User_story.hasMany(models.Acceptance_criteria, {
-      foreignKey: 'user_story_id', //Is this the foreign key??
+      foreignKey: {name: 'user_story_id', allowNull: false}, //Is this the foreign key??
       onDelete: 'CASCADE',
+    }),
+    User_story.hasMany(models.Task, {
+      foreignKey: {name: 'user_story_id', allowNull: false}, //Is this the foreign key??
+      onDelete: 'CASCADE',
+      as: 'Tasks'
     })
-  };
-
-  return User_story;
 };
+return User_story;
+};
+

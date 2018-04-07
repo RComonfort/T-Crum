@@ -85,10 +85,8 @@ module.exports = (app) => {
 
   //Routes for the USER_STORIES table
   app.post('/api/user-stories', userStoriesController.create);  
-  app.get('/api/user-stories-sprints', userStoriesController.listWithSprint);
-  app.get('/api/user-stories-projects', userStoriesController.listWithProject);
-  app.get('/api/user-stories-sprint/:id', userStoriesController.retrieveWithSprint);
-  app.get('/api/user-stories-proect/:id', userStoriesController.retrieveWithProject);
+  app.get('/api/user-stories', userStoriesController.list);
+  app.get('/api/user-stories/:id', userStoriesController.retrieve);
   app.put('/api/user-stories/:id', userStoriesController.update);
   app.delete('/api/user-stories/:id', userStoriesController.destroy);
   
