@@ -1,4 +1,5 @@
 const Acceptance_criteria = require('../models').Acceptance_criteria;
+const User_story = require('../models').User_story;
 
 module.exports = {
     create(req, res) {

@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     Acceptance_criteria.belongsTo (models.User_story, {
       foreignKey: 'user_story_id', 
       onDelete: 'CASCADE',
+      as: 'user_story',
     });
   };
   return Acceptance_criteria;
