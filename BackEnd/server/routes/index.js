@@ -10,7 +10,7 @@ const member_projectController = require('../controllers').member_project;
 const project_technologyController = require('../controllers').project_technology;
 const userStoriesController = require('../controllers').user_stories;
 const authenticationController = require('../controllers').authentication;
-const userStoriesController = requiere('../controllers').technology;
+const technologiesController = require('../controllers').technology;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
