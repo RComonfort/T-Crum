@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Log.belongsTo(models.Member, {
       foreignKey: 'member_id',
-      onDelete: 'CASCADE'
+      onDelete: 'CASCADE',
+      as: 'member'
     });
   };
 

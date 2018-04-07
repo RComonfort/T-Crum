@@ -31,36 +31,28 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'member_id',
       otherKey: 'project_id'
     })
-  };
 
-  //One user can have many tasks
-  Member.associate = function (models) {
-
+    //One user can have many tasks
     Member.belongsToMany(models.Task, {
       through: 'member_task',
       foreignKey: 'member_id',
-      otherKey: 'task_id'
+      otherKey: 'task_id',
+      as: 'tasks'
     })
-  };
 
-  //One user can be associated to many logs
-  Member.associate = function (models) {
-
+    //One user can be associated to many logs
     Member.hasMany(models.Log, {
       foreignKey: 'member_id',
-      as: 'member'
+      as: 'logs'
     })
-  };
 
-  //One user can be the scrum master of several projects
-  Member.associate = function (models) {
-
+    //One user can be the scrum master of several projects
     Member.hasMany(models.Project, {
 
-      foreignKey: 'project_id', 
+      foreignKey: 'project_id',
       as: 'project'
     })
-  }
+  };
 
   return Member;
 };

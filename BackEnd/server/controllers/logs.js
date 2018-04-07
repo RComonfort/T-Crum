@@ -24,10 +24,9 @@ module.exports = {
     list(req, res) {
         return Log
             .findAll({
-                include: [{
-                    model: Member,
-                    as: 'member'
-                }],
+                include: [
+                    { model: Member, as: 'member' }
+                ],
             })
             .then(logs => res.status(200).send(logs))
             .catch(error => res.status(400).send(error));
@@ -35,16 +34,15 @@ module.exports = {
 
     retrieve(req, res) {
         // check that id is not null, undefined, not an integer or 0
-        if(!req.params.id || !Numbers.isInteger(req.params.id)) { 
+        if(!req.params.id) { 
             return res.status(400).send({message: 'The request must contain the parameter id field.'});
         }
 
         return Log
             .findById(req.params.id, {
-                include: [{
-                    model: Member,
-                    as: 'member'
-                }],
+                include: [
+                    { model: Member, as: 'member' }
+                ],
             })
             .then(log => {
                 if(!log) {
