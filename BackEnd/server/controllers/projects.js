@@ -1,4 +1,6 @@
 const Project = require('../models').Project;
+const User_story = require('../models').User_story;
+const Member = require('../models').Member;
 
 module.exports = {
     create(req, res) {
@@ -19,7 +21,7 @@ module.exports = {
         var begin = new Date(req.body.begin_date);
         var end = new Date(req.body.end_date);
 
-        if( begin > end){
+        if( begin > end){ 
             return res.status(400).send({message: 'End date cannot be before begin date'});
         }
         if(!req.body.background){ 
@@ -31,7 +33,9 @@ module.exports = {
         if(!req.body.reach){ 
             return res.status(400).send({message: 'Attribute reach cannot be empty'});
         }
-
+        if(!req.body.scrum_master_id){
+            return res.status(400).send({message: 'Attribute reach cannot be empty'});
+        }
         return Project
             .create({
                 vision: req.body.vision,
@@ -40,7 +44,8 @@ module.exports = {
                 end_date: req.body.end_date,
                 background: req.body.background,
                 risks: req.body.risks,
-                reach: req.body.reach
+                reach: req.body.reach,
+                scrum_master_id: req.body.scrum_master_id
             })
             .then(Project => res.status(200).send(Project))
             .catch(error => res.status(400).send(error));
@@ -49,8 +54,17 @@ module.exports = {
     list(req, res) {
         return Project
             .findAll({
+                include: [
+                    {model: User_story,
+                    as: 'user_stories'},
+                    {model: Member,
+                    as: 'member'},
+                    //{model: Member,
+                    //as: 'members'}
+                ],
+                attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
-            .then(project => res.status(200).send(project))
+            .then(projects => res.status(200).send(projects))
             .catch(error => res.status(400).send(error));
     },
 
@@ -62,6 +76,7 @@ module.exports = {
 
         return Project
             .findById(req.params.id, {
+                attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
             .then(Project => {
                 if(!Project) {
@@ -102,8 +117,12 @@ module.exports = {
         if(!req.body.reach){ 
             return res.status(400).send({message: 'Attribute reach cannot be empty'});
         }
+        if(!req.body.scrum_master_id){
+            return res.status(400).send({message: 'Attribute reach cannot be empty'});
+        }
         return Project
             .findById(req.params.id, {
+                attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
             .then(Project => {
                 if (!Project) {
@@ -119,7 +138,8 @@ module.exports = {
                     end_date: req.body.end_date,
                     background: req.body.background,
                     risks: req.body.risks,
-                    reach: req.body.reach
+                    reach: req.body.reach,
+                    scrum_master_id: req.body.scrum_master_id
                 })
                 .then(() => res.status(200).send(Project))  // Send back the updated tuple.
                 .catch((error) => res.status(400).send(error));
