@@ -33,8 +33,8 @@ module.exports = {
         if(!req.body.reach){ 
             return res.status(400).send({message: 'Attribute reach cannot be empty'});
         }
-        if(!req.body.scrum_master_id && req.body.scrum_master_id === parseInt(req.body.scrum_master_id, 10)){
-            return res.status(400).send({message: 'Attribute reach cannot be empty'});
+        if(!req.body.scrum_master_id){
+            return res.status(400).send({message: 'Attribute scrum master cannot be empty'});
         }
         return Project
             .create({
@@ -98,6 +98,7 @@ module.exports = {
                     attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
                     }
                 ],
+                //Without this attributes, it fails bacuse its trying to search for project_id that doesn exists
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
             .then(Project => {
@@ -112,6 +113,7 @@ module.exports = {
     update(req, res) {
         return Project
             .findById(req.params.id, {
+                //Without this attributes, it fails bacuse its trying to search for project_id that doesn exists
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
             .then(Project => {
@@ -143,9 +145,9 @@ module.exports = {
                                 end = new Date(Project.end_date);
                             }
                         }
-                        if( begin > end){
-                            return res.status(400).send({message: 'End date cannot be before begin date'});
-                        }
+                    }
+                    if( begin > end){
+                        return res.status(400).send({message: 'End date cannot be before begin date'});
                     }
                 }
                 return Project
@@ -171,7 +173,9 @@ module.exports = {
             return res.status(400).send({message: 'ID must be an integer bigger than 0'});
         }
         return Project
-            .findById(req.params.id)
+            .findById(req.params.id, {
+                attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
+            })
             .then(Project => {
                 if (!Project) {
                     return res.status(400).send({
