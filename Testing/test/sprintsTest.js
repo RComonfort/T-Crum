@@ -47,6 +47,11 @@ describe('Sprints model', () => {
                 request.get( URL + 'sprints/' + newSprint.id, (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
                     expect(newSprint).to.deep.equal(JSON.parse(body)); // check that the object we created and the one obtain are equal
+                    
+                    /* Check if this new syntax is correct: stop comparing json objects 
+                    expect(element.days).to.deep.equal(newSprint.days);
+                    expect(element.comment).to.deep.equal(newSprint.comment);
+                    */
                 });
 
                 done();
