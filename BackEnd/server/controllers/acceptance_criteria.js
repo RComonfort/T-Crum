@@ -22,7 +22,7 @@ module.exports = {
                 type: req.body.type,
                 user_story_id: req.body.user_story_id,
             })
-            .then(acceptance_criteria => res.status(200).send(acceptance_criteria))
+            .then(Acceptance_criteria => res.status(200).send(Acceptance_criteria))
             .catch(error => res.status(400).send(error));
     },
 
@@ -34,7 +34,7 @@ module.exports = {
                     as: 'user_story'
                 }],
             })
-            .then(acceptance_criteria => res.status(200).send(acceptance_criteria))
+            .then(Acceptance_criteria => res.status(200).send(Acceptance_criteria))
             .catch(error => res.status(400).send(error));
     },
 
@@ -51,33 +51,25 @@ module.exports = {
                     as: 'user_story'
                 }],
             })
-            .then(acceptance_criteria => {
-                if(!acceptance_criteria) {
+            .then(Acceptance_criteria => {
+                if(!Acceptance_criteria) {
                     return res.status(400).send({ message: 'Acceptance criterium not found.'});
                 }
-                return res.status(200).send(acceptance_criteria);
+                return res.status(200).send(Acceptance_criteria);
             })
             .catch(error => res.status(400).send(error));
     },
   
     update(req, res) {
 
-        if(!req.body.name){
-            return res.status(400).send({message: 'The post body must contain a valid name field.'});
-        }
-
-        if(!req.body.type){
-            return res.status(400).send({message: 'The post body must contain a valid type field.'});
-        }
-
-        if(!req.body.user_story_id || !(req.body.user_story_id === parseInt(req.body.user_story_id, 10))){
+        if(req.body.user_story_id && isNaN(req.body.user_story_id)){
             return res.status(400).send({message: 'The post body must contain a valid (positive integer) user_story_id field.'});
         }
 
         return Acceptance_criteria
-            .findById(req.params.id)
-            .then(acceptance_criteria => {
-                if (!acceptance_criteria) {
+            .findById(req.params.id, {})
+            .then(Acceptance_criteria => {
+                if (!Acceptance_criteria) {
                     return res.status(400).send({
                         message: 'Acceptance Criteria Not Found',
                     });
@@ -98,14 +90,14 @@ module.exports = {
     destroy(req, res) {
         return Acceptance_criteria
         .findById(req.params.id, {})
-        .then(acceptance_criteria => {
-            if (!acceptance_criteria) {
+        .then(Acceptance_criteria => {
+            if (!Acceptance_criteria) {
                 return res.status(400).send({
                     message: 'Acceptance Criteria Not Found',
                 });
             }
     
-            return acceptance_criteria
+            return Acceptance_criteria
             .destroy()
             .then(() => res.status(200).send({message: 'Acceptance criteria deleted successfully'}))
             .catch(error => res.status(400).send(error));
