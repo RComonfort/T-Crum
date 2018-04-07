@@ -17,11 +17,12 @@ module.exports = (sequelize, DataTypes) => {
 
 	Technology.associate = function (models) {
 
-		Technology.belongsToMany(models.Projects, {
-		  through: 'project_technology',
-		  foreignKey: 'technology_id',
-		  otherKey: 'project_id'
-		})
+		Technology.belongsToMany(models.Project, {
+				through: 'project_technology',
+				foreignKey: 'technology_id',
+				//otherKey: 'project_id'
+				as: 'projects'
+			})
 	  };
 	
 
