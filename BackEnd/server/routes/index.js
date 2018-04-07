@@ -7,6 +7,7 @@ const membersController = require('../controllers').members;
 const acceptance_criteriaController = require('../controllers').acceptance_criteria;
 const member_taskController = require('../controllers').member_task;
 const member_projectController = require('../controllers').member_project;
+const projectsController = require('../controllers').projects;
 const project_technologyController = require('../controllers').project_technology;
 const userStoriesController = require('../controllers').user_stories;
 const authenticationController = require('../controllers').authentication;
@@ -48,11 +49,11 @@ module.exports = (app) => {
   app.delete('/api/members/:id', membersController.destroy);
 
   //Routes for the Project table
-  app.post('/api/projects', tasksController.create);  
-  app.get('/api/projects', tasksController.list);
-  app.get('/api/projects/:id', tasksController.retrieve);
-  app.put('/api/projects/:id', tasksController.update);
-  app.delete('/api/projects/:id', tasksController.destroy);
+  app.post('/api/projects', projectsController.create);  
+  app.get('/api/projects', projectsController.list);
+  app.get('/api/projects/:id', projectsController.retrieve);
+  app.put('/api/projects/:id', projectsController.update);
+  app.delete('/api/projects/:id', projectsController.destroy);
   
   //Routes for the ACCEPTANCE_CRITERIA table
   app.post('/api/acceptance-criteria', acceptance_criteriaController.create);  
