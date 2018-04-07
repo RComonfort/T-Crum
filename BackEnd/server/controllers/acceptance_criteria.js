@@ -20,7 +20,7 @@ module.exports = {
             .create({
                 name: req.body.name,
                 type: req.body.type,
-                user_story_id: req.params.user_story_id,
+                user_story_id: req.body.user_story_id,
             })
             .then(acceptance_criteria => res.status(200).send(acceptance_criteria))
             .catch(error => res.status(400).send(error));
@@ -70,38 +70,34 @@ module.exports = {
             return res.status(400).send({message: 'The post body must contain a valid type field.'});
         }
 
-        if(!req.body.user_story_id){
-            return res.status(400).send({message: 'The post body must contain a valid user_story_id field.'});
-        }
-
-        if(!Numbers.isInteger(req.body.user_story_id)){
-            return res.status(400).send({message: 'The user story id must be an integer'});
+        if(!req.body.user_story_id || !(req.body.user_story_id === parseInt(req.body.user_story_id, 10))){
+            return res.status(400).send({message: 'The post body must contain a valid (positive integer) user_story_id field.'});
         }
 
         return Acceptance_criteria
-        .findById(req.params.id)
-        .then(acceptance_criteria => {
-            if (!acceptance_criteria) {
-                return res.status(400).send({
-                    message: 'Acceptance Criteria Not Found',
-                });
-            }
-    
-            return Acceptance_criteria
-                .update({
-                    name: req.body.name,
-                    type: req.body.type,
-                    user_story_id: req.body.user_story_id,
-                })
-                .then(updatedAcceptance_criteria => res.status(200).send(updatedAcceptance_criteria))
-                .catch(error => res.status(400).send(error));
-        })
-        .catch(error => res.status(400).send(error));
+            .findById(req.params.id)
+            .then(acceptance_criteria => {
+                if (!acceptance_criteria) {
+                    return res.status(400).send({
+                        message: 'Acceptance Criteria Not Found',
+                    });
+                }
+        
+                return Acceptance_criteria
+                    .update({
+                        name: req.body.name || Acceptance_criteria.name,
+                        type: req.body.type || Acceptance_criteria.type,
+                        user_story_id: req.body.user_story_id || Acceptance_criteria.user_story_id,
+                    })
+                    .then(() => res.status(200).send(Acceptance_criteria))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error));
     },
     
     destroy(req, res) {
         return Acceptance_criteria
-        .findById(req.params.id)
+        .findById(req.params.id, {})
         .then(acceptance_criteria => {
             if (!acceptance_criteria) {
                 return res.status(400).send({
@@ -111,7 +107,7 @@ module.exports = {
     
             return acceptance_criteria
             .destroy()
-            .then(() => res.status(200).send())
+            .then(() => res.status(200).send({message: 'Acceptance criteria deleted successfully'}))
             .catch(error => res.status(400).send(error));
         })
         .catch(error => res.status(400).send(error));
