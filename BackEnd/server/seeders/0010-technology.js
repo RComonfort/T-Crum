@@ -3,30 +3,23 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-    return queryInterface.bulkInsert('Technology',
-
+    return queryInterface.bulkInsert('Technologies',
       [
+        {
+          name: 'JAVA'
+        },
         {
           name: 'JAVASCRIPT'
         },
         {
           name: 'HTML'
-        },
-        {
-          name: 'NODE'
-        },
-        {
-          name: 'POSTGRES'
-        },
-        {
-          name: 'SEQUELIZE'
         }
       ], {});
   },
 
   down: (queryInterface, Sequelize) => {
 
-    return queryInterface.bulkDelete('Technology', 
+    return queryInterface.bulkDelete('Technologies', 
     [
       {
         id: "1"
@@ -36,13 +29,7 @@ module.exports = {
       },
       {
         id: "3"
-      },
-      {
-        id: "4"
-      },
-      {
-        id: "5"
-      },
+      }
     ]);
   }
 };

@@ -1,4 +1,4 @@
-const Technology = require('../models').Technology;
+const Technology = require('../models').Technologies;
 
 module.exports = {
     create(req, res) {

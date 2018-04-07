@@ -55,7 +55,7 @@ describe('Technology model', () => {
         it('empty name', (done) => {
             // Define POST request parameters and body
             let postOptions = {
-                url: URL + '/technology'.
+                url: URL + '/technology',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     name: ''}) //Empty name field
@@ -80,20 +80,20 @@ describe('Technology model', () => {
                 done();
             });
         });
-
+    });
     //Retrieve operation
     describe('Retrieve: #retrieve() | parameters: id', () => {
 
         // Retrieve an existent technology, a successful response containing the technology
         it('Retrieve existent technology', (done) => {
             let technology = {
-                id = 1;
-                name = 'NODEJS'
+                id : 1,
+                name : 'NODEJS'
             };
 
             request.get(URL + '/technology/' + newTechnologie.id, (error, response, body) => {
-                expect(response.statusCode)to.be.equal(200); //If response is successful
-                expect(JSON.parse(body))to.be.deep(newTechnologie);
+                expect(response.statusCode).to.be.equal(200); //If response is successful
+                expect(JSON.parse(body)).to.be.deep(newTechnologie);
             });
 
             done();
@@ -105,7 +105,7 @@ describe('Technology model', () => {
             //Try to retrieve a member whose ID is 0 (fake id)
             request.get(URL + '/technology/0', (error, response, body) => {
 
-                expect(response.statusCode)to.be.equal(400); //If response failed
+                expect(response.statusCode).to.be.equal(400); //If response failed
             });
 
             done();
@@ -113,8 +113,7 @@ describe('Technology model', () => {
     });
 
     // Update operation
-    describe('Update: #update(' + 'id, name) | ' +
-        'body: id, name', () => {
+    describe('Update: #update(id, name) | body: id, name', () => {
 
         // Try to update a technology. Make the name field a non-existent value.
         it('Update a technology with a non-existent name field', (done) => {
@@ -140,7 +139,7 @@ describe('Technology model', () => {
                     url: URL + '/technology',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(newTechnologie)
-                }
+                };
 
                 // Make put request
                 request.put(putOptions, (error, response, body) => {

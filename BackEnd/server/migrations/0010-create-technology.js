@@ -2,7 +2,7 @@
 
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable('technology', {
+		return queryInterface.createTable('Technologies', {
 			id: {
 		    	allowNull: false,
 		    	autoIncrement: true,
@@ -12,11 +12,11 @@ module.exports = {
 			name: {
 				allowNull: false, 
 				type: Sequelize.ENUM,
-				values: ['JAVA', 'JAVASCRIPT', 'HTML' ]
+				values: ['JAVA', 'JAVASCRIPT', 'HTML', 'NODE', 'POSTGRES', 'SEQUELIZE']
 			}
 		});
 	},
 	down: (queryInterface, Sequelize) => {
-    	return queryInterface.dropTable('technology');
+    	return queryInterface.dropTable('Technologies');
 	}
 };

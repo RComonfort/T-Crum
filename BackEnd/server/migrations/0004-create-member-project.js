@@ -34,6 +34,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.ENUM,
         values: ['product_owner', 'scrum_master', 'developer', 'tester', 'designer', 'architect']
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
     })
   },
