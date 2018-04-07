@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = (sequelize, DataTypes) => {
 	const Technology = sequelize.define('Technology', {
 		id: {
@@ -12,6 +14,16 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false
 		},
 	});
+
+	Technology.associate = function (models) {
+
+		Technology.belongsToMany(models.Projects, {
+		  through: 'project_technology',
+		  foreignKey: 'technology_id',
+		  otherKey: 'project_id'
+		})
+	  };
+	
 
 	return Technology;
 };
