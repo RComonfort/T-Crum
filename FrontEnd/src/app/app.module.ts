@@ -16,6 +16,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MemberCreateComponent } from './components/member/member-create/member-
     NavComponent,
     ProjectListComponent,
     ProjectCreateComponent,
-    MemberCreateComponent
+    MemberCreateComponent,
+    ProjectUpdateComponent
   ],
   imports: [
     BrowserModule,

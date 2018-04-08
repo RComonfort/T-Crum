@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Project } from '../../../models/project.model';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -36,6 +36,15 @@ export class ProjectListComponent implements OnInit {
 
   createProject(){
     this.router.navigate(['projects/create']);
+  }
+
+  updateProject(updateID: number){
+    let idParam : NavigationExtras = {
+      queryParams: {
+        "id": updateID
+      }
+    };
+    this.router.navigate(['projects/update'], idParam);
   }
 
   deleteProject(id: number){
