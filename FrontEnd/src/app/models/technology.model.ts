@@ -1,4 +1,4 @@
-import { Project } from "./models/project.model.ts";
+import { Project } from "./project.model";
 
 export class Technology {
     constructor(
