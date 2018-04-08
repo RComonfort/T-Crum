@@ -19,6 +19,7 @@ import { AcceptanceCriteriaCreateComponent } from './components/acceptance-crite
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MemberCreateComponent } from './components/member/member-create/member-
     ProjectListComponent,
     UserStoryListComponent,
     TaskListComponent,
-    MemberCreateComponent
+    MemberCreateComponent,
+    SprintListComponent
   ],
   imports: [
     BrowserModule,
