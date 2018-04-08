@@ -11,9 +11,9 @@ export class AuthService {
 
   constructor(private http:HttpClient) {
     this.URL = 'http://localhost:8000/api';
-    this.headers = new HttpHeaders();
-    this.headers.append('ContentType', 'application/json');
-    this.headers.append('Access-Control-Allow-Origin', '*');
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
   }
 
   // Make the post request with the id and password provided, if successful, sets session data
@@ -52,6 +52,15 @@ export class AuthService {
     return moment().isBefore(this.getExpiration());
   }
 
+  isRoot(){
+    if(this.isLoggedIn()){
+      return this.getMember().system_role == "root";
+    }
+    else{
+      return false;
+    }
+  }
+
   // Get the moment expiration time
   getExpiration(){
     return moment(JSON.parse(localStorage.getItem('expires_at')));
@@ -60,5 +69,9 @@ export class AuthService {
   // get the logged in member
   getMember(){
     return JSON.parse(localStorage.getItem('member'))
+  }
+
+  getToken(){
+    return localStorage.getItem('token');
   }
 }
