@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
+import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavComponent } from './components/nav/nav.component';
     LoginComponent,
     LogoutComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    AcceptanceCriteriaListComponent
   ],
   imports: [
     BrowserModule,
