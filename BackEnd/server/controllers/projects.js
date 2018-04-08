@@ -1,6 +1,7 @@
 const Project = require('../models').Project;
 const User_story = require('../models').User_story;
 const Member = require('../models').Member;
+const Technology = require('../models').Technology;
 
 module.exports = {
     create(req, res) {
@@ -67,7 +68,10 @@ module.exports = {
                     as: 'members',
                     required: false,
                     attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
-                    }
+                    },
+                    {model: Technology,
+                    as: 'technologies',
+                    required: false}
                 ],
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
@@ -96,7 +100,10 @@ module.exports = {
                     as: 'members',
                     required: false,
                     attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
-                    }
+                    },
+                    {model: Technology,
+                    as: 'technologies',
+                    required: false}
                 ],
                 //Without this attributes, it fails bacuse its trying to search for project_id that doesn exists
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']

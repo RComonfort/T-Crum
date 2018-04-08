@@ -13,7 +13,15 @@ module.exports = {
 				allowNull: false, 
 				type: Sequelize.ENUM,
 				values: ['JAVA', 'JAVASCRIPT', 'HTML', 'NODE', 'POSTGRES', 'SEQUELIZE']
-			}
+			},
+			createdAt: {
+				allowNull: false,
+				type: Sequelize.DATE
+			},
+			updatedAt: {
+				allowNull: false,
+				type: Sequelize.DATE
+			}  
 		});
 	},
 	down: (queryInterface, Sequelize) => {
