@@ -29,13 +29,13 @@ import { TechnologiesCreateComponent } from './components/technologies/technolog
     HomeComponent,
     NavComponent,
     ProjectListComponent,
-<<<<<<< HEAD
+
     SprintListComponent,
     SprintRetrieveComponent
-=======
+
     TechnologiesListComponent,
     TechnologiesCreateComponent
->>>>>>> 6932cb96ad7b99c214e0d8463c640d72e9bcf077
+
   ],
   imports: [
     BrowserModule,
