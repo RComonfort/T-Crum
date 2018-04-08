@@ -7,11 +7,15 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { AppComponent } from './app.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
+import { ProjectListComponent } from './components/projects/project-list/project-list.component';
+import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
+  {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '' }
