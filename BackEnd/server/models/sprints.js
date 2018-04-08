@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 module.exports = (sequelize, DataTypes) => {
 
 	var Sprint = sequelize.define('Sprint', {
@@ -22,12 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			type: DataTypes.INTEGER,
 			onDelete: 'CASCADE',
-			references: {
-				model: 'Project',
-				key: 'id',
-				as: 'project_id',
-			}
-		}
+		},
 	}, {});
 
 	Sprint.associate = function (models) {
@@ -35,7 +30,13 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: 'sprint_id',
 			as: 'user_stories',
 			onDelete: 'CASCADE'
-		})
+		});
+
+		Sprint.belongsTo (models.Project, {
+			foreignKey: 'project_id',
+			onDelete: 'CASCADE',
+			as: 'projects'
+		  });
 	};
 
 	return Sprint;

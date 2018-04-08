@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header card-header-primary">
+              <h4 class="card-title ">Proyectos</h4>
+              <p>Proyectos activos</p>
+          </div>
+          <div class="card-body">
+              <button class="btn btn-success pull-right" (click)="createProject()">Crear proyecto</button>
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead class=" text-primary">
+                          <th>
+                              ID
+                          </th>
+                          <th>
+                              Nombre
+                          </th>
+                          <th>
+                            Fecha de inicio
+                          </th>
+                          <th>
+                            Fecha de termino
+                          </th>
+                          <th>
+                            Scrum master
+                          </th>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let project of projects">
+                              <td>
+                                  {{project.id}}
+                              </td>
+                              <td>
+                                  {{project.name}}
+                              </td>
+                              <td>
+                                  {{project.begin_date}}
+                              </td>
+                              <td>
+                                  {{project.end_date}}
+                              </td>
+                              <td>
+                                  {{project.scrum_master_id}}
+                              </td>
+                              <td>
+                                    <button class="btn btn-danger pull-right" (click)="deleteProject(project.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-info pull-right" ><i class="material-icons">edit</i></button>
+                                    <button class="btn btn-primary pull-right" ><i class="material-icons">info</i></button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

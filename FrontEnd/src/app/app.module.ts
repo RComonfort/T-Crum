@@ -14,6 +14,7 @@ import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
+import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AcceptanceCriteriaListComponent } from './components/acceptance-criteri
     LogoutComponent,
     HomeComponent,
     NavComponent,
-    AcceptanceCriteriaListComponent
+    AcceptanceCriteriaListComponent,
+    ProjectListComponent
   ],
   imports: [
     BrowserModule,
