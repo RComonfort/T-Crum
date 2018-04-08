@@ -11,8 +11,7 @@ module.exports = {
 			},
 			name: {
 				allowNull: false, 
-				type: Sequelize.ENUM,
-				values: ['JAVA', 'JAVASCRIPT', 'HTML', 'NODE', 'POSTGRES', 'SEQUELIZE']
+				type: Sequelize.TEXT,
 			},
 			createdAt: {
 				allowNull: false,
