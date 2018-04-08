@@ -12,13 +12,15 @@ import { LogoutComponent } from './components/authentication/logout/logout.compo
 import { HomeComponent } from './components/home/home.component';
 import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LogoutComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

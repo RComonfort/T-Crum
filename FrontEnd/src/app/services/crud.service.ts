@@ -7,7 +7,7 @@ import { LogService } from './log.service';
 export class CrudService {
   URL:string;
   headers: HttpHeaders;
-  static Models = {
+  Models = {
     TASK: "tasks",
     SPRINT: "sprints",
     PROJECT: "projects",
@@ -16,15 +16,16 @@ export class CrudService {
     ACCEPTANCE_CRITERIA: "acceptance_criteria",
     MEMBER_TASK:  "member-task",
     MEMBER_PROJECT : "member_project",
-    PROJECT_TECHNOLOGY: "project-technology"
+    PROJECT_TECHNOLOGY: "project-technology",
+    LOGS: "logs"
   };
   
   constructor(private auth:AuthService, private http:HttpClient, private log:LogService) {
     this.URL = 'http://localhost:8000/api';
-    this.headers = new HttpHeaders();
-    this.headers.append('ContentType', 'application/json');
-    this.headers.append('Access-Control-Allow-Origin', '*');
-    this.headers.append('Authorization', this.auth.getToken());
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.auth.getToken()
+    });
   }
 
   create(model:string, body:any){
@@ -46,7 +47,7 @@ export class CrudService {
   list(model:string){
     return this.http.get(
       this.URL + "/" + model,
-      { headers: this.headers}
+      { headers: this.headers }
     );
   }
 
