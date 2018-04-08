@@ -15,6 +15,7 @@ import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
+import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
 
 @NgModule({
   declarations: [
