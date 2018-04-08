@@ -17,6 +17,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
+import { TaskCreateComponent } from './components/tasks/task-create/task-create.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TaskListComponent } from './components/tasks/task-list/task-list.compon
     ProjectListComponent,
     TaskListComponent,
     MemberCreateComponent,
-    UserStoryListComponent
+    UserStoryListComponent,
+    TaskCreateComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Task } from '../../../models/task.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class TaskListComponent implements OnInit {
   message: string;
   tasks: Task[];
 
-  constructor(private crud:CrudService) { }
+  constructor(private crud:CrudService, private router:Router) { }
 
   ngOnInit() {
     this.crud.list(this.crud.models.TASK)
@@ -35,7 +36,7 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteTask(id: number){
-    console.log("Deleting")
+    console.log("Deleting task")
     this.crud.delete(this.crud.models.TASK, id)
     .subscribe(
       (res:Response) => {
@@ -57,5 +58,10 @@ export class TaskListComponent implements OnInit {
         }
       }
     )
+  }
+
+  createTask()
+  {
+    this.router.navigate(['products']);
   }
 }
