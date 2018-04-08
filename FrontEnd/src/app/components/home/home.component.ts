@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../services/crud.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -16,15 +17,27 @@ export class HomeComponent implements OnInit {
   }
 
   clicked(){
-    this.crud.list(this.crud.Models.LOGS)
+    let body =  {
+      id: null,
+      department_major: 'ITC',
+      name: 'firstName lastName',
+      photo_URL: 'foto_URL',
+      password: 'secret'
+    };
+
+    this.crud.create(this.crud.models.MEMBER, body)
     .subscribe(
-      res => {
-        console.log(res);
+      (res:Response) => {
         this.message = "Success";
       },
-      error => {
-        this.message = error.error.message;
+      (err:HttpErrorResponse) => {
+        if(err.error){
+          this.message = err.error.message;
+        }
+        else{
+          this.message = err.error.errors[0].message;
+        }
       }
-    );
+    )
   }
 }
