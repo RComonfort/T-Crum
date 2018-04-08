@@ -32,11 +32,11 @@ module.exports = (sequelize, DataTypes) => {
 			onDelete: 'CASCADE'
 		});
 
-		Sprint.belogsTo(models.Project, {
+		Sprint.belongsTo (models.Project, {
 			foreignKey: 'project_id',
 			onDelete: 'CASCADE',
 			as: 'projects'
-		});
+		  });
 	};
 
 	return Sprint;
