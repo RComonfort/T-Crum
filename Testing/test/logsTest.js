@@ -21,6 +21,33 @@ function findLog(logs, newLog){
 
 describe('Log model', () => {
 
+    //Retrieve opertion
+    describe('Retrieve: #retrieve() | parameters: id', () => {
+
+        // Retrieve an existent log , a successfull response conataining the log
+        it('Retrieve existent log', (done) => {
+            let log = {
+                query: 'CREATE project',
+                member_id: 'A00000000'
+            }
+            
+            request.get(URL + '/logs/1', (error, response, body) => {
+                expect(response.statusCode).to.be.equal(200); // if response is successful
+                expect(body.member_id).to.be.equal(log.member_id);
+                expect(body.query).to.be.equal(log.query);
+            });
+            done();
+        });
+
+        // Retrieve an existent log , a successfull response conataining the log
+        it('Retrieve non existent log', (done) => {
+            request.get(URL + '/logs/50', (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); // response should be error 400
+            });
+            done();
+        });
+    });
+
     // Create operation
     describe('Create: #create(query, member_id) | body: query, member_id', () => {
         
@@ -36,15 +63,18 @@ describe('Log model', () => {
             // Make post request
             request.post(postOptions, (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); // if response is successful
-                let newLog = JSON.parse(body);
+                let newLog = body;
 
                 // Make get request to get the inserted object
                 request.get( URL + '/logs/' + newLog.id, (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
-                });
-
-                done();
+                    expect(body.id).to.be.equal(newLog.id);
+                    expect(body.member_id).to.be.equal(log.member_id);
+                    expect(body.query).to.be.equal(log.query);
+                    
+                }); 
             });
+            done();
         });
 
         // null query parameter, expects unsuccessful insertion
@@ -59,7 +89,7 @@ describe('Log model', () => {
             // Make post request
             request.post(postOptions, (error, response, body) => {
                 expect(response.statusCode).to.be.equal(400); // response should be error 400
-                let newLog = postOptions.body;
+                let newLog = JSON.parse(postOptions.body);
 
                 // Make get request to check that the object was not inserted
                 request.get( URL + '/logs', (error, response, body) => {
@@ -68,10 +98,10 @@ describe('Log model', () => {
                     let list = JSON.parse(body);
                     let found = findLog(list, newLog);
                     expect(found).to.be.false; // check that no coincidence is found
-                });
-
-                done();
+                    
+                });    
             });
+            done();
         });
 
         // Incorrect member_id parameter, expects unsuccessful insertion
@@ -86,7 +116,7 @@ describe('Log model', () => {
             // Make post request
             request.post(postOptions, (error, response, body) => {
                 expect(response.statusCode).to.be.equal(400); // response should be error 400
-                let newLog = postOptions.body;
+                let newLog = JSON.parse(postOptions.body);
 
                 // Make get request to check that the object was not inserted
                 request.get( URL + '/logs', (error, response, body) => {
@@ -96,10 +126,10 @@ describe('Log model', () => {
                     let found = findLog(list, newLog);
 
                     expect(found).to.be.false; // check that no coincidence is found
+                    
                 });
-
-                done();
             });
+            done();
         });
 
         // null member_id parameter, expects unsuccessful insertion
@@ -125,27 +155,6 @@ describe('Log model', () => {
 
                     expect(found).to.be.false; // check that no coincidence is found
                 });
-
-                done();
-            });
-        });
-    });
-
-    //Retrieve opertion
-    describe('Retrieve: #retrieve() | parameters: id', () => {
-
-        // Retrieve an existent log , a successfull response conataining the log
-        it('Retrieve existent log', (done) => {
-            request.get(URL + '/logs/1', (error, response, body) => {
-                expect(response.statusCode).to.be.equal(200); // if response is successful
-            });
-            done();
-        });
-
-        // Retrieve an existent log , a successfull response conataining the log
-        it('Retrieve non existent log', (done) => {
-            request.get(URL + '/logs/50', (error, response, body) => {
-                expect(response.statusCode).to.be.equal(400); // response should be error 400
             });
             done();
         });
