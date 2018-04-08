@@ -15,6 +15,7 @@ import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProjectCreateComponent } from './components/projects/project-create/pro
     HomeComponent,
     NavComponent,
     ProjectListComponent,
-    ProjectCreateComponent
+    ProjectCreateComponent,
+    MemberCreateComponent
   ],
   imports: [
     BrowserModule,

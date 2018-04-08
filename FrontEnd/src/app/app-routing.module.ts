@@ -9,10 +9,12 @@ import { LogoutComponent } from './components/authentication/logout/logout.compo
 import { HomeComponent } from './components/home/home.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'register', component: MemberCreateComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
   {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
