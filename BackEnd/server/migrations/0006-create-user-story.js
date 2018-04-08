@@ -34,16 +34,6 @@ module.exports = {
           as: 'sprint_id',
         }
       },
-      project_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Projects',
-          key: 'id',
-          as: 'project_id',
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

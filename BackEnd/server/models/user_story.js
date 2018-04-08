@@ -39,11 +39,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       as: 'sprint'
     }),
-    User_story.belongsTo(models.Project, {
-      foreignKey: {name: 'project_id', allowNull: false},
-      onDelete: 'CASCADE',
-      as: 'project'
-    }),
     User_story.hasMany(models.Acceptance_criteria, {
       foreignKey: {name: 'user_story_id', allowNull: false}, //Is this the foreign key??
       onDelete: 'CASCADE',

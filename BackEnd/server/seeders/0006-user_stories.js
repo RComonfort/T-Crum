@@ -10,7 +10,6 @@ module.exports = {
         description: 'Description of the story...',
         priority: 5,
         sprint_id: 1,
-        project_id: 1,
         createdAt: Sequelize.fn('NOW'),
         updatedAt: Sequelize.fn('NOW')
       },
@@ -20,7 +19,6 @@ module.exports = {
         description: 'Description of the story...',
         priority: 4,
         sprint_id: 2,
-        project_id: 2,
         createdAt: Sequelize.fn('NOW'),
         updatedAt: Sequelize.fn('NOW')
       },
@@ -30,7 +28,6 @@ module.exports = {
         description: 'Description of the story...',
         priority: 2,
         sprint_id: 3,
-        project_id: 3,
         createdAt: Sequelize.fn('NOW'),
         updatedAt: Sequelize.fn('NOW')
       },
@@ -40,7 +37,6 @@ module.exports = {
         description: 'Description of the story...',
         priority: 9,
         sprint_id: 4,
-        project_id: 4,
         createdAt: Sequelize.fn('NOW'),
         updatedAt: Sequelize.fn('NOW')
       },
@@ -50,7 +46,6 @@ module.exports = {
         description: 'Description of the story...',
         priority: 9,
         sprint_id: 5,
-        project_id: 5,
         createdAt: Sequelize.fn('NOW'),
         updatedAt: Sequelize.fn('NOW')
       }

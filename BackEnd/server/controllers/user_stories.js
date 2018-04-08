@@ -1,6 +1,5 @@
 const user_stories = require('../models').User_story;
 const Sprint = require('../models').Sprint;
-const Project = require('../models').Project;
 
 module.exports = {
   create(req, res) {
@@ -20,9 +19,6 @@ module.exports = {
     if (!req.body.sprint_id)
       return res.status(400).send({message: 'sprint_id attribute can not be empty.'});
 
-    if (!req.body.project_id)
-      return res.status(400).send({message: 'project_id attribute can not be empty.'});
-
 
     return user_stories
       .create({
@@ -31,7 +27,6 @@ module.exports = {
         description: req.body.description,
         priority: req.body.priority,
         sprint_id: req.body.sprint_id,
-        project_id: req.body.project_id,
       })
       .then(user_stories => res.status(200).send(user_stories))
       .catch(error => res.status(400).send(error));
@@ -40,7 +35,6 @@ module.exports = {
     return user_stories
             .findAll({
               include: [
-                { model: Project, as: 'project', attributes:  ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id'] },
                 { model: Sprint, as: 'sprint' }  
               ],
             })
@@ -57,7 +51,6 @@ module.exports = {
       .findById(req.params.id, {
         include: [
           { model: Sprint, as: 'sprint' },
-          { model: Project, as: 'project', attributes:  ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']},  
         ],
       })
       .then(user_stories => {
@@ -111,7 +104,6 @@ module.exports = {
             description: req.body.description || user_stories.description,
             priority: req.body.priority || user_stories.priority,
             sprint_id: req.params.sprint_id || user_stories.sprint_id,
-            project_id: req.params.project_id || user_stories.project_id,
           })
           .then(() => res.status(200).send(user_stories))  // Send back the updated tuple.
           .catch((error) => res.status(400).send(error));
