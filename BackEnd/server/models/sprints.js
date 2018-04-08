@@ -2,30 +2,41 @@
 module.exports = (sequelize, DataTypes) => {
 
 	var Sprint = sequelize.define('Sprint', {
-	  	id: {
-		    allowNull: false,
-		    autoIncrement: true,
-		    primaryKey: true,
-		    type: DataTypes.INTEGER
-	    },
+		id: {
+			allowNull: false,
+			autoIncrement: true,
+			primaryKey: true,
+			type: DataTypes.INTEGER
+		},
 
-	    days: {
-        type: DataTypes.INTEGER
-	    },
+		days: {
+			type: DataTypes.INTEGER
+		},
 
-	    comment: {
-			  allowNull: true,
-	     	type: DataTypes.TEXT
-	    }
-  	}, {});
+		comment: {
+			allowNull: true,
+			type: DataTypes.TEXT
+		},
 
-  	Sprint.associate = function (models) {
-    	Sprint.hasMany(models.User_story, {
-        foreignKey: 'sprint_id',
-        as: 'user_stories',
-        onDelete: 'CASCADE'
-    	})
-  	};
+		project_id: {
+			allowNull: false,
+			type: DataTypes.INTEGER,
+			onDelete: 'CASCADE',
+			references: {
+				model: 'Project',
+				key: 'id',
+				as: 'project_id',
+			}
+		}
+	}, {});
 
-  	return Sprint;
+	Sprint.associate = function (models) {
+		Sprint.hasMany(models.User_story, {
+			foreignKey: 'sprint_id',
+			as: 'user_stories',
+			onDelete: 'CASCADE'
+		})
+	};
+
+	return Sprint;
 };
