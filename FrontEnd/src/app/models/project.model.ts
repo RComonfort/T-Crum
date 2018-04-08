@@ -1,6 +1,6 @@
 import { Technology } from "./technology.model";
-import { Sprint } from "./sprint.model";
-import { Member } from "./member.model";
+//import { Sprint } from "./sprint.model";
+//import { Member } from "./member.model";
 
 export class Project {
     constructor(
@@ -12,11 +12,11 @@ export class Project {
         public risks: string,
         public reach: string,
         public scrum_master_id: number,
-        public scrum_master: Member,
+        //public scrum_master: Member,
         public updatedAt: Date,
         public createdAt: Date,
-        public sprints?: Sprint[],
-        public members?: Member[],
+        //public sprints?: Sprint[],
+        //public members?: Member[],
         public technologies?: Technology[],
         public id?: number,
     ) { }
