@@ -1,4 +1,4 @@
-const Technology = require('../models').Technologies;
+const Technology = require('../models').Technology;
 
 module.exports = {
     create(req, res) {
@@ -16,20 +16,20 @@ module.exports = {
     list(req, res) {
 
         return Technology
-        .all()
+        .findAll()
         .then(technology => res.status(200).send(technology))
         .catch(error => res.status(400).send(error));
-},
+    },
 
     retrieve(req, res) {
 
         // check that log_id is not null, undefined, not an integer or 0
-        if(!req.body.id || !Numbers.isInteger(req.body.id)) { 
+        if(!req.params.id) { 
             return res.status(400).send({message: 'ID attribute can not be an empty field.'});
         }
 
         return Technology
-            .findById(req.params.technology_id, {})
+            .findById(req.params.id, {})
             .then(technology => {
                 if(!technology) {
                     return res.status(404).send({ message: 'Technology not found.'});
@@ -37,7 +37,7 @@ module.exports = {
                 return res.status(200).send(technology);
             })
             .catch(error => res.status(400).send(error));
-},
+    },
 
  	update(req, res) {
 
@@ -70,11 +70,15 @@ module.exports = {
     },
     
     destroy(req, res) {
+        console.log("Technologies delete method");
+        if(!req.params.id && req.params.id === parseInt(req.params.id, 10)) { 
+            return res.status(400).send({message: 'ID must be an integer bigger than 0'});
+        }
 
         return Technology
             .findById(req.params.id)
-            .then(technology => {
-                if (!technology) {
+            .then(Technology => {
+                if (!Technology) {
                     return res.status(400).send({
                     message: 'Technology not found.',
                     });
