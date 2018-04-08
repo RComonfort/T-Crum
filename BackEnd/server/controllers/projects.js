@@ -176,7 +176,7 @@ module.exports = {
 
     destroy(req, res) {
         // check that project id is not null, undefined, not an integer or 0
-        if(!req.body.id && req.body.id === parseInt(req.body.id, 10)) { 
+        if(!req.params.id && req.params.id === parseInt(req.params.id, 10)) { 
             return res.status(400).send({message: 'ID must be an integer bigger than 0'});
         }
         return Project
