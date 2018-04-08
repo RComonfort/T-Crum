@@ -15,9 +15,9 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'register', component: MemberCreateComponent},
-  {path: 'products', component: TaskListComponent, canActivate: [AuthGuard]},
-  {path: 'products/create', component: TaskCreateComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/create', component: TaskCreateComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '' }

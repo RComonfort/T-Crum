@@ -62,6 +62,6 @@ export class TaskListComponent implements OnInit {
 
   createTask()
   {
-    this.router.navigate(['products']);
+    this.router.navigate(['tasks/create']);
   }
 }
