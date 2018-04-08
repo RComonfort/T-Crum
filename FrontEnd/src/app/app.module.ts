@@ -16,6 +16,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
+import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AcceptanceCriteriaCreateComponent } from './components/acceptance-crite
     HomeComponent,
     NavComponent,
     AcceptanceCriteriaListComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    UserStoryListComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,
