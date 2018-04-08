@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="modal_register" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
       <div class="card">
@@ -23,6 +23,9 @@
                   <div class="form-group">
                     <label class="bmd-label-floating" for="password">Password</label>
                     <input class="form-control" type="password" id="password" name="password" [(ngModel)]="password">
+                  </div>
+                  <div> 
+                    ¿Aún no tienes una cuenta? <a routerLink="/register">Regístrate aquí.</a>
                   </div>
                   <button type="submit" class="btn btn-primary pull-right">Ingresar</button>
                   <div class="clearfix"></div>

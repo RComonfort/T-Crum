@@ -7,10 +7,12 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { AppComponent } from './app.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
+import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'register', component: MemberCreateComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 

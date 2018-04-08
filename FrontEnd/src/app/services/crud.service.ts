@@ -14,7 +14,7 @@ export class CrudService {
     PROJECT: "projects",
     MEMBER: "members",
     USER_STORY: "user_stories",
-    ACCEPTANCE_CRITERIA: "acceptance_criteria",
+    ACCEPTANCE_CRITERIA: "acceptance-criteria",
     MEMBER_TASK: "member-task",
     MEMBER_PROJECT: "member_project",
     PROJECT_TECHNOLOGY: "project-technology",
