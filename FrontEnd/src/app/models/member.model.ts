@@ -1,5 +1,5 @@
-import { Log } from "./log.model";
-import { Task } from "./task.model";
+// import { Log } from "./log.model";
+// import { Task } from "./task.model";
 import { Project } from "./project.model";
 
 export class Member {
@@ -14,8 +14,8 @@ export class Member {
         public updatedAt: Date,
         //As these are optional parameters, they goe at the end
         public id?: string, 
-        public logs?: Log[],
-        public tasks?: Task[],
+        // public logs?: Log[],
+        // public tasks?: Task[],
         public projects?: Project[]
     ) { }
 }
