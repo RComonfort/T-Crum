@@ -14,8 +14,9 @@ import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
-import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MemberCreateComponent } from './components/member/member-create/member-
     NavComponent,
     ProjectListComponent,
     TaskListComponent,
-    MemberCreateComponent
+    MemberCreateComponent,
+    UserStoryListComponent
   ],
   imports: [
     BrowserModule,
