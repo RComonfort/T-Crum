@@ -16,6 +16,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
+import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TaskListComponent } from './components/tasks/task-list/task-list.compon
     NavComponent,
     ProjectListComponent,
     UserStoryListComponent,
-    TaskListComponent
+    TaskListComponent,
+    SprintListComponent
   ],
   imports: [
     BrowserModule,
