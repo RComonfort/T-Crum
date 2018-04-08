@@ -17,11 +17,22 @@ exports.ensureAuth = (req, res, next) => {
 			return res.status(401).send({message: 'The token has expired.'});
 		}
 	}catch(ex){
-		//console.log(ex);
 		return res.status(404).send({message: 'Token not valid.'});
 	}
 
 	req.user = payload;
 
 	next(); 
+};
+
+exports.ensureRoot = (req, res, next) => {
+	if(!req.user){
+		return res.status(403).send({ message: 'No authentication was found.'});
+	}
+
+	if(!req.user.system_role !== 'root'){
+		return res.status(403).send({ message: 'Permission denied.'});
+	}
+
+	next();
 };

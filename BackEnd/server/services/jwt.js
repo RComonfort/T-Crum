@@ -7,8 +7,7 @@ const expirationTime = 600;
 exports.createToken = (member) => {
 	let payload = {
 		id: member.id,
-		department_major: member.department_major,
-		name: member.name,
+		system_role: member.system_role,
 		iat: moment().unix(),
 		exp: moment().add(expirationTime, 'second').unix
 	};
