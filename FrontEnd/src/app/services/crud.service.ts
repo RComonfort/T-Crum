@@ -45,12 +45,13 @@ export class CrudService {
   }
 
   create(model: string, body: any) {
-    return this.http.post(
-      this.URL + "/" + model,
-      body,
-      { headers: this.headers }
-    ).mergeMap(
-        res => this.log.record(model, "CREATE")
+    return this.log.record(model, "CREATE")
+    .mergeMap(
+        res => this.http.post(
+          this.URL + "/" + model,
+          body,
+          { headers: this.headers }
+        )
       );
   }
 
