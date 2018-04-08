@@ -7,10 +7,11 @@ const membersController = require('../controllers').members;
 const acceptance_criteriaController = require('../controllers').acceptance_criteria;
 const member_taskController = require('../controllers').member_task;
 const member_projectController = require('../controllers').member_project;
+const projectsController = require('../controllers').projects;
 const project_technologyController = require('../controllers').project_technology;
 const userStoriesController = require('../controllers').user_stories;
 const authenticationController = require('../controllers').authentication;
-
+const technologiesController = require('../controllers').technology;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -23,6 +24,7 @@ module.exports = (app) => {
   //Routes for the TASKS table
   app.post('/api/tasks', tasksController.create);  
   app.get('/api/tasks', tasksController.list);
+  app.get('/api/tasks-members/:id', tasksController.listTaskWithUsers);
   app.get('/api/tasks/:id', tasksController.retrieve);
   app.put('/api/tasks/:id', tasksController.update);
   app.delete('/api/tasks/:id', tasksController.destroy);
@@ -42,16 +44,16 @@ module.exports = (app) => {
   //Routes for the MEMBERS table
   app.post('/api/members', membersController.create);
   app.get('/api/members', membersController.list);
-  app.get('/api/members', membersController.retrieve);
-  app.put('/api/members', membersController.update);
-  app.delete('/api/members', membersController.destroy);
+  app.get('/api/members/:id', membersController.retrieve);
+  app.put('/api/members/:id', membersController.update);
+  app.delete('/api/members/:id', membersController.destroy);
 
   //Routes for the Project table
-  app.post('/api/projects', tasksController.create);  
-  app.get('/api/projects', tasksController.list);
-  app.get('/api/projects/:id', tasksController.retrieve);
-  app.put('/api/projects/:id', tasksController.update);
-  app.delete('/api/projects/:id', tasksController.destroy);
+  app.post('/api/projects', projectsController.create);  
+  app.get('/api/projects', projectsController.list);
+  app.get('/api/projects/:id', projectsController.retrieve);
+  app.put('/api/projects/:id', projectsController.update);
+  app.delete('/api/projects/:id', projectsController.destroy);
   
   //Routes for the ACCEPTANCE_CRITERIA table
   app.post('/api/acceptance-criteria', acceptance_criteriaController.create);  
@@ -82,11 +84,16 @@ module.exports = (app) => {
   app.delete('/api/project-technology/:id', project_technologyController.destroy);
 
   //Routes for the USER_STORIES table
-  app.post('/api/user_stories', userStoriesController.create);  
-  app.get('/api/user_stories', userStoriesController.listWithSprint);
-  app.get('/api/user_stories', userStoriesController.listWithProject);
-  app.get('/api/user_stories/:id', userStoriesController.retrieveWithSprint);
-  app.get('/api/user_stories/:id', userStoriesController.retrieveWithProject);
-  app.put('/api/user_stories/:id', userStoriesController.update);
-  app.delete('/api/user_stories/:id', userStoriesController.destroy);
+  app.post('/api/user-stories', userStoriesController.create);  
+  app.get('/api/user-stories', userStoriesController.list);
+  app.get('/api/user-stories/:id', userStoriesController.retrieve);
+  app.put('/api/user-stories/:id', userStoriesController.update);
+  app.delete('/api/user-stories/:id', userStoriesController.destroy);
+  
+  //Routes for the TECHNOLOGIES table
+  app.post('/api/technology', technologiesController.create);  
+  app.get('/api/technology', technologiesController.list);
+  app.get('/api/technology/:id', technologiesController.retrieve);
+  app.put('/api/technology/:id', technologiesController.update);
+  app.delete('/api/technology/:id', technologiesController.destroy);
 };

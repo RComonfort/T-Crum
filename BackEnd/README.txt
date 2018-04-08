@@ -26,6 +26,30 @@ A model is the file that tells sequelize how to manipulate a table. A migration 
 
 After the creation of the model, all changes made to it must be manually updated in the migration file as well.
 
+By default, sequelize will make models look for their respective table in plural form. to prevent, you can pass in this an other parameters on model definition, like so:
+
+  var Bar = sequelize.define('Bar', { /* bla */ }, {
+    // don't add the timestamp attributes (updatedAt, createdAt)
+    timestamps: false,
+
+    // don't delete database entries but set the newly added attribute deletedAt
+    // to the current date (when deletion was done). paranoid will only work if
+    // timestamps are enabled
+    paranoid: true,
+
+    // don't use camelcase for automatically added attributes but underscore style
+    // so updatedAt will be updated_at
+    underscored: true,
+
+    // disable the modification of tablenames; By default, sequelize will automatically
+    // transform all passed model names (first parameter of define) into plural.
+    // if you don't want that, set the following
+    freezeTableName: true,
+
+    // define the table's name
+    tableName: 'my_very_custom_table_name'
+  });
+
 -----------------------------
 MIGRATION FILES
 _____________________________
@@ -44,6 +68,18 @@ To perform the migration for unmigrated files, use:
     sequelize db:migrate
 
 Automatically, Sequelize adds an id, createdAt and updatedAt columns. The id can be renamed or discarded if we do not want a primary key, just remember to reflect those changes on the model file. Both date colums are managed by Sequelize and by default, will generate an error if no present. 
+
+To return the dabase to its initial state, use:
+
+  sequelize db:migrate:undo:all
+
+Alternatively, use:
+
+  sequelize db:drop
+
+But remember to have the credentials in the config.json file, for the user that created the database locally. Then, recreate the database with: 
+
+  sequelize db:create
 
 -----------------------------
 ASSOCIATIONS 
@@ -89,6 +125,7 @@ We will need a model (to develop the CRUD) and migration (to actually having the
 For 1:1 or 1:n relationships, both models have to declare the association inside its associate function. For 1:1 relantionships, use belongTo in source table (the one that has the Foreign Key) and later declare this column in the migration file. The target table must have a hasOne association. For a 1:n, it is the same, but the target table needs a hasMany association instead in its model file (like scotch.io's tutorial).
 
 More on associations: http://docs.sequelizejs.com/manual/tutorial/associations.html 
+To see some methods for models and its associations: http://docs.sequelizejs.com/class/lib/associations/base.js~Association.html
 
 -----------------------------
 SEEDERS 
@@ -159,7 +196,12 @@ module.exports = {
 };
 
 You can seed your database with this data by running this sequelize-cli command:
+
 $ sequelize db:seed:all
+
+To remove all insertions, use:
+
+$ sequelize db:seed:undo:all
 
 After this command, and check your database, you should have something that looks like this:
 

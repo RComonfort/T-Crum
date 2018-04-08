@@ -43,6 +43,17 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      scrum_master_id: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        onDelete: 'CASCADE',
+        references: {
+
+          model: 'Members',
+          key: 'id',
+          as: 'scrum_master_id'
+        }
       }
     });
   },

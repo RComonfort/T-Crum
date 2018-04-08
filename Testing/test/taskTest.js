@@ -6,13 +6,18 @@ const URL = 'http://localhost:8000/api';
  * Tests for Task model and controller.
  */
 
- // Search a task in a list of task
+function containsSameData (task1, task2)
+{
+	return (task1.duration === task2.duration && task1.name === task2.name 
+		&& task1.completed === task2.completed && task1.user_story_id === task2.user_story_id)
+}
+
+ // Search a task in a list of tasks
 function findTask(tasks, targetTask){
     let found = false;
 	tasks.array.forEach(element => { // check that the object we tried to insert is different to every object in the DB
 		
-		if (element.duration === targetTask && element.name === targetTask.name 
-			&& element.completed === targetTask.completed && element.user_story_id === targetTask.user_story_id)
+		if (containsSameData(element, targetTask))
 		{
 			found = true;
 			break;
@@ -48,7 +53,7 @@ describe('Task model', () => {
 
 					//Check that the newly inserted object has the same info as that sent
 					expect (response.statusCode).to.be.equal(200);
-					expect (newTask).to.deep.equal (JSON.parse(body));
+					expect (containsSameData(JSON.parse(body), newTask)).to.be.true;
 
 				});
 
@@ -230,7 +235,7 @@ describe('Task model', () => {
 			request.get(URL + '/tasks/1', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); 
 
-                expect(JSON.parse(body)).to.be.deep.equal(task);
+				expect (containsSameData(JSON.parse(body), task)).to.be.true;
             });
             done();
 		});

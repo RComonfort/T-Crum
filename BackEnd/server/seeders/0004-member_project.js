@@ -4,25 +4,54 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
 
     return queryInterface.bulkInsert('member_project', [{
-        member_id: "A00000000",
-        project_id: 1
+        member_id: "a00000000",
+        project_id: 1,
+        project_role: 'scrum_master',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       },
       {
-        member_id: "A00000000",
-        project_id: 2
+        member_id: "a00000000",
+        project_id: 2,
+        project_role: 'scrum_master',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       },
       {
-        member_id: "A11111111",
-        project_id: 1
+        member_id: "a00000000",
+        project_id: 3,
+        project_role: 'scrum_master',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       },
       {
-        member_id: "A22222222",
-        project_id: 2
+        member_id: "a00000000",
+        project_id: 4,
+        project_role: 'scrum_master',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       },
       {
-        member_id: "A33333333",
-        project_id: 3
-      }
+        member_id: "a00000000",
+        project_id: 5,
+        project_role: 'scrum_master',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
+      },
+      {
+        member_id: "a11111111",
+        project_id: 2,
+        project_role: 'product_owner',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
+      },
+      {
+        member_id: "a22222222",
+        project_id: 3,
+        project_role: 'developer',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
+      },
     ], {});
   },
 
@@ -42,6 +71,12 @@ module.exports = {
       },
       {
         id: 5
+      },
+      {
+        id: 6
+      },
+      {
+        id: 7
       },
     ]);
   }

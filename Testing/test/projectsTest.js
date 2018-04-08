@@ -13,7 +13,8 @@ function findProject(projects, project){
                 && element.begin_date === project.end_date
                 && element.background === project.background
                 && element.risks === project.risks
-                && element.reach === project.reach){
+                && element.reach === project.reach
+                && element.scrum_master_id == project.scrum_master_id){
             found = true;
             break;
         }     
@@ -44,7 +45,8 @@ describe('Projectos model', () => {
                     end_date: '2019-01-01 01:01:01',
                     background: 'Test background',
                     risks: 'Test risks',
-                    reach: 'Test reach'
+                    reach: 'Test reach',
+                    scrum_master_id: 'a00000000'
                 })
             };
 
@@ -56,7 +58,15 @@ describe('Projectos model', () => {
                 // Make get request to get the inserted object
                 request.get( URL + '/projects/' + newProyecto.id, (error, response, body) => {
                     expect(response.statusCode).to.be.equal(200); // if response is successful
-                    expect(newProyecto).to.deep.equal(JSON.parse(body)); // check that the object we created and the one obtain are equal
+                    let retrievedProyect = JSON.parse(body);
+                    expect(newProyecto.vision).to.be.equal(retrievedProyect.vision); // check that the object we created and the one obtain are equal
+                    expect(newProyecto.name).to.be.equal(retrievedProyect.name);
+                    expect(newProyecto.begin_date).to.be.equal(retrievedProyect.begin_date);
+                    expect(newProyecto.end_date).to.be.equal(retrievedProyect.end_date);
+                    expect(newProyecto.background).to.be.equal(retrievedProyect.background);
+                    expect(newProyecto.risks).to.be.equal(retrievedProyect.risks);
+                    expect(newProyecto.reach).to.be.equal(retrievedProyect.reach);
+                    expect(newProyecto.scrum_master_id).to.be.equal(retrievedProyect.scrum_master_id);
                 });
 
                 done();
@@ -76,7 +86,8 @@ describe('Projectos model', () => {
                     end_date: '2018-01-01 01:01:01', //Invalid end
                     background: 'Test background',
                     risks: 'Test risks',
-                    reach: 'Test reach'
+                    reach: 'Test reach',
+                    scrum_master_id: 'A00000000'
                 })
             };
 
@@ -111,7 +122,8 @@ describe('Projectos model', () => {
                     end_date: '2019-01-01 01:01:01',
                     background: 'Test background',
                     risks: 'Test risks',
-                    reach: 'Test reach'
+                    reach: 'Test reach',
+                    scrum_master_id: 'A00000000'
                 })
             };
 
@@ -146,7 +158,8 @@ describe('Projectos model', () => {
                     end_date: '2019-01-01 01:01:01',
                     background: 'Test background',
                     risks: 'Test risks',
-                    reach: 'Test reach'
+                    reach: 'Test reach',
+                    scrum_master_id: 'A00000000'
                 })
             };
 
@@ -181,7 +194,8 @@ describe('Projectos model', () => {
                     end_date: '2018-01-01 01:01:01',
                     background: null,
                     risks: 'Test risks',
-                    reach: 'Test reach'
+                    reach: 'Test reach',
+                    scrum_master_id: 'A00000000'
                 })
             };
 
@@ -216,7 +230,8 @@ describe('Projectos model', () => {
                     end_date: '2018-01-01 01:01:01',
                     background: 'Test background',
                     risks: null,
-                    reach: 'Test reach'
+                    reach: 'Test reach',
+                    scrum_master_id: 'A00000000'
                 })
             };
 
@@ -251,7 +266,80 @@ describe('Projectos model', () => {
                     end_date: '2018-01-01 01:01:01',
                     background: 'Test background',
                     risks: 'Test risks',
-                    reach: null
+                    reach: null,
+                    scrum_master_id: 'A00000000'
+                })
+            };
+
+            // Make post request
+            request.post(postOptions, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); // response should be error 400
+                let newProject = postOptions.body;
+
+                // Make get request to check that the object was not inserted
+                request.get( URL + '/projects', (error, response, body) => {
+                    expect(response.statusCode).to.be.equal(200); // if response is successful
+                    
+                    let list = JSON.parse(body);
+                    let found = findProject(list, newProyecto);
+                    expect(found).to.be.false; // check that no coincidence is found
+                });
+
+                done();
+            });
+        });
+
+        //Null scrum master, expects unsuccessful insertion
+        it('Null scrum master', (done) => {
+            // Define POST request parameters and body
+            let postOptions = {
+                url: URL + '/projects',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    vision: 'Test vision',
+                    name: 'Test name',
+                    begin_date: '2019-01-01 01:01:01',
+                    end_date: '2018-01-01 01:01:01',
+                    background: 'Test background',
+                    risks: 'Test risks',
+                    reach: null,
+                    scrum_master_id: null
+                })
+            };
+
+            // Make post request
+            request.post(postOptions, (error, response, body) => {
+                expect(response.statusCode).to.be.equal(400); // response should be error 400
+                let newProject = postOptions.body;
+
+                // Make get request to check that the object was not inserted
+                request.get( URL + '/projects', (error, response, body) => {
+                    expect(response.statusCode).to.be.equal(200); // if response is successful
+                    
+                    let list = JSON.parse(body);
+                    let found = findProject(list, newProyecto);
+                    expect(found).to.be.false; // check that no coincidence is found
+                });
+
+                done();
+            });
+        });
+
+        //INvalid scrum master, expects unsuccessful insertion
+        it('Invalid scrum master', (done) => {
+            // Define POST request parameters and body
+            let postOptions = {
+                url: URL + '/projects',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    vision: 'Test vision',
+                    name: 'Test name',
+                    begin_date: '2019-01-01 01:01:01',
+                    end_date: '2018-01-01 01:01:01',
+                    background: 'Test background',
+                    risks: 'Test risks',
+                    reach: null,
+                    scrum_master_id: '99999'
                 })
             };
 
@@ -287,13 +375,22 @@ describe('Projectos model', () => {
                 end_date: '2019-01-01 01:01:01',
                 background: 'Test background',
                 risks: 'Test risks',
-                reach: 'Test reach'
+                reach: 'Test reach',
+                scrum_master_id: 'A00000000'
             };
 
             request.get(URL + '/projects/1', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); // if response is successful
+                let retrived = JSON.parse(body);
 
-                expect(JSON.parse(body)).to.be.deep.equal(project);
+                expect(proyecto.vision).to.be.equal(retrieved.vision); // check that the object we created and the one obtain are equal
+                expect(proyecto.name).to.be.equal(retrieved.name);
+                expect(proyecto.begin_date).to.be.equal(retrieved.begin_date);
+                expect(proyecto.end_date).to.be.equal(retrieved.end_date);
+                expect(proyecto.background).to.be.equal(retrieved.background);
+                expect(proyecto.risks).to.be.equal(retrieved.risks);
+                expect(proyecto.reach).to.be.equal(retrieved.reach);
+                expect(proyecto.scrum_master_id).to.be.equal(retrieved.scrum_master_id);
             });
             done();
         });
@@ -324,7 +421,8 @@ describe('Projectos model', () => {
                     end_date: body.end_date,
                     background: body.background,
                     risks: body.risks,
-                    reach: body.reach
+                    reach: body.reach,
+                    scrum_master_id: body.scrum_master_id
                 };
 
                 let newProject = { 
@@ -335,7 +433,8 @@ describe('Projectos model', () => {
                     end_date: body.begin_date, //End_date is now begin_date
                     background: body.background,
                     risks: body.risks,
-                    reach: body.reach
+                    reach: body.reach,
+                    scrum_master_id: body.scrum_master_id
                 };
 
                 let putOptions = {
@@ -366,8 +465,9 @@ describe('Projectos model', () => {
 
         });
 
-        // Update with no vision
-        it('Update with no vision', (done) => {
+        
+        // Update with invalid scrum master
+        it('Update with inavalid scrum master', (done) => {
 
             request.get(URL + '/projects/1', (error, response, body) => {
                 expect(response.statusCode).to.be.equal(200); // if response is successful
@@ -380,227 +480,8 @@ describe('Projectos model', () => {
                     end_date: body.end_date,
                     background: body.background,
                     risks: body.risks,
-                    reach: body.reach
-                };
-
-                let newProject = { 
-                    id: body.id, 
-                    vision: null, //NUll vision 
-                    name: body.name,
-                    begin_date: body.begin_date,
-                    end_date: body.end_date,
-                    background: body.background,
-                    risks: body.risks,
-                    reach: body.reach
-                };
-
-                let putOptions = {
-                    url: URL + '/projects',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newProject)
-                };
-
-                // Make put request
-                request.put(putOptions, (error, response, body) => {
-                    expect(response.statusCode).to.be.equal(400); // response should be 400
-
-                    // Make get request to check that the object was not inserted
-                    request.get( URL + '/projects', (error, response, body) => {
-                        expect(response.statusCode).to.be.equal(200); // if response is successful
-                        
-                        let list = JSON.parse(body);
-                        let found1 = findProject(list, newProject);
-                        expect(found1).to.be.false; // check that no coincidence is found
-
-                        let found2 = findProject(list, oldProject);
-                        expect(found2).to.be.true; // check that a coincidence is found
-                    });
-
-                    done();
-                });
-            });
-        });
-
-        // Update with no name
-        it('Update with no name', (done) => {
-
-            request.get(URL + '/projects/1', (error, response, body) => {
-                expect(response.statusCode).to.be.equal(200); // if response is successful
-
-                let oldProject = { 
-                    id: body.id, 
-                    vision: body.vision,
-                    name: body.name,
-                    begin_date: body.begin_date,
-                    end_date: body.end_date,
-                    background: body.background,
-                    risks: body.risks,
-                    reach: body.reach
-                };
-
-                let newProject = { 
-                    id: body.id, 
-                    vision: body.vision,
-                    name: null, //NUll name
-                    begin_date: body.end_date,
-                    end_date: body.begin_date,
-                    background: body.background,
-                    risks: body.risks,
-                    reach: body.reach
-                };
-
-                let putOptions = {
-                    url: URL + '/projects',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newProject)
-                };
-
-                // Make put request
-                request.put(putOptions, (error, response, body) => {
-                    expect(response.statusCode).to.be.equal(400); // response should be 400
-
-                    // Make get request to check that the object was not inserted
-                    request.get( URL + '/projects', (error, response, body) => {
-                        expect(response.statusCode).to.be.equal(200); // if response is successful
-                        
-                        let list = JSON.parse(body);
-                        let found1 = findProject(list, newProject);
-                        expect(found1).to.be.false; // check that no coincidence is found
-
-                        let found2 = findProject(list, oldProject);
-                        expect(found2).to.be.true; // check that a coincidence is found
-                    });
-
-                    done();
-                });
-            });
-        });
-
-        // Update with no background
-        it('Update with no background', (done) => {
-
-            request.get(URL + '/projects/1', (error, response, body) => {
-                expect(response.statusCode).to.be.equal(200); // if response is successful
-
-                let oldProject = { 
-                    id: body.id, 
-                    vision: body.vision,
-                    name: body.name,
-                    begin_date: body.begin_date,
-                    end_date: body.end_date,
-                    background: body.background,
-                    risks: body.risks,
-                    reach: body.reach
-                };
-
-                let newProject = { 
-                    id: body.id, 
-                    vision: body.vision,
-                    name: body.name,
-                    begin_date: body.end_date,
-                    end_date: body.begin_date,
-                    background: null, //Null background
-                    risks: body.risks,
-                    reach: body.reach
-                };
-
-                let putOptions = {
-                    url: URL + '/projects',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newProject)
-                };
-
-                // Make put request
-                request.put(putOptions, (error, response, body) => {
-                    expect(response.statusCode).to.be.equal(400); // response should be 400
-
-                    // Make get request to check that the object was not inserted
-                    request.get( URL + '/projects', (error, response, body) => {
-                        expect(response.statusCode).to.be.equal(200); // if response is successful
-                        
-                        let list = JSON.parse(body);
-                        let found1 = findProject(list, newProject);
-                        expect(found1).to.be.false; // check that no coincidence is found
-
-                        let found2 = findProject(list, oldProject);
-                        expect(found2).to.be.true; // check that a coincidence is found
-                    });
-
-                    done();
-                });
-            });
-        });
-
-        // Update with no risk
-        it('Update with no risk', (done) => {
-
-            request.get(URL + '/projects/1', (error, response, body) => {
-                expect(response.statusCode).to.be.equal(200); // if response is successful
-
-                let oldProject = { 
-                    id: body.id, 
-                    vision: body.vision,
-                    name: body.name,
-                    begin_date: body.begin_date,
-                    end_date: body.end_date,
-                    background: body.background,
-                    risks: body.risks,
-                    reach: body.reach
-                };
-
-                let newProject = { 
-                    id: body.id, 
-                    vision: body.vision,
-                    name: body.name,
-                    begin_date: body.end_date,
-                    end_date: body.begin_date,
-                    background: body.background,
-                    risks: null,//Null risk
-                    reach: body.reach
-                };
-
-                let putOptions = {
-                    url: URL + '/projects',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newProject)
-                };
-
-                // Make put request
-                request.put(putOptions, (error, response, body) => {
-                    expect(response.statusCode).to.be.equal(400); // response should be 400
-
-                    // Make get request to check that the object was not inserted
-                    request.get( URL + '/projects', (error, response, body) => {
-                        expect(response.statusCode).to.be.equal(200); // if response is successful
-                        
-                        let list = JSON.parse(body);
-                        let found1 = findProject(list, newProject);
-                        expect(found1).to.be.false; // check that no coincidence is found
-
-                        let found2 = findProject(list, oldProject);
-                        expect(found2).to.be.true; // check that a coincidence is found
-                    });
-
-                    done();
-                });
-            });
-        });
-
-        // Update with no reach
-        it('Update with no reach', (done) => {
-
-            request.get(URL + '/projects/1', (error, response, body) => {
-                expect(response.statusCode).to.be.equal(200); // if response is successful
-
-                let oldProject = { 
-                    id: body.id, 
-                    vision: body.vision,
-                    name: body.name,
-                    begin_date: body.begin_date,
-                    end_date: body.end_date,
-                    background: body.background,
-                    risks: body.risks,
-                    reach: body.reach
+                    reach: body.reach,
+                    scrum_master_id: body.scrum_master_id
                 };
 
                 let newProject = { 
@@ -611,7 +492,8 @@ describe('Projectos model', () => {
                     end_date: body.begin_date,
                     background: body.background,
                     risks: body.risks,
-                    reach: null
+                    reach: body.reach,
+                    scrum_master_id: '999999'
                 };
 
                 let putOptions = {
@@ -666,7 +548,8 @@ describe('Projectos model', () => {
                     end_date: '2019-01-01 01:01:01',
                     background: 'Test background',
                     risks: 'Test risks',
-                    reach: 'Test reach'
+                    reach: 'Test reach',
+                    scrum_master_id: 'A00000000'
                 })
             };
 
@@ -678,7 +561,6 @@ describe('Projectos model', () => {
                 let newProyecto = JSON.parse(body);
                 projectID = newProyecto.id;
             });
-
 
             let postOptionsUser_stories = {
                 url: URL + '/user-stories',

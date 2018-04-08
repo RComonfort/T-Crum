@@ -10,19 +10,20 @@ module.exports = (sequelize, DataTypes) => {
 	    },
 
 	    days: {
-	      	type: DataTypes.INTEGER
+        type: DataTypes.INTEGER
 	    },
 
 	    comment: {
-			allowNull: true,
+			  allowNull: true,
 	     	type: DataTypes.TEXT
 	    }
   	}, {});
 
   	Sprint.associate = function (models) {
     	Sprint.hasMany(models.User_story, {
-	      	foreignKey: 'sprint_id',
-	      	as: 'sprint'
+        foreignKey: 'sprint_id',
+        as: 'user_stories',
+        onDelete: 'CASCADE'
     	})
   	};
 

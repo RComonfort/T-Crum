@@ -9,6 +9,7 @@ const member_project = require('./member_project');
 const project_technology = require('./project_technology');
 const user_stories = require('./user_stories');
 const authentication = require('./authentication');
+const technology = require('./technology');
 
 module.exports = {
     logs,
@@ -21,5 +22,6 @@ module.exports = {
     member_project,
     project_technology,
     user_stories,
-    authentication
+    authentication,
+    technology
 };
