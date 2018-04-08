@@ -13,12 +13,13 @@ export class CrudService {
     SPRINT: "sprints",
     PROJECT: "projects",
     MEMBER: "members",
-    USER_STORY: "user_stories",
+    USER_STORY: "user-stories",
     ACCEPTANCE_CRITERIA: "acceptance-criteria",
     MEMBER_TASK: "member-task",
     MEMBER_PROJECT: "member_project",
     PROJECT_TECHNOLOGY: "project-technology",
-    LOGS: "logs"
+    LOGS: "logs",
+    TECHNOLOGY: "tecnologies"
   };
 
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {

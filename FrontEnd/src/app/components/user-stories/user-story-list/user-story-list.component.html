@@ -27,28 +27,22 @@
                           </th>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let user-story of user-stories">
+                          <tr *ngFor="let user_story of user_stories">
                               <td>
-                                  {{user-story.id}}
-                              </td>
-                              <td>
-                                  {{user-story.weight}}
+                                  {{user_story.id}}
                               </td>
                               <td>
-                                  {{user-story.scrum_board_status}}
+                                  {{user_story.weight}}
                               </td>
                               <td>
-                                  {{user-story.description}}
+                                  {{user_story.scrum_board_status}}
                               </td>
                               <td>
-                                  {{user-story.priority}}
+                                  {{user_story.description}}
                               </td>
-                              <td *ngIf="user-story.completed==true">
-                                  Si
+                              <td>
+                                  {{user_story.priority}}
                               </td>
-                              <td *ngIf="user-story.completed==false">
-                                  No
-                               </td>
                               <td>
                                     <button class="btn btn-danger pull-right" (click)="deleteUserStory(user-story.id)"><i class="material-icons">delete</i></button>
                                     <button class="btn btn-info pull-right" ><i class="material-icons">edit</i></button>
