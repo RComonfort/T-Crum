@@ -14,6 +14,7 @@ import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProjectListComponent } from './components/projects/project-list/project
     LogoutComponent,
     HomeComponent,
     NavComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,
