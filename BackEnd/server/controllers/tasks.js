@@ -83,19 +83,10 @@ module.exports = {
   },
   update(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(req.params.id))
-      return res.status(400).send({message: 'The post body must contain a valid id field.'});
+    if (!req.params.id || isNaN(req.params.id))
+      return res.status(400).send({message: 'The id is invalid'});
 
-    if (!req.body.duration)
-      return res.status(400).send({message: 'The post body must contain a valid duration field.'});
-
-    if (!req.body.name)
-      return res.status(400).send({message: 'The post body must contain a valid name field.'});
-
-    if (!req.body.completed)
-      return res.status(400).send({message: 'The post body must contain a valid completed field.'});
-
-    if (!req.body.user_story_id || !Numbers.isInteger(req.body.user_story_id))
+    if (req.body.user_story_id && isNaN(req.body.user_story_id))
       return res.status(400).send({message: 'The post body must contain a valid user_story_id field.'});
 
     return tasks
@@ -109,10 +100,10 @@ module.exports = {
         }
         return tasks
           .update({
-            duration: req.body.duration,
-            name: req.body.name,
-            completed: req.body.completed,
-            user_story_id: req.body.user_story_id,
+            duration: req.body.duration || tasks.duration,
+            name: req.body.name || tasks.name,
+            completed: req.body.completed || tasks.completed,
+            user_story_id: req.body.user_story_id || tasks.user_story_id,
           })
           .then(() => res.status(200).send(tasks))  // Send back the updated tuple.
           .catch((error) => res.status(400).send(error));
@@ -121,8 +112,8 @@ module.exports = {
   },
   destroy(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(req.params.id))
-      return res.status(400).send({message: 'The post body must contain a valid id field.'});
+    if (!req.params.id || isNaN(req.params.id))
+      return res.status(400).send({message: 'The provided id field is invalid.'});
 
     return tasks
       .findById(req.params.id)
