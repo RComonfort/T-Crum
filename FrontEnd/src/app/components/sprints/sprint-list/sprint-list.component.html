@@ -12,7 +12,10 @@
                 <tbody>
                   <tr *ngFor="let sprint of sprints">
                     <td>
-                      <a href="sprints/{{sprint.id}}">Sprint {{sprint.id}}</a>
+                      Sprint {{sprint.id}}
+                    </td>
+                    <td>
+                      <button class="btn btn-primary pull-right" ><i class="material-icons">info</i></button>
                     </td>
                   </tr>
                 </tbody>

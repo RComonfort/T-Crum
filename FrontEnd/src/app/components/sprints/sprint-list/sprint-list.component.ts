@@ -18,23 +18,23 @@ export class SprintListComponent implements OnInit {
   ngOnInit() {
 
     this.crud.list(this.crud.models.PROJECT)
-    .subscribe(
-      (res: Sprint[]) => {
-        console.log(res);
-        this.sprints = res;
-      },
-      (err: HttpErrorResponse) => {
-        if (err.error) {
-          this.message = err.error.message
+      .subscribe(
+        (res: Sprint[]) => {
+          console.log(res);
+          this.sprints = res;
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error) {
+            this.message = err.error.message
+          }
+          else {
+            this.message = err.error.errors[0].message;
+          }
         }
-        else {
-          this.message = err.error.errors[0].message;
-        }
-      }
-    )
+      )
   }
 
-  deleteSprint(id: number){
+  deleteSprint(id: number) {
     console.log("Deleting")
     this.crud.delete(this.crud.models.SPRINT, id)
 
@@ -43,8 +43,8 @@ export class SprintListComponent implements OnInit {
         this.message = "Succes";
         let x = 0;
 
-        for(let sprint of this.sprints){
-          if(sprint.id == id){
+        for (let sprint of this.sprints) {
+          if (sprint.id == id) {
             this.sprints.splice(x, 1);
           }
 
@@ -52,11 +52,11 @@ export class SprintListComponent implements OnInit {
         }
       },
 
-      (err:HttpErrorResponse) => {
-        if(err.error){
+      (err: HttpErrorResponse) => {
+        if (err.error) {
           this.message = err.error.message
         }
-        else{
+        else {
           this.message = err.error.errors[0].message;
         }
       }
