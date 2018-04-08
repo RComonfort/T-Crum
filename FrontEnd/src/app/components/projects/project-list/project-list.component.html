@@ -27,26 +27,26 @@
                           </th>
                       </thead>
                       <tbody>
-                          <tr >
+                          <tr *ngFor="let project of projects">
                               <td>
-                                  lol
+                                  {{project.id}}
                               </td>
                               <td>
-                                  lol
+                                  {{project.name}}
                               </td>
                               <td>
-                                  lol
+                                  {{project.begin_date}}
                               </td>
                               <td>
-                                  lol
+                                  {{project.end_date}}
                               </td>
                               <td>
-                                  lol
+                                  {{project.scrum_master_id}}
                               </td>
                               <td>
-                                <button class="btn btn-primary pull-right" ><i class="material-icons">info</i></button>
-                                <button class="btn btn-info pull-right" ><i class="material-icons">edit</i></button>
-                                <button class="btn btn-danger pull-right" ><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-danger pull-right" (click)="deleteProject(project.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-info pull-right" ><i class="material-icons">edit</i></button>
+                                    <button class="btn btn-primary pull-right" ><i class="material-icons">info</i></button>
                               </td>
                           </tr>
                       </tbody>
