@@ -50,7 +50,8 @@ module.exports = (sequelize, DataTypes) => {
       through: 'member_project',
       foreignKey: 'project_id',
       //otherKey: 'member_id',
-      as: 'members'
+      as: 'members',
+      onDelete: 'CASCADE',
     }),
 
     Project.hasMany(models.User_story, {
@@ -59,11 +60,13 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'Cascade'
     })
 
-    /*Project.belongsToMany(models.Technology, {
+    Project.belongsToMany(models.Technology, {
       through: 'project_technology',
       foreignKey: 'project_id',
-      otherKey: 'technology_id'
-    })*/
+      //otherKey: 'technology_id'
+      as: 'technologies',
+      onDelete: 'CASCADE',
+    })
   }
 
   return Project;

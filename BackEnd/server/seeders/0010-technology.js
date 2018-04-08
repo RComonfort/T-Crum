@@ -6,13 +6,19 @@ module.exports = {
     return queryInterface.bulkInsert('Technologies',
       [
         {
-          name: 'JAVA'
+          name: 'JAVA',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
         {
-          name: 'JAVASCRIPT'
+          name: 'JAVASCRIPT',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         },
         {
-          name: 'HTML'
+          name: 'HTML',
+          createdAt: Sequelize.fn('NOW'),
+          updatedAt: Sequelize.fn('NOW')
         }
       ], {});
   },
