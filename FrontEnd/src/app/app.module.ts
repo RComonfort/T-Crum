@@ -14,8 +14,13 @@ import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
+<<<<<<< HEAD
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
+=======
+import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
+import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
+>>>>>>> 6932cb96ad7b99c214e0d8463c640d72e9bcf077
 
 @NgModule({
   declarations: [
@@ -25,8 +30,13 @@ import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sp
     HomeComponent,
     NavComponent,
     ProjectListComponent,
+<<<<<<< HEAD
     SprintListComponent,
     SprintRetrieveComponent
+=======
+    TechnologiesListComponent,
+    TechnologiesCreateComponent
+>>>>>>> 6932cb96ad7b99c214e0d8463c640d72e9bcf077
   ],
   imports: [
     BrowserModule,
