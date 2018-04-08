@@ -91,9 +91,9 @@ module.exports = (app) => {
   app.delete('/api/user-stories/:id', userStoriesController.destroy);
   
   //Routes for the TECHNOLOGIES table
-  app.post('/api/technology', technologiesController.create);  
-  app.get('/api/technology', technologiesController.list);
-  app.get('/api/technology/:id', technologiesController.retrieve);
-  app.put('/api/technology/:id', technologiesController.update);
-  app.delete('/api/technology/:id', technologiesController.destroy);
+  app.post('/api/technologies', technologiesController.create);  
+  app.get('/api/technologies', technologiesController.list);
+  app.get('/api/technologies/:id', technologiesController.retrieve);
+  app.put('/api/technologies/:id', technologiesController.update);
+  app.delete('/api/technologies/:id', technologiesController.destroy);
 };
