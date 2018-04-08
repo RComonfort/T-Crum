@@ -14,7 +14,11 @@ import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
+<<<<<<< HEAD
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
+=======
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
+>>>>>>> origin/frontend_model_task
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { UserStoryListComponent } from './components/user-stories/user-story-lis
     HomeComponent,
     NavComponent,
     ProjectListComponent,
+<<<<<<< HEAD
     UserStoryListComponent
+=======
+    TaskListComponent
+>>>>>>> origin/frontend_model_task
   ],
   imports: [
     BrowserModule,
