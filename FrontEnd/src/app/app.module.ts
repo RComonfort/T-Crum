@@ -18,6 +18,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
+import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TaskListComponent } from './components/tasks/task-list/task-list.compon
     AcceptanceCriteriaListComponent,
     ProjectListComponent,
     UserStoryListComponent,
-    TaskListComponent
+    TaskListComponent,
+    MemberCreateComponent
   ],
   imports: [
     BrowserModule,
