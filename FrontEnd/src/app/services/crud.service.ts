@@ -13,12 +13,13 @@ export class CrudService {
     SPRINT: "sprints",
     PROJECT: "projects",
     MEMBER: "members",
-    USER_STORY: "user_stories",
-    ACCEPTANCE_CRITERIA: "acceptance_criteria",
+    USER_STORY: "user-stories",
+    ACCEPTANCE_CRITERIA: "acceptance-criteria",
     MEMBER_TASK: "member-task",
-    MEMBER_PROJECT: "member_project",
+    MEMBER_PROJECT: "member-project",
     PROJECT_TECHNOLOGY: "project-technology",
-    LOGS: "logs"
+    LOGS: "logs",
+    TECHNOLOGY: "technologies" 
   };
 
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {
@@ -44,12 +45,13 @@ export class CrudService {
   }
 
   create(model: string, body: any) {
-    return this.http.post(
-      this.URL + "/" + model,
-      body,
-      { headers: this.headers }
-    ).mergeMap(
-        res => this.log.record(model, "CREATE")
+    return this.log.record(model, "CREATE")
+    .mergeMap(
+        res => this.http.post(
+          this.URL + "/" + model,
+          body,
+          { headers: this.headers }
+        )
       );
   }
 
