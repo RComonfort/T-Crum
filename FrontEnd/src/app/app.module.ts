@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
+import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavComponent } from './components/nav/nav.component';
     LoginComponent,
     LogoutComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    MemberCreateComponent
   ],
   imports: [
     BrowserModule,
