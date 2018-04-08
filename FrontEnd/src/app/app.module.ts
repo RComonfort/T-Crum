@@ -15,6 +15,7 @@ import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
+import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SprintListComponent } from './components/sprints/sprint-list/sprint-lis
     HomeComponent,
     NavComponent,
     ProjectListComponent,
-    SprintListComponent
+    SprintListComponent,
+    SprintRetrieveComponent
   ],
   imports: [
     BrowserModule,

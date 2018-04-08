@@ -1,23 +1,29 @@
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div class="row">
   <!-- Modal content -->
-  <div class="modal-content">
-      <div class="card">
-          <div class="card-header card-header-primary">
-              <h4 class="card-title">Sprints</h4>
-              <p class="card-category">Sprints relacionados al proyecto</p>
-          </div>
-          <div class="card-body">
-              <table class="table">
-                <tbody>
-                  <tr *ngFor="let sprint of sprints">
-                    <td>
-                      Sprint {{sprint.id}}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-          </div>
+  <div class= "col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Sprint {{id}}</h4>
       </div>
+      <div class="card-body">
+          <table class="table">
+            <thead>
+              <th> ID </th>
+              <th> Fecha de creación </th>
+              <th> Días </th>
+              <th> Comentario </th>
+            </thead>
+            <tbody>
+              <tr >
+                <td> {{id}} </td>
+                <td> {{sprints.createdAt}}</td>
+                <td> {{sprints.days}} </td>
+                <td> {{sprints.comment}} </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
   </div>
 </div>

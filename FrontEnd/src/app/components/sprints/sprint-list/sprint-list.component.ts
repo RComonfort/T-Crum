@@ -17,7 +17,7 @@ export class SprintListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.crud.list(this.crud.models.PROJECT)
+    this.crud.list(this.crud.models.SPRINT)
       .subscribe(
         (res: Sprint[]) => {
           console.log(res);
