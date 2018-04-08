@@ -12,7 +12,7 @@ export class Member {
         public system_role: string,
         public createdAt: Date,
         public updatedAt: Date,
-        //As these are optional parameters, they goe at the end
+        //As these are optional parameters, they go at the end
         public id?: string, 
         // public logs?: Log[],
         // public tasks?: Task[],

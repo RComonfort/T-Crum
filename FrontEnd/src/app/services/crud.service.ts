@@ -43,6 +43,14 @@ export class CrudService {
     );
   }
 
+  registerMember(body:any) {
+    return this.http.post(
+      this.URL + "/" + this.models.MEMBER,
+      body,
+      { headers: this.headers }
+    );
+  }
+
   create(model: string, body: any) {
     return this.http.post(
       this.URL + "/" + model,
