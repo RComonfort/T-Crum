@@ -8,6 +8,7 @@ module.exports = {
       [{
           days: 1,
           comment: 'Test comment',
+          project_id: 1,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -15,6 +16,7 @@ module.exports = {
         {
           days: 2,
           comment: 'Test comment',
+          project_id: 2,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -22,6 +24,7 @@ module.exports = {
         {
           days: 3,
           comment: 'Test comment',
+          project_id: 3,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -29,6 +32,7 @@ module.exports = {
         {
           days: 4,
           comment: 'Test comment',
+          project_id: 4,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -36,6 +40,7 @@ module.exports = {
         {
           days: 5,
           comment: 'Test comment',
+          project_id: 5,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         }

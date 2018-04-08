@@ -54,9 +54,9 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     }),
 
-    Project.hasMany(models.User_story, {
+    Project.hasMany(models.Sprint, {
       foreignKey: 'project_id',
-      as: 'user_stories',
+      as: 'sprints',
       onDelete: 'Cascade'
     })
 

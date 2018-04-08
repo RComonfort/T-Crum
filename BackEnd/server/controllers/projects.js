@@ -1,5 +1,5 @@
 const Project = require('../models').Project;
-const User_story = require('../models').User_story;
+const Sprint = require('../models').Sprint;
 const Member = require('../models').Member;
 const Technology = require('../models').Technology;
 
@@ -56,8 +56,8 @@ module.exports = {
         return Project
             .findAll({
                 include: [
-                    {model: User_story,
-                    as: 'user_stories',
+                    {model: Sprint,
+                    as: 'sprints',
                     required: false},
                     {model: Member,
                     as: 'scrum_master',
@@ -88,8 +88,8 @@ module.exports = {
         return Project
             .findById(req.params.id, {
                 include: [
-                    {model: User_story,
-                    as: 'user_stories',
+                    {model: Sprint,
+                    as: 'sprints',
                     required: false},
                     {model: Member,
                     as: 'scrum_master',
