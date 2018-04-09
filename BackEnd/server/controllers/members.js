@@ -84,6 +84,10 @@ module.exports = {
                         // association: 'projects'
                         model: Project,
                         as: 'projects',
+                        through: {
+
+                            attributes: ['project_role'],
+                        },
                         required: false,
                         //Without this line of attributes, it fails!!
                         attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
@@ -115,6 +119,10 @@ module.exports = {
                         // association: 'projects'
                         model: Project,
                         as: 'projects',
+                        through: {
+
+                            attributes: ['project_role'],
+                        },
                         required: false,
                         //Without this line of attributes, it fails!!
                         attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']

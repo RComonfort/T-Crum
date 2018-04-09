@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
 
-    return queryInterface.bulkInsert('member_project', [{
+    return queryInterface.bulkInsert('Member_projects', [{
         member_id: "a00000000",
         project_id: 1,
         project_role: 'scrum_master',
@@ -57,7 +57,7 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
 
-    return queryInterface.bulkDelete('member_project', [{
+    return queryInterface.bulkDelete('Member_projects', [{
         id: 1
       },
       {

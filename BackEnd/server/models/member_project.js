@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Member_project = sequelize.define('Member_project', {
+    const Member_project = sequelize.define('Member_projects', {
         id: {
             allowNull: false,
             autoIncrement: true,
