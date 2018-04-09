@@ -26,7 +26,7 @@ import { UserStoryRetrieveComponent } from './components/user-stories/user-story
 const routes: Routes = [
   { path:'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
-  {path: 'register', component: MemberCreateComponent},
+  { path: 'register', component: MemberCreateComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path:'', component: AppComponent, canActivate: [AuthGuard]},
   // Technologies

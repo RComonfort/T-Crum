@@ -49,7 +49,7 @@ export class UserStoryCreateComponent implements OnInit {
       (res: Response) => {
 
         console.log("User story successfully created");
-        this.router.navigate(['home']);
+        this.router.navigate(['user-stories']);
       },
       (err:HttpErrorResponse) => {
         if(err.error){
