@@ -1,5 +1,5 @@
 import { Technology } from "./technology.model";
-//import { Sprint } from "./sprint.model";
+import { Sprint } from "./sprint.model";
 import { Member } from "./member.model";
 
 export class Project {
@@ -15,7 +15,7 @@ export class Project {
         public scrum_master?: Member,
         public updatedAt?: Date,
         public createdAt?: Date,
-        //public sprints?: Sprint[],
+        public sprints?: Sprint[],
         public members?: Member[],
         public technologies?: Technology[],
         public id?: number,
