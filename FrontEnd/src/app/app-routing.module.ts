@@ -11,6 +11,7 @@ import { ProjectCreateComponent } from './components/projects/project-create/pro
 import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
 
 const routes: Routes = [
   {path:'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
   {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
   {path: 'projects/update/:id', component: ProjectUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'projects/retrieve/:id', component: ProjectRetrieveComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '' }

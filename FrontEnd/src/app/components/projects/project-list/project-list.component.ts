@@ -42,6 +42,10 @@ export class ProjectListComponent implements OnInit {
     this.router.navigate(['projects/update/'+updateID]);
   }
 
+  retrieveProject(retrieveID: number){
+    this.router.navigate(['projects/retrieve/'+retrieveID]);
+  }
+
   deleteProject(id: number){
     console.log("Deleting")
     this.crud.delete(this.crud.models.PROJECT, id)

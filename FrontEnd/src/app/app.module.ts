@@ -17,6 +17,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
+import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProjectUpdateComponent } from './components/projects/project-update/pro
     ProjectListComponent,
     ProjectCreateComponent,
     MemberCreateComponent,
-    ProjectUpdateComponent
+    ProjectUpdateComponent,
+    ProjectRetrieveComponent
   ],
   imports: [
     BrowserModule,
