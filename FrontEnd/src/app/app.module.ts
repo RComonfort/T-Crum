@@ -69,6 +69,7 @@ import { UserStoryRetrieveComponent } from './components/user-stories/user-story
     UserStoryRetrieveComponent,
     TaskUpdateComponent,
     SprintRetrieveComponent,
+    ProjectSprintCreateComponent,
     ProjectSprintCreateComponent
   ],
   imports: [
