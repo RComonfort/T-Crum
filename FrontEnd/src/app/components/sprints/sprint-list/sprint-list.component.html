@@ -16,6 +16,8 @@
                     </td>
                     <td>
                       <a routerLink="/sprints/{{sprint.id}}" class="btn btn-primary pull-right" ><i class="material-icons">info</i></a>
+                      <a routerLink="/home" class="btn btn-danger pull-right" (click)="deleteSprint(sprints.id)" ><i class="material-icons">delete</i></a>
+                      <a routerLink="/sprints/update/{{sprint.id}}" class="btn btn-info pull-right"><i class="material-icons">edit</i></a>
                     </td>
                   </tr>
                 </tbody>

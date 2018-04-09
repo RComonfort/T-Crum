@@ -16,6 +16,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
+import { SprintUpdateComponent } from './components/sprints/sprint-update/sprint-update.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sp
     NavComponent,
     ProjectListComponent,
     SprintListComponent,
-    SprintRetrieveComponent
+    SprintRetrieveComponent,
+    SprintUpdateComponent
   ],
   imports: [
     BrowserModule,
