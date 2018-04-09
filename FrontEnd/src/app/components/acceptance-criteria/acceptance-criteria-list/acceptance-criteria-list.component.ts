@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { Acceptance_criteria } from '../../../models/acceptance_criteria.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-acceptance-criteria-list',
@@ -10,13 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./acceptance-criteria-list.component.css']
 })
 export class AcceptanceCriteriaListComponent implements OnInit {
-
+  user_story_id: number;
   acceptance_criteria: Acceptance_criteria[];
   message: String;
 
-  constructor(private crud:CrudService, private router:Router) {}
+  constructor(private crud:CrudService, private router:Router, private route:ActivatedRoute) {}
 
   ngOnInit() {
+    this.user_story_id = this.route.snapshot.params.id;
     this.crud.list(this.crud.models.ACCEPTANCE_CRITERIA)
     .subscribe(
       (res:Acceptance_criteria[]) => {
@@ -53,11 +54,11 @@ export class AcceptanceCriteriaListComponent implements OnInit {
   }
 
   onSelectCreate(){
-    this.router.navigate(['../../acceptance-criteria/create']);
+    this.router.navigate(['/acceptance-criteria/create/'+this.user_story_id]);
   }
 
   onSelectEdit( id : number){
-    this.router.navigate(['../../acceptance-criteria/update', id]);
+    this.router.navigate(['/acceptance-criteria/update'+id]);
   }
 
 }

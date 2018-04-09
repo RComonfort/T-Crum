@@ -3,6 +3,7 @@ import { CrudService } from '../../../services/crud.service';
 import {Acceptance_criteria} from '../../../models/acceptance_criteria.model';
 import {User_story} from '../../../models/user_story.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-acceptance-criteria-create',
@@ -14,11 +15,12 @@ export class AcceptanceCriteriaCreateComponent implements OnInit {
   user_story: User_story;
   message: String;
 
-  constructor(private crud: CrudService) { }
+  constructor(private crud: CrudService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
-    this.acceptance_criteria = new Acceptance_criteria(null, null, 1, null, null, null);
-    
+    this.acceptance_criteria = new Acceptance_criteria(null, null, null, null, null, null);
+    let user_story_id = this.route.snapshot.params.user_story_id;
+    this.acceptance_criteria.user_story_id = user_story_id;
   }
 
   create(){
@@ -28,6 +30,7 @@ export class AcceptanceCriteriaCreateComponent implements OnInit {
       .subscribe(
         (res:Acceptance_criteria) => {
           this.acceptance_criteria = res;
+          this.router.navigate(['/user-stories/'+this.acceptance_criteria.user_story_id]);
         },
         (err:HttpErrorResponse) => {
           console.log(err);
@@ -61,6 +64,10 @@ export class AcceptanceCriteriaCreateComponent implements OnInit {
       console.log('Validado');
       return true;
     }
+  }
+
+  onSelectCancel(){
+    this.router.navigate(['/user-stories/'+this.acceptance_criteria.user_story_id]);
   }
 
 }

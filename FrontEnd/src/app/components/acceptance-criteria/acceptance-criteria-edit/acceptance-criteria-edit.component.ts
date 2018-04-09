@@ -3,7 +3,7 @@ import { CrudService } from '../../../services/crud.service';
 import { Acceptance_criteria } from '../../../models/acceptance_criteria.model';
 import { User_story } from '../../../models/user_story.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-acceptance-criteria-edit',
@@ -15,7 +15,7 @@ export class AcceptanceCriteriaEditComponent implements OnInit {
   user_story: User_story;
   message: String;
 
-  constructor(private crud: CrudService, private route:ActivatedRoute) { }
+  constructor(private crud: CrudService, private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
     this.acceptance_criteria = new Acceptance_criteria(null, null, null, null, null, null);
@@ -43,6 +43,7 @@ export class AcceptanceCriteriaEditComponent implements OnInit {
       .subscribe(
         (res:Acceptance_criteria) => {
           this.acceptance_criteria = res;
+          this.router.navigate(['/user-stories/'+this.acceptance_criteria.user_story_id]);
         },
         (err:HttpErrorResponse) => {
           console.log(err);
@@ -76,6 +77,10 @@ export class AcceptanceCriteriaEditComponent implements OnInit {
       console.log('Validado');
       return true;
     }
+  }
+
+  onSelectCancel(){
+    this.router.navigate(['/user-stories', this.acceptance_criteria.user_story_id]);
   }
 
 }
