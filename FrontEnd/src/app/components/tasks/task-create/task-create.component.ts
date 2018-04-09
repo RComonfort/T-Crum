@@ -15,7 +15,7 @@ export class TaskCreateComponent implements OnInit {
 
   duration: number;
   name: string;
-  completed: boolean;
+  completed: string;
   user_story_id: number;
 
   constructor(private crud:CrudService, private router:Router, private route: ActivatedRoute) { }
@@ -26,9 +26,9 @@ export class TaskCreateComponent implements OnInit {
 
     this.duration = 0;
     this.name = "";
-    this.completed = false;
+    this.completed = "false";
 
-    this.user_story_id = this.route.snapshot.params['user_story_id']
+    this.user_story_id = this.route.snapshot.params.user_story_id;
   }
 
   createTask()

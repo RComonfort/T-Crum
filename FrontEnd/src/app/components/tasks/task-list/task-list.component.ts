@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Task } from '../../../models/task.model';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,9 +16,12 @@ export class TaskListComponent implements OnInit {
   tasks: Task[];
   public user_story_id: number;
 
-  constructor(private crud:CrudService, private router:Router) { }
+  constructor(private crud:CrudService) { }
 
   ngOnInit() {
+
+    this.user_story_id = 1;
+
     this.crud.list(this.crud.models.TASK)
     .subscribe(
       (res:Task[])=>{
@@ -59,15 +62,5 @@ export class TaskListComponent implements OnInit {
         }
       }
     )
-  }
-
-  createTask()
-  {
-    let idParam : NavigationExtras = {
-      queryParams: {
-        "user_story_id": this.user_story_id
-      }
-    };
-    this.router.navigate(['tasks/create'], idParam);
   }
 }

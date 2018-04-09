@@ -13,7 +13,7 @@
                         <span>
                             <b> Error</b> {{message}}</span>
                 </div>
-              <button class="btn btn-success pull-right" (click)="createTask()">Crear Tarea</button>
+                <a class="btn btn-success pull-right" routerLink="/tasks/create/{{user_story_id}}">Crear Tarea</a>
               <div class="table-responsive">
                   <table class="table">
                       <thead class=" text-primary">
