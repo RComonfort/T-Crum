@@ -37,7 +37,6 @@ const routes: Routes = [
   // Technologies
   { path: 'technologies', component: TechnologiesListComponent, canActivate: [AuthGuard]},
   { path: 'technologies/update/:id', component: TechnologiesUpdateComponent, canActivate: [AuthGuard]},
-
   //Acceptance_criteria
   { path:'acceptance-criteria/update/:id', component: AcceptanceCriteriaEditComponent, canActivate: [AuthGuard]},
   { path:'acceptance-criteria/create/:user_story_id', component: AcceptanceCriteriaCreateComponent, canActivate: [AuthGuard]},
