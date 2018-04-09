@@ -17,6 +17,8 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 import { TaskCreateComponent } from './components/tasks/task-create/task-create.component';
+import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
+import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 
 
@@ -42,6 +44,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard]},
   {path: 'tasks/create/:user_story_id', component: TaskCreateComponent, canActivate: [AuthGuard]},
+  {path: 'user-stories', component: UserStoryListComponent, canActivate: [AuthGuard]},
+  {path: 'user-stories/create/:sprint_id', component: UserStoryCreateComponent, canActivate: [AuthGuard]},
   {path: 'tasks/update/:id', component: TaskUpdateComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 

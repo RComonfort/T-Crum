@@ -28,6 +28,7 @@ import { TaskCreateComponent } from './components/tasks/task-create/task-create.
 import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
+import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 
@@ -54,15 +55,11 @@ import { TaskUpdateComponent } from './components/tasks/task-update/task-update.
     ProjectUpdateComponent,
     ProjectRetrieveComponent,
     TaskListComponent,
-    MemberCreateComponent,
     UserStoryListComponent,
     TaskCreateComponent,
     AcceptanceCriteriaListComponent,
-    ProjectListComponent,
-    UserStoryListComponent,
-    TaskListComponent,
-    MemberCreateComponent,
     SprintListComponent,
+    UserStoryCreateComponent,
     TaskUpdateComponent
   ],
   imports: [
