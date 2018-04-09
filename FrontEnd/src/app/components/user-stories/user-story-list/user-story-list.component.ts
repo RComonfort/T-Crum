@@ -9,13 +9,14 @@ import { User_story } from '../../../models/user_story.model';
   styleUrls: ['./user-story-list.component.css']
 })
 export class UserStoryListComponent implements OnInit {
-
+  sprint_id: number;
   message: string;
   user_stories: User_story[];
 
   constructor(private crud:CrudService) { }
 
   ngOnInit() {
+    this.sprint_id = 2;
     this.crud.list(this.crud.models.USER_STORY)
     .subscribe(
       (res:User_story[])=>{

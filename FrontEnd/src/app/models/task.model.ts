@@ -1,13 +1,13 @@
-//import { User_story } from "./user_story.model";
-//import { Member } from "./member.model";
+import { User_story } from "./user_story.model";
+import { Member } from "./member.model";
 
 export class Task {
     constructor(
 		public duration: number,
 		public name: string,
 		public completed: boolean,
-		//public user_story_id?: User_story,
-		//public members?: Member[],
+		public user_story_id?: User_story,
+		public members?: Member[],
         public id?: number,
     ) { }
 }

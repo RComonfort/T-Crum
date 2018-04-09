@@ -16,10 +16,10 @@ export class CrudService {
     USER_STORY: "user-stories",
     ACCEPTANCE_CRITERIA: "acceptance-criteria",
     MEMBER_TASK: "member-task",
-    MEMBER_PROJECT: "member_project",
+    MEMBER_PROJECT: "member-project",
     PROJECT_TECHNOLOGY: "project-technology",
     LOGS: "logs",
-    TECHNOLOGY: "tecnologies"
+    TECHNOLOGY: "technologies" 
   };
 
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {
