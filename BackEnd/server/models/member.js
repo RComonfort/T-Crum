@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   Member.associate = function (models) {
 
     Member.belongsToMany(models.Project, {
-      through: 'member_project',
+      through: 'Member_projects',
       foreignKey: 'member_id',
       // otherKey: 'project_id'
       as: 'projects'
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
 
     //One user can have many tasks
     Member.belongsToMany(models.Task, {
-      through: 'member_task',
+      through: 'Member_tasks',
       foreignKey: 'member_id',
       // otherKey: 'task_id',
       as: 'tasks'

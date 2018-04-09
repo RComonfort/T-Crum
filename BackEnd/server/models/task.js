@@ -31,10 +31,10 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Task.belongsToMany(models.Member, {
-      through: 'member_task', 
+      through: 'Member_tasks', 
       foreignKey: 'task_id', 
       otherKey: 'member_id',
-      as: 'users'
+      as: 'members'
     });
   };
   return Task;

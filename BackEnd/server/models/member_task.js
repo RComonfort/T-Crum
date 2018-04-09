@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Member_task = sequelize.define('Member_task', {
+    const Member_task = sequelize.define('Member_tasks', {
         id: {
             allowNull: false,
             autoIncrement: true,
