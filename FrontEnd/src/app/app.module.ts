@@ -20,6 +20,7 @@ import { UserStoryListComponent } from './components/user-stories/user-story-lis
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MemberCreateComponent } from './components/member/member-create/member-
     UserStoryListComponent,
     TaskListComponent,
     SprintListComponent,
-    MemberCreateComponent
+    MemberCreateComponent,
+    UserStoryCreateComponent
   ],
   imports: [
     BrowserModule,
