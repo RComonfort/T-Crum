@@ -28,6 +28,7 @@ import { AcceptanceCriteriaListComponent } from './components/acceptance-criteri
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
+import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 
 @NgModule({
@@ -55,7 +56,8 @@ import { TaskUpdateComponent } from './components/tasks/task-update/task-update.
     TaskListComponent,
     MemberCreateComponent,
     SprintListComponent,
-    TaskUpdateComponent
+    TaskUpdateComponent,
+    SprintRetrieveComponent
   ],
   imports: [
     BrowserModule,
