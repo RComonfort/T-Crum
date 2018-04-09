@@ -24,10 +24,18 @@ export class CrudService {
 
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {
     this.URL = 'http://localhost:8000/api';
-    this.headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.auth.getToken()
-    });
+
+    if(this.auth.isLoggedIn()){
+      this.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.auth.getToken()
+      });
+    }
+    else{
+      this.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+    }
   }
 
   list(model: string) {
@@ -40,6 +48,14 @@ export class CrudService {
   retrieve(model: string, id: any) {
     return this.http.get(
       this.URL + "/" + model + "/" + id,
+      { headers: this.headers }
+    );
+  }
+
+  registerMember(body:any) {
+    return this.http.post(
+      this.URL + "/" + this.models.MEMBER,
+      body,
       { headers: this.headers }
     );
   }
