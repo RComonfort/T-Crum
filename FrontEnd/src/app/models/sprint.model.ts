@@ -8,7 +8,7 @@ export class Sprint {
         public updatedAt: Date,
         public createdAt: Date,
         public project_id: Number,
-        public projects?: Project,
+        public project?: Project,
         public id?: number,
     ) { }
 }

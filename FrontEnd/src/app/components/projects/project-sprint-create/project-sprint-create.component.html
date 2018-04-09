@@ -65,7 +65,8 @@
                                     {{psprint.comment}}
                                 </td>
                                 <td>
-                                      <button class="btn btn-danger pull-right" (click)="deleteSprint(psprint.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-danger pull-right" (click)="deleteSprint(psprint.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-primary pull-right" routerLink="/sprints/{{psprint.id}}"><i class="material-icons">info</i></button>
                                 </td>
                             </tr>
                         </tbody>
