@@ -30,6 +30,7 @@ import { AcceptanceCriteriaCreateComponent } from './components/acceptance-crite
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
+import { ProjectSprintCreateComponent } from './components/projects/project-sprint-create/project-sprint-create.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { TaskUpdateComponent } from './components/tasks/task-update/task-update.
     MemberCreateComponent,
     SprintListComponent,
     TaskUpdateComponent,
-    SprintRetrieveComponent
+    SprintRetrieveComponent,
+    ProjectSprintCreateComponent
   ],
   imports: [
     BrowserModule,
