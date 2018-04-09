@@ -21,6 +21,7 @@ import { TaskListComponent } from './components/tasks/task-list/task-list.compon
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
+import { AcceptanceCriteriaEditComponent } from './components/acceptance-criteria/acceptance-criteria-edit/acceptance-criteria-edit.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { TechnologiesListComponent } from './components/technologies/technologie
     MemberCreateComponent,
     SprintListComponent,
     TechnologiesListComponent,
-    AcceptanceCriteriaCreateComponent
+    AcceptanceCriteriaCreateComponent,
+    AcceptanceCriteriaEditComponent
   ],
   imports: [
     BrowserModule,

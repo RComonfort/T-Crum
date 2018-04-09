@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
-import {Acceptance_criteria} from '../../../models/acceptance_criteria.model';
+import { Acceptance_criteria } from '../../../models/acceptance_criteria.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-acceptance-criteria-list',
@@ -13,7 +14,7 @@ export class AcceptanceCriteriaListComponent implements OnInit {
   acceptance_criteria: Acceptance_criteria[];
   message: String;
 
-  constructor(private crud:CrudService) {}
+  constructor(private crud:CrudService, private router:Router) {}
 
   ngOnInit() {
     this.crud.list(this.crud.models.ACCEPTANCE_CRITERIA)
@@ -49,6 +50,10 @@ export class AcceptanceCriteriaListComponent implements OnInit {
           this.message = err.error.message;
         }
       );
+  }
+
+  onSelectEdit( id : number){
+    this.router.navigate(['../../acceptance-criteria/update', id]);
   }
 
 }
