@@ -13,7 +13,7 @@
                     <span>
                         <b> Error</b> {{message}}</span>
                 </div>
-              <button class="btn btn-success pull-right" (click)="createProject()">Crear proyecto</button>
+              <button  *ngIf="auth.isRoot()" class="btn btn-success pull-right" (click)="createProject()">Crear proyecto</button>
               <div class="table-responsive">
                   <table class="table">
                       <thead class=" text-primary">
@@ -29,7 +29,7 @@
                           <th>
                             Fecha de termino
                           </th>
-                          <th>
+                          <th *ngIf="auth.isRoot()">
                             Scrum master
                           </th>
                       </thead>
@@ -47,12 +47,12 @@
                               <td>
                                   {{project.end_date}}
                               </td>
-                              <td>
+                              <td *ngIf="auth.isRoot()">
                                   {{project.scrum_master.name}}
                               </td>
                               <td>
-                                    <button class="btn btn-danger pull-right" (click)="deleteProject(project.id)"><i class="material-icons">delete</i></button>
-                                    <button class="btn btn-info pull-right" (click)="updateProject(project.id)"><i class="material-icons">edit</i></button>
+                                    <button *ngIf="auth.isRoot()" class="btn btn-danger pull-right" (click)="deleteProject(project.id)"><i class="material-icons">delete</i></button>
+                                    <button *ngIf="auth.isRoot()" class="btn btn-info pull-right" (click)="updateProject(project.id)"><i class="material-icons">edit</i></button>
                                     <button class="btn btn-primary pull-right" (click)="retrieveProject(project.id)"><i class="material-icons">info</i></button>
                               </td>
                           </tr>
