@@ -73,7 +73,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   retrieveProject(retrieveID: number){
-    this.router.navigate(['projects/retrieve/'+retrieveID]);
+    this.router.navigate(['projects/'+retrieveID]);
   }
 
   deleteProject(id: number){

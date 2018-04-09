@@ -30,9 +30,8 @@ const routes: Routes = [
   // General
   { path:'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
-  { path: 'register', component: MemberCreateComponent},
+  {path: 'register', component: MemberCreateComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  { path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   // Technologies
   { path: 'technologies', component: TechnologiesListComponent, canActivate: [AuthGuard]},
@@ -45,7 +44,7 @@ const routes: Routes = [
   {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
   {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
   {path: 'projects/update/:id', component: ProjectUpdateComponent, canActivate: [AuthGuard]},
-  {path: 'projects/retrieve/:id', component: ProjectRetrieveComponent, canActivate: [AuthGuard]},
+  {path: 'projects/:id', component: ProjectRetrieveComponent, canActivate: [AuthGuard]},
   
   // Tasks
   {path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard]},
@@ -58,7 +57,7 @@ const routes: Routes = [
   {path: 'user-stories/update/:id', component: UserStoryUpdateComponent, canActivate: [AuthGuard]},
   {path: 'user-stories/:id', component: UserStoryRetrieveComponent, canActivate: [AuthGuard]},
 
-  {path:'', component: AppComponent, canActivate: [AuthGuard]},
+  {path:'', redirectTo:'projects', pathMatch: 'full'},
 
   { path: '**', redirectTo: '' }
 ];
