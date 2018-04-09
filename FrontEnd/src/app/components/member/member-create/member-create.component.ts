@@ -11,7 +11,8 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./member-create.component.css']
 })
 export class MemberCreateComponent implements OnInit {
-  message: string;
+  errorMessage: string;
+  successMessage: string;
   member: Member;
   //A string to store the password confirmation
   passwordConfirmation: string; 
@@ -22,8 +23,9 @@ export class MemberCreateComponent implements OnInit {
     if (this.auth.isLoggedIn()) {
       this.router.navigate(['home'])
     }
-    this.message = "";
-    this.passwordConfirmation = "";
+    this.errorMessage = '';
+    this.successMessage = '';
+    this.passwordConfirmation = '';
     this.member = new Member('', '', '', '', '', null, null, '');
   }
 
@@ -40,23 +42,23 @@ export class MemberCreateComponent implements OnInit {
           (res: Member) => {
 
             /*  
-              Ideally, a message of success should be displayed
+              Ideally, a errorMessage of success should be displayed
               to let the user know that the registration was
               successful. So far, we're only taking the user 
               to the login view.
             */
-            this.message = 'Success!';
-            // this.router.navigate(['login']);
+            this.successMessage = 'The registration was successful!';
+            this.router.navigate(['login']);
           },
           (err: HttpErrorResponse) => {
             console.log('Hello'); 
             console.log(err);
-            // if (err.error) {
-            //   this.message = err.error.message;
-            // }
-            // else {
-            //   this.message = err.error.error[0].message;
-            // }
+            if (err.error) {
+              this.errorMessage = err.error.errorMessage;
+            }
+            else {
+              this.errorMessage = err.error.error[0].errorMessage;
+            }
           }
         )
     }
@@ -67,7 +69,7 @@ export class MemberCreateComponent implements OnInit {
   /**
    * Method to validate that all fields have been entered
    * (they're all necessary). If at least one of the fields
-   * hasn't been entered, then a message displaying what the
+   * hasn't been entered, then a errorMessage displaying what the
    * problem is should be displayed.
    * 
    * @returns True, if all fields have been entered. Else,
@@ -79,11 +81,11 @@ export class MemberCreateComponent implements OnInit {
         !this.member.department_major || 
         !this.member.password || 
         !this.passwordConfirmation) {
-      this.message = 'Debes introducir tu matrícula, nombre, carrera o departamento, contraseña y la confirmación de la misma.';
+      this.errorMessage = 'Debes introducir tu matrícula, nombre, carrera o departamento, contraseña y la confirmación de la misma.';
       return false;
     }
     else {
-      this.message = '';
+      this.errorMessage = '';
       return true;
     }
   }
@@ -103,7 +105,7 @@ export class MemberCreateComponent implements OnInit {
     }
     else {
 
-      this.message = 'La contraseña no fue confirmada correctamente. Inténtalo de nuevo.'
+      this.errorMessage = 'La contraseña no fue confirmada correctamente. Inténtalo de nuevo.'
       return false;
     }
   }

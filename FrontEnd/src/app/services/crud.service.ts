@@ -23,10 +23,18 @@ export class CrudService {
 
   constructor(private auth: AuthService, private http: HttpClient, private log: LogService) {
     this.URL = 'http://localhost:8000/api';
-    this.headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.auth.getToken()
-    });
+
+    if(this.auth.isLoggedIn()){
+      this.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.auth.getToken()
+      });
+    }
+    else{
+      this.headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+    }
   }
 
   list(model: string) {
