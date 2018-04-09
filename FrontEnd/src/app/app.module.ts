@@ -36,6 +36,7 @@ import { ProjectSprintCreateComponent } from './components/projects/project-spri
 import { UserStoryUpdateComponent } from './components/user-stories/user-story-update/user-story-update.component';
 import { UserStoryRetrieveComponent } from './components/user-stories/user-story-retrieve/user-story-retrieve.component';
 import { ProjectTechnologyComponent } from './components/projects/project-technology/project-technology.component';
+import { ProjectMemberComponent } from './components/projects/project-member/project-member.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { ProjectTechnologyComponent } from './components/projects/project-techno
     SprintRetrieveComponent,
     ProjectSprintCreateComponent,
     ProjectSprintCreateComponent,
-    ProjectTechnologyComponent
+    ProjectTechnologyComponent,
+    ProjectMemberComponent
   ],
   imports: [
     BrowserModule,
