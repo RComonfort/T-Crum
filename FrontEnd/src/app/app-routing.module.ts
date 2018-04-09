@@ -20,6 +20,7 @@ import { UserStoryCreateComponent } from './components/user-stories/user-story-c
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { UserStoryUpdateComponent} from './components/user-stories/user-story-update/user-story-update.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
+import { UserStoryRetrieveComponent } from './components/user-stories/user-story-retrieve/user-story-retrieve.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: 'user-stories', component: UserStoryListComponent, canActivate: [AuthGuard]},
   {path: 'user-stories/create/:sprint_id', component: UserStoryCreateComponent, canActivate: [AuthGuard]},
   {path: 'user-stories/update/:id', component: UserStoryUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'user-stories/retrieve/:id', component: UserStoryRetrieveComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '' }
