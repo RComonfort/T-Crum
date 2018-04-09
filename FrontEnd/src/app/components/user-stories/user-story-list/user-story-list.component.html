@@ -45,8 +45,8 @@
                               </td>
                               <td>
                                     <button class="btn btn-danger pull-right" (click)="deleteUserStory(user_story.id)"><i class="material-icons">delete</i></button>
-                                    <button class="btn btn-info pull-right" (click)="retrieveUserStory(user_story.id)" ><i class="material-icons">info</i></button>
-                                    <button class="btn btn-primary pull-right" ><i class="material-icons">edit</i></button>
+                                    <button class="btn btn-info pull-right" ><i class="material-icons">info</i></button>
+                                    <button class="btn btn-primary pull-right" routerLink="/user-stories/update/{{user_story.id}}"><i class="material-icons">edit</i></button>
                               </td>
                           </tr>
                       </tbody>
