@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import {Acceptance_criteria} from '../../../models/acceptance_criteria.model';
+import {User_story} from '../../../models/user_story.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -10,17 +11,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AcceptanceCriteriaCreateComponent implements OnInit {
   acceptance_criteria: Acceptance_criteria;
+  user_story: User_story;
   message: String;
 
   constructor(private crud: CrudService) { }
 
   ngOnInit() {
-    this.acceptance_criteria.id = null;
-    this.acceptance_criteria.name = null;
-    this.acceptance_criteria.type = null;
+    this.acceptance_criteria = new Acceptance_criteria(null, null, 1, null, null, null);
+    
   }
 
   create(){
+    console.log(this.acceptance_criteria);
     if(this.validate()){
       this.crud.create(this.crud.models.ACCEPTANCE_CRITERIA, this.acceptance_criteria)
       .subscribe(
@@ -28,6 +30,7 @@ export class AcceptanceCriteriaCreateComponent implements OnInit {
           this.acceptance_criteria = res;
         },
         (err:HttpErrorResponse) => {
+          console.log(err);
           if(err.error){
             this.message = err.error.message;
           }
@@ -37,15 +40,25 @@ export class AcceptanceCriteriaCreateComponent implements OnInit {
         }
       )
     }
+    return false;
   }
 
   validate(){
-    if(!this.acceptance_criteria.name || !this.acceptance_criteria.type){
-      this.message = 'Debes introducir el nombre y tipo de criterio de aceptación.';
+    if(!this.acceptance_criteria.name){
+      this.message = 'Debes introducir el nombre del criterio de aceptación.';
+      return false;
+    }
+    if(!this.acceptance_criteria.type){
+      this.message = 'Debes introducir el tipo del criterio de aceptación.';
+      return false;
+    }
+    if(!this.acceptance_criteria.user_story_id){
+      this.message = 'No hay historia de usuario relacionada';
       return false;
     }
     else{
       this.message = '';
+      console.log('Validado');
       return true;
     }
   }

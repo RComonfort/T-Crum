@@ -37,6 +37,13 @@ export class AcceptanceCriteriaListComponent implements OnInit {
       .subscribe(
         res => {
           this.message = 'Criterio de evaluación eliminado exitosamente';
+          let i;
+          for(i = 0; i < this.acceptance_criteria.length; i++){
+            if(this.acceptance_criteria[i].id == id){
+              this.acceptance_criteria.splice(i, 1);
+              break;
+            }
+          }
         },
         err => {
           this.message = err.error.message;
