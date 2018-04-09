@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+    <div *ngIf="message" class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="material-icons">close</i>
+        </button>
+        <span>
+          <b> Error</b> {{message}}
+        </span>
+    </div>
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Criterios de aceptación</h4>
+        <p class="card-category">Lista de criterios de aceptación del proyecto</p>
+      </div>
+      <div class="card-body">
+        <a class="btn btn-success pull-right text-white text-center">Agregar criterio de aceptación</a>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let acceptance_criterium of acceptance_criteria">
+                <td class="text-primary">{{acceptance_criterium.id}}</td>
+                <td class="text-primary">{{acceptance_criterium.name}}</td>
+                <td class="text-primary">{{acceptance_criterium.type}}</td>
+                <td>
+                  <a class="btn btn-danger pull-right text-white text-center"><i class="material-icons">delete</i></a>
+                  <a class="btn btn-info pull-right text-white text-center"><i class="material-icons">edit</i></a>
+                  <a class="btn btn-primary pull-right text-white text-center"><i class="material-icons">info</i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

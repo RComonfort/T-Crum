@@ -9,16 +9,24 @@ import { LogoutComponent } from './components/authentication/logout/logout.compo
 import { HomeComponent } from './components/home/home.component';
 import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+<<<<<<< HEAD
 import { TechnologiesUpdateComponent } from './components/technologies/technologies-update/technologies-update.component';
 import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
 import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
+=======
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
+import { TaskCreateComponent } from './components/tasks/task-create/task-create.component';
+import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
+
+>>>>>>> frontend_model_task
 
 const routes: Routes = [
   { path:'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
   {path: 'register', component: MemberCreateComponent},
+<<<<<<< HEAD
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path:'', component: AppComponent, canActivate: [AuthGuard]},
   // Technologies
@@ -29,6 +37,13 @@ const routes: Routes = [
   {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
   {path: 'projects/update/:id', component: ProjectUpdateComponent, canActivate: [AuthGuard]},
   {path: 'projects/retrieve/:id', component: ProjectRetrieveComponent, canActivate: [AuthGuard]},
+=======
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/create/:user_story_id', component: TaskCreateComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/update/:id', component: TaskUpdateComponent, canActivate: [AuthGuard]},
+  {path:'', component: AppComponent, canActivate: [AuthGuard]},
+>>>>>>> frontend_model_task
 
   { path: '**', redirectTo: '' }
 ];
