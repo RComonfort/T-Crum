@@ -20,7 +20,8 @@ import { TaskCreateComponent } from './components/tasks/task-create/task-create.
 import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
-
+import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
+import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
 
 const routes: Routes = [
   { path:'login', component: LoginComponent},
@@ -34,7 +35,7 @@ const routes: Routes = [
 
   //Acceptance_criteria
   { path:'acceptance-criteria/update/:id', component: AcceptanceCriteriaEditComponent, canActivate: [AuthGuard]},
-  
+  { path:'acceptance-criteria/create', component: AcceptanceCriteriaCreateComponent, canActivate: [AuthGuard]},
   
   //Projects
   {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},

@@ -52,6 +52,10 @@ export class AcceptanceCriteriaListComponent implements OnInit {
       );
   }
 
+  onSelectCreate(){
+    this.router.navigate(['../../acceptance-criteria/create']);
+  }
+
   onSelectEdit( id : number){
     this.router.navigate(['../../acceptance-criteria/update', id]);
   }
