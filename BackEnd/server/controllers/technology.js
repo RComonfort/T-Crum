@@ -41,10 +41,10 @@ module.exports = {
 
  	update(req, res) {
 
-        if (!req.params.id || !Numbers.isInteger(req.params.id))
+        if (!req.params.id)
             return res.status(400).send({message: 'ID attribute can not be an empty field.'});
 
-        if(!req.body.name || !isAValidName(req.body.name))
+        if(!req.body.name)
             return res.status(400).send({message: 'The attribute name is invalid. It must match a value in the enum.'});
 
 
