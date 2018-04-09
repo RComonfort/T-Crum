@@ -18,7 +18,6 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
 import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
-import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
 
 
 @NgModule({
@@ -29,13 +28,9 @@ import { TechnologiesCreateComponent } from './components/technologies/technolog
     HomeComponent,
     NavComponent,
     ProjectListComponent,
-
     SprintListComponent,
-    SprintRetrieveComponent
-
-    TechnologiesListComponent,
-    TechnologiesCreateComponent
-
+    SprintRetrieveComponent,
+    TechnologiesListComponent
   ],
   imports: [
     BrowserModule,

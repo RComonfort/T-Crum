@@ -7,14 +7,19 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { AppComponent } from './app.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
-import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
+import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
 
 const routes: Routes = [
-  {path:'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path:'', component: AppComponent, canActivate: [AuthGuard]},
-  {path: 'sprints/:id', component: SprintRetrieveComponent}
+  { path:'login', component: LoginComponent},
+  { path: 'logout', component: LogoutComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path:'', component: AppComponent, canActivate: [AuthGuard]},
+
+  // Technologies
+  { path: 'technologies', component: TechnologiesListComponent, canActivate: [AuthGuard]},
+  
+
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -22,4 +27,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AuthGuard]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
