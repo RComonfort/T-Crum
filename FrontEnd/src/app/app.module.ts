@@ -31,6 +31,7 @@ import { UserStoryCreateComponent } from './components/user-stories/user-story-c
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 import { UserStoryUpdateComponent } from './components/user-stories/user-story-update/user-story-update.component';
+import { UserStoryRetrieveComponent } from './components/user-stories/user-story-retrieve/user-story-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UserStoryUpdateComponent } from './components/user-stories/user-story-u
     SprintListComponent,
     UserStoryCreateComponent,
     TaskUpdateComponent,
-    UserStoryUpdateComponent
+    UserStoryUpdateComponent,
+    UserStoryRetrieveComponent
   ],
   imports: [
     BrowserModule,
