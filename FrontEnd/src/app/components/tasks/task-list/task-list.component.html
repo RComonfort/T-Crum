@@ -13,7 +13,7 @@
                         <span>
                             <b> Error</b> {{message}}</span>
                 </div>
-              <button class="btn btn-success pull-right" (click)="createTask()">Crear Tarea</button>
+                <a class="btn btn-success pull-right" routerLink="/tasks/create/{{user_story_id}}">Crear Tarea</a>
               <div class="table-responsive">
                   <table class="table">
                       <thead class=" text-primary">
@@ -49,7 +49,7 @@
                                </td>
                               <td>
                                     <button class="btn btn-danger pull-right" (click)="deleteTask(task.id)"><i class="material-icons">delete</i></button>
-                                    <button class="btn btn-info pull-right" ><i class="material-icons">edit</i></button>
+                                    <button class="btn btn-info pull-right" routerLink="/tasks/update/{{task.id}}"><i class="material-icons" >edit</i></button>
                                     <button class="btn btn-primary pull-right" ><i class="material-icons">info</i></button>
                               </td>
                           </tr>

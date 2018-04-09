@@ -5,15 +5,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/authentication/login/login.component';
 
 import { AuthService } from './services/auth.service';
-import { LogoutComponent } from './components/authentication/logout/logout.component';
-import { HomeComponent } from './components/home/home.component';
 import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
+
+import { LoginComponent } from './components/authentication/login/login.component';
+import { LogoutComponent } from './components/authentication/logout/logout.component';
+import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
+import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
+import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { TechnologiesUpdateComponent } from './components/technologies/technologies-update/technologies-update.component';
+import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
+import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
 import { TaskListComponent } from './components/tasks/task-list/task-list.component';
 import { TaskCreateComponent } from './components/tasks/task-create/task-create.component';
@@ -22,6 +29,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
 import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
+import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +39,20 @@ import { SprintListComponent } from './components/sprints/sprint-list/sprint-lis
     HomeComponent,
     NavComponent,
     ProjectListComponent,
-    TaskListComponent,
+    TechnologiesListComponent,
+    TechnologiesCreateComponent,
+    TechnologiesUpdateComponent,
     MemberCreateComponent,
+    ProjectCreateComponent,
+    ProjectUpdateComponent,
+    ProjectRetrieveComponent,
+    TaskListComponent,
     UserStoryListComponent,
     TaskCreateComponent,
     AcceptanceCriteriaListComponent,
     SprintListComponent,
-    UserStoryCreateComponent
+    UserStoryCreateComponent,
+    TaskUpdateComponent
   ],
   imports: [
     BrowserModule,

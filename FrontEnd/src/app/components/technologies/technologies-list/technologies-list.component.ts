@@ -12,26 +12,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class TechnologiesListComponent implements OnInit {
   message: string;
   technologies: Technology[];
+  newTechnology: Technology;
   
   constructor(private crud:CrudService) { }
 
   ngOnInit() {
+    this.newTechnology = new Technology('', null, null);
     this.message = "";
-    this.crud.list(this.crud.models.TECHNOLOGY)
-    .subscribe(
-      (res:Technology[]) => {
-        console.log(res);
-        this.technologies = res;
-      },
-      (err:HttpErrorResponse) => {
-        if(err.error){
-          this.message = err.error.message;
-        }
-        else{
-          this.message = err.error.errors[0].message;
-        }
-      } 
-    )
+    this.updateList();
   }
 
   deleteTechnology(id:number){
@@ -64,5 +52,27 @@ export class TechnologiesListComponent implements OnInit {
         break;
       }
     }
+  }
+
+  updateList(){
+    this.crud.list(this.crud.models.TECHNOLOGY)
+    .subscribe(
+      (res:Technology[]) => {
+        console.log(res);
+        this.technologies = res;
+      },
+      (err:HttpErrorResponse) => {
+        if(err.error){
+          this.message = err.error.message;
+        }
+        else{
+          this.message = err.error.errors[0].message;
+        }
+      } 
+    )
+  }
+
+  onSubmit(event:true){
+    this.updateList();
   }
 }

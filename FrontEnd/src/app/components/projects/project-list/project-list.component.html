@@ -1,11 +1,18 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12" >
       <div class="card">
           <div class="card-header card-header-primary">
               <h4 class="card-title ">Proyectos</h4>
               <p>Proyectos activos</p>
           </div>
           <div class="card-body">
+                <div *ngIf="message" class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b> Error</b> {{message}}</span>
+                </div>
               <button class="btn btn-success pull-right" (click)="createProject()">Crear proyecto</button>
               <div class="table-responsive">
                   <table class="table">
@@ -41,12 +48,12 @@
                                   {{project.end_date}}
                               </td>
                               <td>
-                                  {{project.scrum_master_id}}
+                                  {{project.scrum_master.name}}
                               </td>
                               <td>
                                     <button class="btn btn-danger pull-right" (click)="deleteProject(project.id)"><i class="material-icons">delete</i></button>
-                                    <button class="btn btn-info pull-right" ><i class="material-icons">edit</i></button>
-                                    <button class="btn btn-primary pull-right" ><i class="material-icons">info</i></button>
+                                    <button class="btn btn-info pull-right" (click)="updateProject(project.id)"><i class="material-icons">edit</i></button>
+                                    <button class="btn btn-primary pull-right" (click)="retrieveProject(project.id)"><i class="material-icons">info</i></button>
                               </td>
                           </tr>
                       </tbody>

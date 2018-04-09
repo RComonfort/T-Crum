@@ -2,14 +2,14 @@ const Technology = require('../models').Technology;
 
 module.exports = {
     create(req, res) {
-       if(!req.body.name /*|| !Validation.isAValidName(req.body.name)*/)
+       if(!req.body.name)
 			return res.status(400).send({message: 'The attribute name is invalid. It must match a value in the enum.'});
 
         return Technology
             .create({
                 name: req.body.name
             })
-            .then(technology => res.status(200).send(technology))
+            .then(Technology => res.status(200).send(Technology))
             .catch(error => res.status(400).send(error));
     },
 
@@ -17,7 +17,7 @@ module.exports = {
 
         return Technology
         .findAll()
-        .then(technology => res.status(200).send(technology))
+        .then(Technology => res.status(200).send(Technology))
         .catch(error => res.status(400).send(error));
     },
 
@@ -30,28 +30,28 @@ module.exports = {
 
         return Technology
             .findById(req.params.id, {})
-            .then(technology => {
-                if(!technology) {
+            .then(Technology => {
+                if(!Technology) {
                     return res.status(404).send({ message: 'Technology not found.'});
                 }
-                return res.status(200).send(technology);
+                return res.status(200).send(Technology);
             })
             .catch(error => res.status(400).send(error));
     },
 
  	update(req, res) {
 
-        if (!req.params.id || !Numbers.isInteger(req.params.id))
+        if (!req.params.id)
             return res.status(400).send({message: 'ID attribute can not be an empty field.'});
 
-        if(!req.body.name || !isAValidName(req.body.name))
+        if(!req.body.name)
             return res.status(400).send({message: 'The attribute name is invalid. It must match a value in the enum.'});
 
 
         return Technology
             .findById(req.params.id, {})
-            .then(technology => {
-                if (!technology) {
+            .then(Technology => {
+                if (!Technology) {
                     return res.status(400).send({
                     message: 'Technology not found',
                   });
@@ -62,7 +62,7 @@ module.exports = {
                         name: req.body.name
                     })
 
-                    .then(() => res.status(200).send(technology))
+                    .then(() => res.status(200).send(Technology))
                     .catch((error) => res.status(400).send(error));
             })
 

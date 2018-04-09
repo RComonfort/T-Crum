@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../../services/crud.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Project } from '../../../models/project.model';
-
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -14,7 +14,7 @@ export class ProjectListComponent implements OnInit {
   message: string;
   projects: Project[];
 
-  constructor(private crud:CrudService) { }
+  constructor(private crud:CrudService, private router:Router) { }
 
   ngOnInit() {
     this.crud.list(this.crud.models.PROJECT)
@@ -32,6 +32,18 @@ export class ProjectListComponent implements OnInit {
         }
       }
     )
+  }
+
+  createProject(){
+    this.router.navigate(['projects/create']);
+  }
+
+  updateProject(updateID: number){
+    this.router.navigate(['projects/update/'+updateID]);
+  }
+
+  retrieveProject(retrieveID: number){
+    this.router.navigate(['projects/retrieve/'+retrieveID]);
   }
 
   deleteProject(id: number){
