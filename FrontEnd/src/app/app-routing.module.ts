@@ -15,6 +15,10 @@ import { ProjectCreateComponent } from './components/projects/project-create/pro
 import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
+import { TaskListComponent } from './components/tasks/task-list/task-list.component';
+import { TaskCreateComponent } from './components/tasks/task-create/task-create.component';
+import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
+
 
 const routes: Routes = [
   { path:'login', component: LoginComponent},
@@ -35,6 +39,11 @@ const routes: Routes = [
   {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
   {path: 'projects/update/:id', component: ProjectUpdateComponent, canActivate: [AuthGuard]},
   {path: 'projects/retrieve/:id', component: ProjectRetrieveComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/create/:user_story_id', component: TaskCreateComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/update/:id', component: TaskUpdateComponent, canActivate: [AuthGuard]},
+  {path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '' }
 ];
