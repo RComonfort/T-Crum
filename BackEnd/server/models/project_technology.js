@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Project_technology = sequelize.define('Project_technology', {
+  var Project_technology = sequelize.define('Project_technologies', {
     id: {
       allowNull: false,
       autoIncrement: true,

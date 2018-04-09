@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Project.belongsToMany(models.Technology, {
-      through: 'project_technology',
+      through: 'Project_technologies',
       foreignKey: 'project_id',
       //otherKey: 'technology_id'
       as: 'technologies',
