@@ -14,7 +14,7 @@
         <p class="card-category">Lista de criterios de aceptación del proyecto</p>
       </div>
       <div class="card-body">
-        <a class="btn btn-success pull-right text-white text-center">Agregar criterio de aceptación</a>
+        <a class="btn btn-success pull-right text-white text-center" routerLink="/acceptance-criteria/create/{{user_story_id}}">Agregar criterio de aceptación</a>
         <div class="table-responsive">
           <table class="table">
             <thead class="text-primary">
@@ -26,16 +26,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let acceptance_criterium of acceptance_criteria">
-                <td class="text-primary">{{acceptance_criterium.id}}</td>
-                <td class="text-primary">{{acceptance_criterium.name}}</td>
-                <td class="text-primary">{{acceptance_criterium.type}}</td>
-                <td>
-                  <a class="btn btn-danger pull-right text-white text-center"><i class="material-icons">delete</i></a>
-                  <a class="btn btn-info pull-right text-white text-center"><i class="material-icons">edit</i></a>
-                  <a class="btn btn-primary pull-right text-white text-center"><i class="material-icons">info</i></a>
-                </td>
-              </tr>
+              <ng-container *ngFor="let acceptance_criterium of acceptance_criteria">
+                <tr *ngIf="user_story_id == acceptance_criterium.user_story_id">
+                  <td class="text-primary">{{acceptance_criterium.id}}</td>
+                  <td class="text-primary">{{acceptance_criterium.name}}</td>
+                  <td class="text-primary">{{acceptance_criterium.type}}</td>
+                  <td>
+                    <a class="btn btn-danger pull-right text-white text-center" (click)="delete(acceptance_criterium.id)"><i class="material-icons">delete</i></a>
+                    <a class="btn btn-info pull-right text-white text-center" (click)="onSelectEdit(acceptance_criterium.id)"><i class="material-icons">edit</i></a>
+                  </td>
+                </tr>
+              </ng-container> 
             </tbody>
           </table>
         </div>

@@ -14,9 +14,10 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
-import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
-import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
+import { AcceptanceCriteriaEditComponent } from './components/acceptance-criteria/acceptance-criteria-edit/acceptance-criteria-edit.component';
+import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
 import { TechnologiesUpdateComponent } from './components/technologies/technologies-update/technologies-update.component';
 import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
 import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
@@ -27,10 +28,13 @@ import { TaskCreateComponent } from './components/tasks/task-create/task-create.
 import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
+import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 import { ProjectSprintCreateComponent } from './components/projects/project-sprint-create/project-sprint-create.component';
+import { UserStoryUpdateComponent } from './components/user-stories/user-story-update/user-story-update.component';
+import { UserStoryRetrieveComponent } from './components/user-stories/user-story-retrieve/user-story-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +43,15 @@ import { ProjectSprintCreateComponent } from './components/projects/project-spri
     LogoutComponent,
     HomeComponent,
     NavComponent,
+    AcceptanceCriteriaListComponent,
     ProjectListComponent,
+    UserStoryListComponent,
+    TaskListComponent,
+    MemberCreateComponent,
+    SprintListComponent,
     TechnologiesListComponent,
+    AcceptanceCriteriaCreateComponent,
+    AcceptanceCriteriaEditComponent,
     TechnologiesCreateComponent,
     TechnologiesUpdateComponent,
     MemberCreateComponent,
@@ -48,15 +59,14 @@ import { ProjectSprintCreateComponent } from './components/projects/project-spri
     ProjectUpdateComponent,
     ProjectRetrieveComponent,
     TaskListComponent,
-    MemberCreateComponent,
     UserStoryListComponent,
     TaskCreateComponent,
     AcceptanceCriteriaListComponent,
-    ProjectListComponent,
-    UserStoryListComponent,
-    TaskListComponent,
-    MemberCreateComponent,
     SprintListComponent,
+    UserStoryCreateComponent,
+    TaskUpdateComponent,
+    UserStoryUpdateComponent,
+    UserStoryRetrieveComponent,
     TaskUpdateComponent,
     SprintRetrieveComponent,
     ProjectSprintCreateComponent
