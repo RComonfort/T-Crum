@@ -5,13 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/authentication/login/login.component';
 
 import { AuthService } from './services/auth.service';
-import { LogoutComponent } from './components/authentication/logout/logout.component';
-import { HomeComponent } from './components/home/home.component';
 import { CrudService } from './services/crud.service';
 import { LogService } from './services/log.service';
+
+import { LoginComponent } from './components/authentication/login/login.component';
+import { LogoutComponent } from './components/authentication/logout/logout.component';
+import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
@@ -22,6 +23,11 @@ import { MemberCreateComponent } from './components/member/member-create/member-
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
 import { AcceptanceCriteriaEditComponent } from './components/acceptance-criteria/acceptance-criteria-edit/acceptance-criteria-edit.component';
+import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
+import { TechnologiesUpdateComponent } from './components/technologies/technologies-update/technologies-update.component';
+import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
+import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,13 @@ import { AcceptanceCriteriaEditComponent } from './components/acceptance-criteri
     SprintListComponent,
     TechnologiesListComponent,
     AcceptanceCriteriaCreateComponent,
-    AcceptanceCriteriaEditComponent
+    AcceptanceCriteriaEditComponent,
+    TechnologiesCreateComponent,
+    TechnologiesUpdateComponent,
+    MemberCreateComponent,
+    ProjectCreateComponent,
+    ProjectUpdateComponent,
+    ProjectRetrieveComponent
   ],
   imports: [
     BrowserModule,
