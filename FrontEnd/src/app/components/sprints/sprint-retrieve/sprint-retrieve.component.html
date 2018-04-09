@@ -20,6 +20,10 @@
                 <td> {{sprints.createdAt}}</td>
                 <td> {{sprints.days}} </td>
                 <td> {{sprints.comment}} </td>
+                <td> 
+                  <a routerLink="/home" class="btn btn-danger pull-right" (click)="deleteSprint(sprints.id)" ><i class="material-icons">delete</i></a>
+                  <a routerLink="/sprints/{{id}}" class="btn btn-info pull-right"><i class="material-icons">edit</i></a>
+                </td>
               </tr>
             </tbody>
           </table>
