@@ -49,7 +49,7 @@
                                </td>
                               <td>
                                     <button class="btn btn-danger pull-right" (click)="deleteTask(task.id)"><i class="material-icons">delete</i></button>
-                                    <button class="btn btn-info pull-right" ><i class="material-icons">edit</i></button>
+                                    <button class="btn btn-info pull-right" routerLink="/tasks/update/{{task.id}}"><i class="material-icons" >edit</i></button>
                                     <button class="btn btn-primary pull-right" ><i class="material-icons">info</i></button>
                               </td>
                           </tr>
