@@ -1,18 +1,19 @@
-const member_project = require('../models').Member_project;
+const member_project = require('../models').Member_projects;
 
 module.exports = {
   create(req, res) {
 
-    if (!req.body.member_id || !Numbers.isInteger(req.body.member_id))
+    if (!req.body.member_id)
       return res.status(400).send({message: 'El atributo member_id no puede estar vacio y debe ser un numero entero.'});
 
-    if (!req.body.project_id || !Numbers.isInteger(req.body.project_id))
+    if (!req.body.project_id)
       return res.status(400).send({message: 'El atributo project_id no puede estar vacio y debe ser un numero entero.'});
 
     return member_project
       .create({
         member_id: req.body.member_id,
         project_id: req.body.project_id,
+        project_role: req.body.project_role
       })
       .then(member_project => res.status(200).send(member_project))
       .catch(error => res.status(400).send(error));
@@ -26,7 +27,7 @@ module.exports = {
   },
   retrieve(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(req.params.id))
+    if (!req.params.id)
       return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
 
     return member_project
@@ -44,10 +45,10 @@ module.exports = {
   },
   update(req, res) {
 
-    if (!req.body.member_id || !Numbers.isInteger(req.body.member_id))
+    if (!req.body.member_id)
       return res.status(400).send({message: 'El atributo member_id no puede estar vacio y debe ser un numero entero.'});
 
-    if (!req.body.project_id || !Numbers.isInteger(req.body.project_id))
+    if (!req.body.project_id)
       return res.status(400).send({message: 'El atributo project_id no puede estar vacio y debe ser un numero entero.'});
 
     return member_project
@@ -71,7 +72,7 @@ module.exports = {
   },
   destroy(req, res) {
 
-    if (!req.params.id || !Numbers.isInteger(req.params.id))
+    if (!req.params.id)
       return res.status(400).send({message: 'El atributo id no puede estar vacio y debe ser un numero entero.'});
 
     return member_project

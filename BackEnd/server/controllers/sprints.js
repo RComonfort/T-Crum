@@ -33,7 +33,7 @@ module.exports = {
                     },
                     {
                         model: Project,
-                        as: 'projects',
+                        as: 'project',
                         required: true,
                         attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
                     },
@@ -59,7 +59,7 @@ module.exports = {
                     {
                         // association: 'projects'
                         model: Project,
-                        as: 'projects',
+                        as: 'project',
                         required: true,
                         //Without this line of attributes, it fails!!
                         attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']

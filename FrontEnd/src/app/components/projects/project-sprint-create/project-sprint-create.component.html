@@ -14,12 +14,12 @@
                           <b> Error</b> {{message}}</span>
                   </div>
                   <div *ngIf="message && message == 'Succes'" class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <i class="material-icons">close</i>
-                        </button>
-                        <span>
-                          <b> Success</b> {{message}}</span>
-                      </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="material-icons">close</i>
+                    </button>
+                    <span>
+                        <b> Success</b> {{message}}</span>
+                </div>
                 <div class="table-responsive">
                     <form (submit)="createSprint()">
                         <div class="row">
@@ -65,7 +65,8 @@
                                     {{psprint.comment}}
                                 </td>
                                 <td>
-                                      <button class="btn btn-danger pull-right" (click)="deleteSprint(psprint.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-danger pull-right" (click)="deleteSprint(psprint.id)"><i class="material-icons">delete</i></button>
+                                    <button class="btn btn-primary pull-right" routerLink="/sprints/{{psprint.id}}"><i class="material-icons">info</i></button>
                                 </td>
                             </tr>
                         </tbody>
