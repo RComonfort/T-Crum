@@ -15,7 +15,8 @@ import { LogService } from './services/log.service';
 import { NavComponent } from './components/nav/nav.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
-import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
+// import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
+import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TechnologiesCreateComponent } from './components/technologies/technolog
     NavComponent,
     ProjectListComponent,
     TechnologiesListComponent,
-    TechnologiesCreateComponent
+    // TechnologiesCreateComponent,
+    MemberCreateComponent
   ],
   imports: [
     BrowserModule,
