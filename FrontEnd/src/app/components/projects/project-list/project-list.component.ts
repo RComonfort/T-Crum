@@ -39,12 +39,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   updateProject(updateID: number){
-    let idParam : NavigationExtras = {
-      queryParams: {
-        "id": updateID
-      }
-    };
-    this.router.navigate(['projects/update'], idParam);
+    this.router.navigate(['projects/update/'+updateID]);
   }
 
   deleteProject(id: number){

@@ -7,8 +7,9 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { AppComponent } from './app.component';
 import { LogoutComponent } from './components/authentication/logout/logout.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
+import { ProjectListComponent } from './components/projects/project-list/project-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
   {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
+  {path: 'projects/update/:id', component: ProjectUpdateComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '' }
