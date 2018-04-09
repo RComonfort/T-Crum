@@ -10,10 +10,10 @@ export class LogService {
 
   constructor(private auth:AuthService, private http:HttpClient) {
     this.URL = 'http://10.50.67.83:8000/api';
-    this.headers = new HttpHeaders();
-    this.headers.append('ContentType', 'application/json');
-    this.headers.append('Access-Control-Allow-Origin', '*');
-    this.headers.append('Authorization', this.auth.getToken());
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.auth.getToken()
+    });
   }
 
   record(model:string, operation:string) {
