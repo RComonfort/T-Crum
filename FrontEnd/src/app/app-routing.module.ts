@@ -10,6 +10,10 @@ import { HomeComponent } from './components/home/home.component';
 import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 import { TechnologiesUpdateComponent } from './components/technologies/technologies-update/technologies-update.component';
+import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
+import { ProjectListComponent } from './components/projects/project-list/project-list.component';
+import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
 
 const routes: Routes = [
   { path:'login', component: LoginComponent},
@@ -20,6 +24,12 @@ const routes: Routes = [
   // Technologies
   { path: 'technologies', component: TechnologiesListComponent, canActivate: [AuthGuard]},
   { path: 'technologies/update/:id', component: TechnologiesUpdateComponent, canActivate: [AuthGuard]},
+  //Projects
+  {path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard]},
+  {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
+  {path: 'projects/update/:id', component: ProjectUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'projects/retrieve/:id', component: ProjectRetrieveComponent, canActivate: [AuthGuard]},
+
   { path: '**', redirectTo: '' }
 ];
 

@@ -19,6 +19,9 @@ import { TechnologiesListComponent } from './components/technologies/technologie
 import { TechnologiesCreateComponent } from './components/technologies/technologies-create/technologies-create.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
 import { TechnologiesUpdateComponent } from './components/technologies/technologies-update/technologies-update.component';
+import { ProjectCreateComponent } from './components/projects/project-create/project-create.component';
+import { ProjectUpdateComponent } from './components/projects/project-update/project-update.component';
+import { ProjectRetrieveComponent } from './components/projects/project-retrieve/project-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { TechnologiesUpdateComponent } from './components/technologies/technolog
     TechnologiesListComponent,
     TechnologiesCreateComponent,
     TechnologiesUpdateComponent,
-    MemberCreateComponent
+    MemberCreateComponent,
+    ProjectCreateComponent,
+    ProjectUpdateComponent,
+    ProjectRetrieveComponent
   ],
   imports: [
     BrowserModule,
