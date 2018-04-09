@@ -24,7 +24,6 @@ export class AcceptanceCriteriaCreateComponent implements OnInit {
   }
 
   create(){
-    console.log(this.acceptance_criteria);
     if(this.validate()){
       this.crud.create(this.crud.models.ACCEPTANCE_CRITERIA, this.acceptance_criteria)
       .subscribe(

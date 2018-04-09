@@ -14,6 +14,7 @@ export class AcceptanceCriteriaEditComponent implements OnInit {
   acceptance_criteria: Acceptance_criteria;
   user_story: User_story;
   message: String;
+  user_story_id : number;
 
   constructor(private crud: CrudService, private route:ActivatedRoute,private router:Router) { }
 
@@ -24,6 +25,7 @@ export class AcceptanceCriteriaEditComponent implements OnInit {
     .subscribe(
       (res:Acceptance_criteria) => {
         this.acceptance_criteria = res;
+        this.user_story_id = res.user_story_id;
       },
       (err:HttpErrorResponse) => {
         if(err.error){
@@ -43,7 +45,7 @@ export class AcceptanceCriteriaEditComponent implements OnInit {
       .subscribe(
         (res:Acceptance_criteria) => {
           this.acceptance_criteria = res;
-          this.router.navigate(['/user-stories/'+this.acceptance_criteria.user_story_id]);
+          this.router.navigate(['/user-stories/'+this.user_story_id]);
         },
         (err:HttpErrorResponse) => {
           console.log(err);
