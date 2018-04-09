@@ -31,6 +31,8 @@ import { AcceptanceCriteriaCreateComponent } from './components/acceptance-crite
 import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
+import { UserStoryUpdateComponent } from './components/user-stories/user-story-update/user-story-update.component';
+import { UserStoryRetrieveComponent } from './components/user-stories/user-story-retrieve/user-story-retrieve.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { TaskUpdateComponent } from './components/tasks/task-update/task-update.
     AcceptanceCriteriaListComponent,
     SprintListComponent,
     UserStoryCreateComponent,
-    TaskUpdateComponent
+    TaskUpdateComponent,
+    UserStoryUpdateComponent,
+    UserStoryRetrieveComponent
   ],
   imports: [
     BrowserModule,

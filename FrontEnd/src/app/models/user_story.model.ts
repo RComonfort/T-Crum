@@ -7,9 +7,11 @@ export class User_story {
         public scrum_board_status: number,
         public description: string,
         public priority: number,
-        public sprints?: Sprint[],
+        public sprint_id: number,
+        public sprint?: Sprint,
         public tasks?: Task[],
         public acceptance_criterias?: Acceptance_criteria[],
         public id?: number,
+        
     ) { }
 }

@@ -19,6 +19,7 @@ import { TaskListComponent } from './components/tasks/task-list/task-list.compon
 import { TaskCreateComponent } from './components/tasks/task-create/task-create.component';
 import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 import { UserStoryListComponent } from './components/user-stories/user-story-list/user-story-list.component';
+import { UserStoryUpdateComponent} from './components/user-stories/user-story-update/user-story-update.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 import { AcceptanceCriteriaListComponent } from './components/acceptance-criteria/acceptance-criteria-list/acceptance-criteria-list.component';
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
@@ -45,9 +46,11 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard]},
   {path: 'tasks/create/:user_story_id', component: TaskCreateComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/update/:id', component: TaskUpdateComponent, canActivate: [AuthGuard]},
+  //User Stories
   {path: 'user-stories', component: UserStoryListComponent, canActivate: [AuthGuard]},
   {path: 'user-stories/create/:sprint_id', component: UserStoryCreateComponent, canActivate: [AuthGuard]},
-  {path: 'tasks/update/:id', component: TaskUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'user-stories/update/:id', component: UserStoryUpdateComponent, canActivate: [AuthGuard]},
   {path:'', component: AppComponent, canActivate: [AuthGuard]},
 
   { path: '**', redirectTo: '' }
