@@ -17,6 +17,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
 import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
 import { SprintUpdateComponent } from './components/sprints/sprint-update/sprint-update.component';
+import { SprintCreateComponent } from './components/sprints/sprint-create/sprint-create.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SprintUpdateComponent } from './components/sprints/sprint-update/sprint
     ProjectListComponent,
     SprintListComponent,
     SprintRetrieveComponent,
-    SprintUpdateComponent
+    SprintUpdateComponent,
+    SprintCreateComponent
   ],
   imports: [
     BrowserModule,

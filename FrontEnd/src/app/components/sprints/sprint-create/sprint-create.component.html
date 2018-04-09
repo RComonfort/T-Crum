@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Crea un sprint</h4>
+        <p class="card-category">Ingresa los datos para crear un sprint</p>
+    </div>
+    <div class="card-body">
+        <div *ngIf="message" class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="material-icons">close</i>
+            </button>
+            <span>
+                <b> Error</b> {{message}}</span>
+        </div>
+        <form (submit)="create()">
+            <div class="form-group">
+              <label class="bmd-label-floating" for="days">Días</label>
+              <input class="form-control" type="number" min="0" id="days" name="days" [(ngModel)]="sprint.days">
+            </div>
+            <div class="form-group">
+                <label class="bmd-label-floating" for="comment">Comentario</label>
+                <input class="form-control" type="text" id="comment" name="comment" [(ngModel)]="sprint.comment">
+            </div>
+            <div class="form-group">
+                <label class="bmd-label-floating" for="project">Proyecto</label>
+                <input class="form-control" type="number" min="0" id="project" name="project" [(ngModel)]="sprint.project_id">
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Crear</button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</div>
