@@ -30,6 +30,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { AcceptanceCriteriaCreateComponent } from './components/acceptance-criteria/acceptance-criteria-create/acceptance-criteria-create.component';
 import { UserStoryCreateComponent } from './components/user-stories/user-story-create/user-story-create.component';
 import { SprintListComponent } from './components/sprints/sprint-list/sprint-list.component';
+import { SprintRetrieveComponent } from './components/sprints/sprint-retrieve/sprint-retrieve.component';
 import { TaskUpdateComponent } from './components/tasks/task-update/task-update.component';
 import { UserStoryUpdateComponent } from './components/user-stories/user-story-update/user-story-update.component';
 import { UserStoryRetrieveComponent } from './components/user-stories/user-story-retrieve/user-story-retrieve.component';
@@ -64,7 +65,9 @@ import { UserStoryRetrieveComponent } from './components/user-stories/user-story
     UserStoryCreateComponent,
     TaskUpdateComponent,
     UserStoryUpdateComponent,
-    UserStoryRetrieveComponent
+    UserStoryRetrieveComponent,
+    TaskUpdateComponent,
+    SprintRetrieveComponent
   ],
   imports: [
     BrowserModule,

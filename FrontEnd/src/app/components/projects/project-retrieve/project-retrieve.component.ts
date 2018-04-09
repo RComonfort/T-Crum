@@ -19,7 +19,8 @@ export class ProjectRetrieveComponent implements OnInit {
   constructor(private crud:CrudService, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.project =  new Project(null, null, null, null, null, null, null, null);
+    this.project =  new Project(null, null, null, null, null, null, null, null, null);
+    this.project.scrum_master = new Member(null, null, null, null, null, null, null);
     this.message = "";
 
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
@@ -29,6 +30,7 @@ export class ProjectRetrieveComponent implements OnInit {
       (res:Project)=>{
         console.log(res);
         this.project = res;
+        console.log(this.project.scrum_master)
       },
       (err:HttpErrorResponse) => {
         if(err.error){

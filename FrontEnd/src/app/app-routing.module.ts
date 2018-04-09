@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { AuthGuard } from './guards/auth.guard';
+import { RootGuard } from './guards/root.guard';
 
 import { LoginComponent } from './components/authentication/login/login.component';
 import { AppComponent } from './app.component';
@@ -26,11 +27,13 @@ import { AcceptanceCriteriaCreateComponent } from './components/acceptance-crite
 import { UserStoryRetrieveComponent } from './components/user-stories/user-story-retrieve/user-story-retrieve.component';
 
 const routes: Routes = [
+  // General
   { path:'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
   {path: 'register', component: MemberCreateComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path:'', component: AppComponent, canActivate: [AuthGuard]},
+
   // Technologies
   { path: 'technologies', component: TechnologiesListComponent, canActivate: [AuthGuard]},
   { path: 'technologies/update/:id', component: TechnologiesUpdateComponent, canActivate: [AuthGuard]},
@@ -44,7 +47,8 @@ const routes: Routes = [
   {path: 'projects/create', component: ProjectCreateComponent, canActivate: [AuthGuard]},
   {path: 'projects/update/:id', component: ProjectUpdateComponent, canActivate: [AuthGuard]},
   {path: 'projects/retrieve/:id', component: ProjectRetrieveComponent, canActivate: [AuthGuard]},
-  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  
+  // Tasks
   {path: 'tasks', component: TaskListComponent, canActivate: [AuthGuard]},
   {path: 'tasks/create/:user_story_id', component: TaskCreateComponent, canActivate: [AuthGuard]},
   {path: 'tasks/update/:id', component: TaskUpdateComponent, canActivate: [AuthGuard]},
@@ -63,6 +67,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard, RootGuard]
 })
 export class AppRoutingModule { }
