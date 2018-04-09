@@ -69,9 +69,12 @@ module.exports = {
                     required: false,
                     attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
                     },
-                    {model: Technology,
-                    as: 'technologies',
-                    required: false}
+                    {
+                        model: Technology,
+                        as: 'technologies',
+                        through: {attributes: ['version']},
+                        required: false
+                    }
                 ],
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
             })
@@ -101,9 +104,11 @@ module.exports = {
                     required: false,
                     attributes: ['id', 'department_major', 'name', 'photo_URL', 'system_role', 'createdAt', 'updatedAt']
                     },
-                    {model: Technology,
-                    as: 'technologies',
-                    required: false}
+                    {
+                        model: Technology,
+                        as: 'technologies',
+                        required: false
+                    }
                 ],
                 //Without this attributes, it fails bacuse its trying to search for project_id that doesn exists
                 attributes : ['id', 'vision', 'name', 'begin_date', 'end_date', 'background', 'risks', 'reach', 'createdAt', 'updatedAt', 'scrum_master_id']
