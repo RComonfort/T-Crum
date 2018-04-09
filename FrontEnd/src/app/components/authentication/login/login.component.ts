@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           this.auth.setSession(res);
-          this.router.navigate(['home']);
+          this.router.navigate(['projects']);
         },
         err => {
           this.message = err.error.message;

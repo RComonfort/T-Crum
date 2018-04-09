@@ -3,6 +3,8 @@ import { CrudService } from '../../../services/crud.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Project } from '../../../models/project.model';
 import { Router, NavigationExtras } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { Member } from '../../../models/member.model';
 
 @Component({
   selector: 'app-project-list',
@@ -14,14 +16,42 @@ export class ProjectListComponent implements OnInit {
   message: string;
   projects: Project[];
 
-  constructor(private crud:CrudService, private router:Router) { }
+  constructor(private crud:CrudService, private router:Router, private auth:AuthService) { }
 
   ngOnInit() {
+    if(this.auth.isRoot()){
+      this.getAllProjects();
+    }
+    else{
+      this.getMemberProjects();
+    }
+    
+  }
+
+  getAllProjects(){
     this.crud.list(this.crud.models.PROJECT)
     .subscribe(
       (res:Project[])=>{
         console.log(res);
         this.projects = res;
+      },
+      (err:HttpErrorResponse) => {
+        if(err.error){
+          this.message = err.error.message
+        }
+        else{
+          this.message = err.error.errors[0].message;
+        }
+      }
+    )
+  }
+
+  getMemberProjects(){
+    this.crud.retrieve(this.crud.models.MEMBER, this.auth.getMember().id)
+    .subscribe(
+      (res:Member)=>{
+        console.log(res.projects);
+        this.projects = res.projects;
       },
       (err:HttpErrorResponse) => {
         if(err.error){
