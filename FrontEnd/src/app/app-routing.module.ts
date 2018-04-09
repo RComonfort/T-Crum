@@ -9,6 +9,7 @@ import { LogoutComponent } from './components/authentication/logout/logout.compo
 import { HomeComponent } from './components/home/home.component';
 import { TechnologiesListComponent } from './components/technologies/technologies-list/technologies-list.component';
 import { MemberCreateComponent } from './components/member/member-create/member-create.component';
+import { TechnologiesUpdateComponent } from './components/technologies/technologies-update/technologies-update.component';
 
 const routes: Routes = [
   { path:'login', component: LoginComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path:'', component: AppComponent, canActivate: [AuthGuard]},
   // Technologies
   { path: 'technologies', component: TechnologiesListComponent, canActivate: [AuthGuard]},
+  { path: 'technologies/update/:id', component: TechnologiesUpdateComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '' }
 ];
 
