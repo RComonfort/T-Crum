@@ -40,21 +40,12 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Version</th>
-                <th></th>
             </thead>
             <tbody>
                 <tr *ngFor="let technology of projectTechnologies">
                     <td class="text-primary">{{technology.id}}</td>
                     <td>{{technology.name}}</td>
                     <td>{{technology.Project_technologies.version}}</td>
-                    <td>
-                        <button class="btn btn-danger pull-right text-white text-center" (click)="deleteTechnology(technology.id)">
-                            <i class="material-icons">delete</i>
-                        </button>
-                        <a class="btn btn-info pull-right text-white text-center" routerLink="/technologies/update/{{technology.id}}">
-                            <i class="material-icons">edit</i>
-                        </a>
-                    </td>
                 </tr>
             </tbody>
         </table>
