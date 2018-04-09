@@ -60,8 +60,6 @@ export class ProjectUpdateComponent implements OnInit {
         }
       }
     )
-    console.log(this.project.begin_date);
-    console.log(this.project.begin_date.getFullYear());
   }
 
   updateProject(){

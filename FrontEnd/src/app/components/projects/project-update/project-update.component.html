@@ -24,13 +24,13 @@
                 <label class="label">Fecha de inicio</label>
             </div>
             <div class="form-group">
-              <input class="form-control" type="date" id="begin_date" name="begin_date" value="{{project.begin_date.substring(0,10)}}" [(ngModel)]="project.begin_date">
+              <input class="form-control" type="date" id="begin_date" name="begin_date" [(ngModel)]="project.begin_date">
             </div>
             <div>
                 <label class="label">Fecha de termino</label>
             </div>
             <div class="form-group">
-              <input class="form-control" type="date" id="end_date" name="end_date" value="{{project.end_date.substring(0,10)}}" [(ngModel)]="project.end_date">
+              <input class="form-control" type="date" id="end_date" name="end_date" [(ngModel)]="project.end_date">
             </div>
             <div class="form-group">
               <label class="bmd-label-floating" for="background">Antecedentes</label>
