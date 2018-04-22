@@ -9,36 +9,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       first_name: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       last_name: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       review_count: {
-        type: Sequelize.INT
+        type: Sequelize.INT,
+        allowNull: false
       },
       review_avg: {
-        type: Sequelize.DOUBLE
+        type: Sequelize.DOUBLE,
+        allowNull: false
       },
       kindness_prize_count: {
-        type: Sequelize.INT
+        type: Sequelize.INT,
+        allowNull: false
       },
       cleanliness_prize_count: {
-        type: Sequelize.INT
+        type: Sequelize.INT,
+        allowNull: false
       },
       driving_skills_prize_count: {
-        type: Sequelize.INT
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.INT,
+        allowNull: false
       }
     });
   },
