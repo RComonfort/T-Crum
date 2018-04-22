@@ -1,2 +1,2 @@
 # T-Crum
-Repository for the T-Crum project at ITESM Puebla Campus
+Repository for the VW Passenger App Back End server
