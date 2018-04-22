@@ -1,7 +1,8 @@
-const projects = require('./projects');
+const crafters = require('./crafters');
+const projects = require ('./projects');
 
 
 module.exports = {
-   
-    projects
+    projects,
+    crafters,
 };
