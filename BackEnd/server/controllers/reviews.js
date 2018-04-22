@@ -103,9 +103,9 @@ module.exports = {
 
                 attributes: ['id', 'driver_id', 'passenger_id', 'crafter_id', 'comment', 'score', 'kindness_prize', 'cleanliness_prize', 'driving_skills_prize', 'createdAt', 'updatedAt']
             })
-            .then(review => {
+            .then(Review => {
 
-                if (!review) {
+                if (!Review) {
 
                     return res.status(400).send({
 
@@ -113,21 +113,48 @@ module.exports = {
                     });
                 }
 
-                return review
+                return Review
                     .update({
 
-                        driver_id: req.body.driver_id || review.driver_id,
-                        passenger_id: req.body.passenger_id || review.passenger_id,
-                        crafter_id: req.body.crafter_id || review.crafter_id,
-                        comment: req.body.comment || review.comment,
-                        score: req.body.score || review.score,
-                        kindness_prize: req.body.kindness_prize || review.kindness_prize,
-                        cleanliness_prize: req.body.cleanliness_prize || review.cleanliness_prize,
-                        driving_skills_prize: req.body.driving_skills_prize || review.driving_skills_prize
+                        driver_id: req.body.driver_id || Review.driver_id,
+                        passenger_id: req.body.passenger_id || Review.passenger_id,
+                        crafter_id: req.body.crafter_id || Review.crafter_id,
+                        comment: req.body.comment || Review.comment,
+                        score: req.body.score || Review.score,
+                        kindness_prize: req.body.kindness_prize || Review.kindness_prize,
+                        cleanliness_prize: req.body.cleanliness_prize || Review.cleanliness_prize,
+                        driving_skills_prize: req.body.driving_skills_prize || Review.driving_skills_prize
                     })
-                    .then(() => res.status(200).send(review)) // Send back the updated passenger
+                    .then(() => res.status(200).send(Review)) // Send back the updated passenger
                     .catch((error) => res.status(400).send(error));
             })
             .catch((error) => res.status(400).send(error));
+    },
+    destroy(req, res) {
+
+        return Review
+            .findById(req.params.id, {
+
+                attributes: ['id', 'driver_id', 'passenger_id', 'crafter_id', 'comment', 'score', 'kindness_prize', 'cleanliness_prize', 'driving_skills_prize', 'createdAt', 'updatedAt']
+            })
+            .then(Review => {
+
+                if(!Review) {
+
+                    return res.status(400).send({
+
+                        message: 'Review Not Found'
+                    });
+                }
+
+                return Review
+                    .destroy()
+                    .then(() => res.status(200).send({
+
+                        message: 'The review was successfully deleted'
+                    }))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error));
     }
 }
