@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       allowNull: false,
-      type: DataTypes.TEXT
+      type: DataTypes.STRING
     },
     lat: {
       allowNull: false,
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INT
     },
   }, {});
-  Station.associate = function(models) {
+  Station.associate = function (models) {
     Station.belongsTo(models.Crafter, {
       foreignKey: 'next_crafter_id',
       as: 'next_crafter',

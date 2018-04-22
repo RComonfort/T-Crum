@@ -3,6 +3,27 @@ const Passenger = require('../models/').Passenger;
 module.exports = {
 
   create(req, res) {
+
+    if (!req.body.id)
+      return res.status(400).send({
+        message: "The 'id' attribute cannot be empty."
+      });
+
+    if (!req.body.password)
+      return res.status(400).send({
+        message: "The 'password' attribute cannot be empty."
+      });
+
+    if (!req.body.first_name)
+      return res.status(400).send({
+        message: "The 'first_name' attribute cannot be empty."
+      });
+
+    if (!req.body.last_name)
+      return res.status(400).send({
+        message: "The 'last_name' attribute cannot be empty."
+      });
+
     return Passenger
       .create({
         id: req.body.id,
@@ -24,6 +45,11 @@ module.exports = {
   //Method for retrieving a single passenger
   retrieve(req, res) {
 
+    if (!req.body.id)
+      return res.status(400).send({
+        message: "The 'id' attribute cannot be empty."
+      });
+
     return Passenger
       .findById(req.params.id, {})
       .then(passenger => {
@@ -42,6 +68,11 @@ module.exports = {
   },
   //Method for updating a passenger
   update(req, res) {
+
+    if (!req.body.id)
+      return res.status(400).send({
+        message: "The 'id' attribute cannot be empty."
+      });
 
     return Passenger
       .findById(req.params.id, {})
@@ -69,6 +100,11 @@ module.exports = {
   },
   //Method to delete a passenger
   destroy(req, res) {
+
+    if (!req.body.id)
+      return res.status(400).send({
+        message: "The 'id' attribute cannot be empty."
+      });
 
     return Passenger
       .findById(req.params.id)

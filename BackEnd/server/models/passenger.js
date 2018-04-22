@@ -28,6 +28,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Passenger.associate = function(models) {
     // associations can be defined here
+
+    //One driver can have many reviews
+    Passenger.hasMany(models.Review, {
+      foreignKey: 'passenger_id',
+      as: 'reviews'
+    })
   };
   
   return Passenger;

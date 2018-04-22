@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     driver_id: DataTypes.STRING,
     passenger_id: DataTypes.STRING,
     crafter_id: DataTypes.STRING,
-    comment: DataTypes.STRING,
+    comment: DataTypes.TEXT,
     score: DataTypes.DOUBLE,
     kindness_prize: DataTypes.BOOLEAN,
     cleanliness_prize: DataTypes.BOOLEAN,
@@ -13,23 +13,26 @@ module.exports = (sequelize, DataTypes) => {
   Review.associate = function (models) {
     // associations can be defined here
 
-    // Review.belongsTo (models.Driver, {
-    //   foreignKey: 'driver_id', 
-    //   onDelete: 'CASCADE',
-    //   as: "driver"
-    // });
+    //Each review belongs to one driver
+    Review.belongsTo (models.Driver, {
+      foreignKey: 'driver_id', 
+      onDelete: 'CASCADE',
+      as: "driver"
+    });
 
-    // Review.belongsTo (models.Passenger, {
-    //   foreignKey: 'passenger_id', 
-    //   onDelete: 'CASCADE',
-    //   as: "passenger"
-    // });
+    //Each review belongs to one passenger
+    Review.belongsTo (models.Passenger, {
+      foreignKey: 'passenger_id', 
+      onDelete: 'CASCADE',
+      as: "passenger"
+    });
 
-    // Review.belongsTo (models.Crafter, {
-    //   foreignKey: 'crafter_id', 
-    //   onDelete: 'CASCADE',
-    //   as: "crafter"
-    // });
+    //Each review belongs to one crafter
+    Review.belongsTo (models.Crafter, {
+      foreignKey: 'crafter_id', 
+      onDelete: 'CASCADE',
+      as: "crafter"
+    });
 
   };
   return Review;

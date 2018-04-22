@@ -7,6 +7,47 @@ module.exports = {
 
     //Method for creating reviews
     create(req, res) {
+
+        if (!req.body.driver_id)
+            return res.status(400).send({
+                message: "The 'driver_id' attribute cannot be empty."
+            });
+
+        if (!req.body.passenger_id)
+            return res.status(400).send({
+                message: "The 'passenger_id' attribute cannot be empty."
+            });
+
+        if (!req.body.crafter_id)
+            return res.status(400).send({
+                message: "The 'crafter_id' attribute cannot be empty."
+            });
+
+        if (!req.body.comment)
+            return res.status(400).send({
+                message: "The 'comment' attribute cannot be empty."
+            });
+
+        if (!req.body.score)
+            return res.status(400).send({
+                message: "The 'score' attribute cannot be empty."
+            });
+
+        if (!req.body.kindness_prize)
+            return res.status(400).send({
+                message: "The 'kindness_prize' attribute cannot be empty."
+            });
+
+        if (!req.body.cleanliness_prize)
+            return res.status(400).send({
+                message: "The 'cleanliness_prize' attribute cannot be empty."
+            });
+
+        if (!req.body.driving_skills_prize)
+            return res.status(400).send({
+                message: "The 'driving_skills_prize' attribute cannot be empty."
+            });
+
         return Review
             .create({
 
@@ -17,7 +58,7 @@ module.exports = {
                 score: req.body.score,
                 kindness_prize: req.body.kindness_prize,
                 cleanliness_prize: req.body.cleanliness_prize,
-                driving_skilss_prize: req.body.driving_skilss_prize
+                driving_skills_prize: req.body.driving_skills_prize
             })
             .then(todo => res.status(201).send(todo))
             .catch(error => res.status(400).send(error));
@@ -55,6 +96,11 @@ module.exports = {
     },
     //Method for retrieving reviews
     retrieve(req, res) {
+
+        if (!req.body.id)
+            return res.status(400).send({
+                message: "The 'id' attribute cannot be empty."
+            });
 
         return Review
             .findById(req.params.id, {
@@ -98,6 +144,11 @@ module.exports = {
     //Method for updating reviews
     update(req, res) {
 
+        if (!req.body.id)
+            return res.status(400).send({
+                message: "The 'id' attribute cannot be empty."
+            });
+
         return Review
             .findById(req.params.id, {
 
@@ -132,6 +183,11 @@ module.exports = {
     },
     destroy(req, res) {
 
+        if (!req.body.id)
+            return res.status(400).send({
+                message: "The 'id' attribute cannot be empty."
+            });
+
         return Review
             .findById(req.params.id, {
 
@@ -139,7 +195,7 @@ module.exports = {
             })
             .then(Review => {
 
-                if(!Review) {
+                if (!Review) {
 
                     return res.status(400).send({
 

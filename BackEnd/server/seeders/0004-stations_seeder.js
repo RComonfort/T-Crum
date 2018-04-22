@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Crafters', 
+    return queryInterface.bulkInsert('Stations', 
     [
       {
         name: 'Estacion 1',
@@ -10,7 +10,9 @@ module.exports = {
         lng: -98.247993,
         waiting_people: 3,
         next_crafter_arrival_time: 14.6,
-        next_crafter_id: 1
+        next_crafter_id: "4543GJDKSM94030",
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       },
       {
         name: 'Estacion 2',
@@ -18,7 +20,9 @@ module.exports = {
         lng: -98.249404,
         waiting_people: 6,
         next_crafter_arrival_time: 24.6,
-        next_crafter_id: 1
+        next_crafter_id: "4543GJDKSM94030",
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       },
       {
         name: 'Estacion 3',
@@ -26,7 +30,9 @@ module.exports = {
         lng: -98.249993,
         waiting_people: 0,
         next_crafter_arrival_time: 1.6,
-        next_crafter_id: 3
+        next_crafter_id: "4543GJDKSM94030",
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       },
     ], {})
   },

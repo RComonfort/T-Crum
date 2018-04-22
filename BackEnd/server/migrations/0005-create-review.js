@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       driver_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
         references: {
@@ -36,7 +36,7 @@ module.exports = {
         }
       },
       comment: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
       },
       score: {

@@ -2,15 +2,15 @@
 module.exports = (sequelize, DataTypes) => {
   const Driver = sequelize.define('Driver', {
     password: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false
     },
     first_name: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false
     },
     last_name: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false
     },
     review_count: {
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
   Driver.associate = function(models) {
     
     //One driver can have many reviews
-    Project.hasMany(models.Review, {
+    Driver.hasMany(models.Review, {
       foreignKey: 'driver_id',
       as: 'reviews'
     })

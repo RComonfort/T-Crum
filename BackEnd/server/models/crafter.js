@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.TEXT
+      type: DataTypes.STRING
     },
     name: {
       allowNull: false,
-      type: DataTypes.TEXT
+      type: DataTypes.STRING
     },
     lat: {
       allowNull: false,

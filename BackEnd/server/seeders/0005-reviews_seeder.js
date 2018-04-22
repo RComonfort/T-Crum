@@ -8,9 +8,9 @@ module.exports = {
       [
         {
           id: 1,
-          driver_id: "driver1",
+          driver_id: 1,
           passenger_id: "passenger1",
-          crafter_id: "SERIES_NO_1",
+          crafter_id: "4543GJDKSM94030",
           comment: "Great service!",
           score: 4.98,
           kindness_prize: true,
@@ -21,9 +21,9 @@ module.exports = {
         },
         {
           id: 2,
-          driver_id: "driver2",
+          driver_id: 2,
           passenger_id: "passenger1",
-          crafter_id: "SERIES_NO_2",
+          crafter_id: "4543GJDKSM94030",
           comment: "Great conversation!",
           score: 4.5,
           kindness_prize: false,
@@ -34,9 +34,9 @@ module.exports = {
         },
         {
           id: 3,
-          driver_id: "driver3",
+          driver_id: 3,
           passenger_id: "passenger1",
-          crafter_id: "SERIES_NO_3",
+          crafter_id: "4543GJDKSM94030",
           comment: "Great driving skills!",
           score: 4.0,
           kindness_prize: false,

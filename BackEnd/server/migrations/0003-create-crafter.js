@@ -1,16 +1,15 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Stations', {
+    return queryInterface.createTable('Crafters', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INT
+        type: Sequelize.STRING
       },
       name: {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.STRING
       },
       lat: {
         allowNull: false,
@@ -20,23 +19,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DOUBLE
       },
-      waiting_people: {
+      isActive: {
         allowNull: false,
-        type: Sequelize.INT
+        type: Sequelize.BOOLEAN
       },
-      next_crafter_arrival_time: {
+      total_seats: {
         allowNull: false,
-        type: Sequelize.DOUBLE
+        type: Sequelize.INTEGER
       },
-      next_crafter_id: {
+      occupied_seats:{
         allowNull: false,
-        type: Sequelize.INT,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Crafters',
-          key: 'id',
-          as: 'next_crafter_id'
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -49,6 +42,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Stations');
+    return queryInterface.dropTable('Crafters');
   }
 };
