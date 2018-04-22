@@ -1,7 +1,8 @@
-const projects = require('./projects');
-
+const passengers = require('./passengers');
+const authentication = require('./authentication');
 
 module.exports = {
    
-    projects
+    authentication,
+    passengers
 };
