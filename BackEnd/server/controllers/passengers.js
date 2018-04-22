@@ -67,4 +67,29 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
+  //Method to delete a passenger
+  destroy(req, res) {
+
+    return Passenger
+      .findById(req.params.id)
+      .then(passenger => {
+
+        if (!passenger) {
+
+          return res.status(400).send({
+
+            message: 'Passenger Not Found',
+          });
+        }
+
+        return passenger
+          .destroy()
+          .then(() => res.status(200).send({
+
+            message: 'Passenger deleted successfully',
+          }))
+          .catch(error => res.status(400).send(error));
+      })
+      .catch(error => res.status(404).send(error));
+  }
 }

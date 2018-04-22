@@ -17,4 +17,5 @@ module.exports = (app) => {
   app.get('/api/passengers', passengersController.list);
   app.get('/api/passengers/:id', passengersController.retrieve);
   app.put('/api/passengers/:id', passengersController.update);
+  app.delete('/api/passengers/:id', passengersController.destroy);
 };
