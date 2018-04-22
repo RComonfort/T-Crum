@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     cleanliness_prize: DataTypes.BOOLEAN,
     driving_skills_price: DataTypes.BOOLEAN
   }, {});
-  Review.associate = function(models) {
+  Review.associate = function (models) {
     // associations can be defined here
 
     // Review.belongsTo (models.Driver, {
