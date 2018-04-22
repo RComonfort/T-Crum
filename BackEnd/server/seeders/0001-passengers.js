@@ -7,25 +7,25 @@ module.exports = {
 
       [
         {
-          id: "user1",
+          id: "passenger1",
           password: "12345678",
-          first_name: "User",
+          first_name: "Passenger",
           last_name: "One",
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW'),
         },
         {
-          id: "user2",
+          id: "passenger2",
           password: "12345678",
-          first_name: "User",
+          first_name: "Passenger",
           last_name: "Two",
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW'),
         },
         {
-          id: "user3",
+          id: "passenger3",
           password: "12345678",
-          first_name: "User",
+          first_name: "Passenger",
           last_name: "Three",
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW'),
@@ -38,13 +38,13 @@ module.exports = {
     return queryInterface.bulkDelete('Passengers', 
     [
       {
-        id: "user1"
+        id: "passenger1"
       },
       {
-        id: "user2"
+        id: "passenger2"
       },
       {
-        id: "user3"
+        id: "passenger3"
       }
     ]);
   }
