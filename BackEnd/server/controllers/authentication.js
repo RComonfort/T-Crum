@@ -1,4 +1,4 @@
-const Member = require('../models').Member;
+const Passenger = require('../models').Passenger;
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt-nodejs');
@@ -7,28 +7,28 @@ const jwt = require('../services/jwt');
 module.exports = {
     login(req, res) {
         // check that params are not null, undefined or empty string
-        if(!req.body.member_id || !req.body.password){ 
-            return res.status(400).send({message: 'The post body must contain a member_id and password field.'});
+        if(!req.body.passenger_id || !req.body.password){ 
+            return res.status(400).send({message: 'The post body must contain a passenger_id and password field.'});
         }
         
-        let member_id = (String)(req.body.member_id).toLocaleLowerCase();
+        let passenger_id = (String)(req.body.passenger_id).toLocaleLowerCase();
         let password = req.body.password;
 
-        Member.findById(member_id)
-        .then(member => {
-            if(!member){
-                res.status(400).send({ message: 'Authentication failed. Member not found.'});
+        Passenger.findById(passenger_id)
+        .then(passenger => {
+            if(!passenger){
+                res.status(400).send({ message: 'Authentication failed. Passenger not found.'});
             }
 
-            bcrypt.compare(password, member.password, (error, check) => {
+            bcrypt.compare(password, passenger.password, (error, check) => {
                 if(check){
                     // devolver miembro y token
-                    let data = jwt.createToken(member);
-                    member.password = '';
+                    let data = jwt.createToken(passenger);
+                    passenger.password = '';
                     
                     res.status(200).send({
                         token: data.token,
-                        member: member,
+                        passenger: passenger,
                         expirationTime: data.expirationTime
                     });
                 }
