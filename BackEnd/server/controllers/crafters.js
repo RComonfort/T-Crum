@@ -85,7 +85,7 @@ module.exports = {
 	},
 	retrieve (req, res)
 	{
-		if (!req.body.id) {
+		if (!req.params.id) {
 			return res.status (400).send({
 				message: 'The Crafter ID cannot be empty'
 			});
@@ -112,19 +112,19 @@ module.exports = {
 					}
 				]
 			})
-			.then(crafters => {
-                if (!crafters) {
+			.then(crafter => {
+                if (!crafter) {
                     return res.status(400).send({
                         message: 'Crafter not found.'
                     });
                 }
-                return res.status(200).send(crafters);
+                return res.status(200).send(crafter);
             })
             .catch(error => res.status(400).send(error));
 	},
 	update (req, res)
 	{
-		if (!req.body.id) {
+		if (!req.params.id) {
 			return res.status (400).send({
 				message: 'The Crafter ID cannot be empty'
 			});
@@ -156,7 +156,7 @@ module.exports = {
 	},
 	destroy (req, res)
 	{
-		if (!req.body.id) {
+		if (!req.params.id) {
 			return res.status (400).send({
 				message: 'The Crafter ID cannot be empty'
 			});

@@ -1,10 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Crafter = sequelize.define('Crafter', {
+  var Station = sequelize.define('Station', {
     id: {
       allowNull: false,
+      autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.TEXT
+      type: DataTypes.INT
     },
     name: {
       allowNull: false,
@@ -18,31 +19,25 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DOUBLE
     },
-    isActive: {
-      allowNull: false,
-      type: DataTypes.BOOLEAN
-    },
-    total_seats: {
+    waiting_people: {
       allowNull: false,
       type: DataTypes.INT
     },
-    occupied_seats:{
+    next_crafter_arrival_time: {
+      allowNull: false,
+      type: DataTypes.DOUBLE
+    },
+    next_crafter_id: {
       allowNull: false,
       type: DataTypes.INT
-    }
+    },
   }, {});
-  Crafter.associate = function(models) {
-    Crafter.hasMany (models.Station, {
+  Station.associate = function(models) {
+    Station.belongsTo(models.Crafter, {
       foreignKey: 'next_crafter_id',
-      as: 'stations',
-      onDelete: 'Cascade'
-    }),
-
-    Crafter.hasMany (models.Review, {
-      foreignKey: 'crafter_id',
-      as: 'reviews',
-      onDelete: 'Cascade'
+      as: 'next_crafter',
+      onDelete: 'CASCADE'
     })
   };
-  return Crafter;
+  return Station;
 };

@@ -3,6 +3,7 @@ const authMiddleware = require('../middlewares/authentication');
 
 const projectsController = require('../controllers').projects;
 const craftersController = require('../controllers').crafters;
+const stationsController = require('../controllers').stations;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -25,4 +26,11 @@ module.exports = (app) => {
   app.get('/api/crafters/:id', craftersController.retrieve);
   app.put('/api/crafters/:id', craftersController.update);
   app.delete('/api/crafters/:id', craftersController.destroy);
+
+  //Routes for the Station table
+  app.post('/api/stations', stationsController.create);  
+  app.get('/api/stations', stationsController.list);
+  app.get('/api/stations/:id', stationsController.retrieve);
+  app.put('/api/stations/:id', stationsController.update);
+  app.delete('/api/stations/:id', stationsController.destroy);
 };
