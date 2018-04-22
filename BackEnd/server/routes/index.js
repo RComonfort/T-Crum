@@ -15,4 +15,5 @@ module.exports = (app) => {
   //Routes for the Passengers table
   app.post('/api/passengers', passengersController.create);
   app.get('/api/passengers', passengersController.list);
+  app.get('/api/passengers/:id', passengersController.retrieve);
 };
