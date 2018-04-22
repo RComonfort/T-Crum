@@ -60,7 +60,7 @@ module.exports = {
 
             first_name: req.body.first_name || passenger.first_name,
             last_name: req.body.last_name || passenger.last_name,
-            password: req.body.password || passenger.password,
+            password: req.body.password || passenger.password
           })
           .then(() => res.status(200).send(passenger)) // Send back the updated passenger
           .catch((error) => res.status(400).send(error));
