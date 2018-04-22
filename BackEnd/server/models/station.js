@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: DataTypes.INT
+      type: DataTypes.INTEGER
     },
     name: {
       allowNull: false,
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     waiting_people: {
       allowNull: false,
-      type: DataTypes.INT
+      type: DataTypes.INTEGER
     },
     next_crafter_arrival_time: {
       allowNull: false,
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     next_crafter_id: {
       allowNull: false,
-      type: DataTypes.INT
+      type: DataTypes.INTEGER
     },
   }, {});
   Station.associate = function (models) {

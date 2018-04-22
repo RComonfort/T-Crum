@@ -24,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     total_seats: {
       allowNull: false,
-      type: DataTypes.INT
+      type: DataTypes.INTEGER
     },
     occupied_seats:{
       allowNull: false,
-      type: DataTypes.INT
+      type: DataTypes.INTEGER
     }
   }, {});
   Crafter.associate = function(models) {
