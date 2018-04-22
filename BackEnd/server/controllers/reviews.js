@@ -1,8 +1,11 @@
 const Review = require('../models').Review;
 const Passenger = require('../models/').Passenger;
+const Driver = require('../models/').Driver;
+const Crafter = require('../models/').Crafter;
 
 module.exports = {
 
+    //Method for creating reviews
     create(req, res) {
         return Review
             .create({
@@ -17,6 +20,30 @@ module.exports = {
                 driving_skilss_prize: req.body.driving_skilss_prize
             })
             .then(todo => res.status(201).send(todo))
+            .catch(error => res.status(400).send(error));
+    },
+    //Method for listing reviews
+    list(req, res) {
+
+        return Review
+            .findAll({
+
+                include: [
+                    {
+                        model: Passenger,
+                        as: 'passenger'
+                    },
+                    {
+                        model: Driver,
+                        as: 'driver',
+                    },
+                    {
+                        model: Crafter,
+                        as: 'crafter'
+                    }
+                ],
+            })
+            .then(reviews => res.status(200).send(reviews))
             .catch(error => res.status(400).send(error));
     },
 }
