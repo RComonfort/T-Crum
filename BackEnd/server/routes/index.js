@@ -4,6 +4,9 @@ const authenticationController = require('../controllers').authentication;
 const projectsController = require('../controllers').projects;
 const passengersController = require('../controllers').passengers;
 const reviewsController = require('../controllers').reviews;
+const craftersController = require('../controllers').crafters;
+const stationsController = require('../controllers').stations;
+const driversController = require('../controllers').drivers;
 
 module.exports = (app) => {
   
@@ -21,10 +24,38 @@ module.exports = (app) => {
   app.put('/api/passengers/:id', passengersController.update);
   app.delete('/api/passengers/:id', passengersController.destroy);
 
+   //Routes for the Drivers table
+   app.post('/api/drivers', driversController.create);
+   app.get('/api/drivers', driversController.list);
+   app.get('/api/drivers/:id', driversController.retrieve);
+   app.put('/api/drivers/:id', driversController.update);
+   app.delete('/api/drivers/:id', driversController.destroy);
+
   //Routes for the Reviews table
   app.post('/api/reviews', reviewsController.create);
   app.get('/api/reviews', reviewsController.list);
   app.get('/api/reviews/:id', reviewsController.retrieve);
   app.put('/api/reviews/:id', reviewsController.update);
   app.delete('/api/reviews/:id', reviewsController.destroy);
+
+  //Routes for the Project table
+  app.post('/api/projects', projectsController.create);  
+  app.get('/api/projects', projectsController.list);
+  app.get('/api/projects/:id', projectsController.retrieve);
+  app.put('/api/projects/:id', projectsController.update);
+  app.delete('/api/projects/:id', projectsController.destroy);
+
+  //Routes for the Crafter table
+  app.post('/api/crafters', craftersController.create);  
+  app.get('/api/crafters', craftersController.list);
+  app.get('/api/crafters/:id', craftersController.retrieve);
+  app.put('/api/crafters/:id', craftersController.update);
+  app.delete('/api/crafters/:id', craftersController.destroy);
+
+  //Routes for the Station table
+  app.post('/api/stations', stationsController.create);  
+  app.get('/api/stations', stationsController.list);
+  app.get('/api/stations/:id', stationsController.retrieve);
+  app.put('/api/stations/:id', stationsController.update);
+  app.delete('/api/stations/:id', stationsController.destroy);
 };

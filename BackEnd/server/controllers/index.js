@@ -1,7 +1,10 @@
 const passengers = require('./passengers');
 const authentication = require('./authentication');
+
 const reviews = require('./reviews');
-const projects = require('./projects');
+const crafters = require('./crafters');
+const projects = require ('./projects');
+const stations = require ('./stations');
 const drivers = require('./drivers');
 
 module.exports = {
@@ -9,5 +12,8 @@ module.exports = {
     authentication,
     passengers,
     reviews,
-    drivers
+    drivers,
+    projects,
+    crafters,
+    stations
 };
