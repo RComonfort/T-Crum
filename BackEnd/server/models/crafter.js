@@ -34,8 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   Crafter.associate = function(models) {
     Crafter.hasMany (models.Station, {
       foreignKey: 'next_crafter_id',
-      as: 'stations',
-      onDelete: 'Cascade'
+      as: 'stations'
     }),
 
     Crafter.hasMany (models.Review, {

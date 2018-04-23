@@ -29,9 +29,8 @@ module.exports = {
         type: Sequelize.DOUBLE
       },
       next_crafter_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
-        onDelete: 'CASCADE',
         references: {
           model: 'Crafters',
           key: 'id'

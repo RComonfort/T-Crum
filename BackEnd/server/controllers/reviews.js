@@ -79,7 +79,7 @@ module.exports = {
                         model: Driver,
                         as: 'driver',
                         required: false,
-                        attributes: ['id', 'first_name', 'last_name', 'review_count', 'review_avg', 'kindess_prize_count', 'cleanliness_prize_count', 'driving_skills_prize_count']
+                        attributes: ['id', 'first_name', 'last_name', 'review_count', 'review_avg', 'kindness_prize_count', 'cleanliness_prize_count', 'driving_skills_prize_count']
                     },
                     {
                         model: Crafter,
@@ -97,7 +97,7 @@ module.exports = {
     //Method for retrieving reviews
     retrieve(req, res) {
 
-        if (!req.body.id)
+        if (!req.params.id)
             return res.status(400).send({
                 message: "The 'id' attribute cannot be empty."
             });
@@ -115,7 +115,7 @@ module.exports = {
                         model: Driver,
                         as: 'driver',
                         required: false,
-                        attributes: ['id', 'first_name', 'last_name', 'review_count', 'review_avg', 'kindess_prize_count', 'cleanliness_prize_count', 'driving_skills_prize_count']
+                        attributes: ['id', 'first_name', 'last_name', 'review_count', 'review_avg', 'kindness_prize_count', 'cleanliness_prize_count', 'driving_skills_prize_count']
                     },
                     {
                         model: Crafter,
@@ -144,7 +144,7 @@ module.exports = {
     //Method for updating reviews
     update(req, res) {
 
-        if (!req.body.id)
+        if (!req.params.id)
             return res.status(400).send({
                 message: "The 'id' attribute cannot be empty."
             });
@@ -183,7 +183,7 @@ module.exports = {
     },
     destroy(req, res) {
 
-        if (!req.body.id)
+        if (!req.params.id)
             return res.status(400).send({
                 message: "The 'id' attribute cannot be empty."
             });

@@ -15,7 +15,7 @@ module.exports = {
           score: 4.98,
           kindness_prize: true,
           cleanliness_prize: false,
-          driving_skills_price: false,
+          driving_skills_prize: false,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -28,7 +28,7 @@ module.exports = {
           score: 4.5,
           kindness_prize: false,
           cleanliness_prize: false,
-          driving_skills_price: true,
+          driving_skills_prize: true,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         },
@@ -41,7 +41,7 @@ module.exports = {
           score: 4.0,
           kindness_prize: false,
           cleanliness_prize: true,
-          driving_skills_price: true,
+          driving_skills_prize: true,
           createdAt: Sequelize.fn('NOW'),
           updatedAt: Sequelize.fn('NOW')
         }

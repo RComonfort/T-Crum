@@ -51,7 +51,7 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },
-      driving_skills_price: {
+      driving_skills_prize: {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },

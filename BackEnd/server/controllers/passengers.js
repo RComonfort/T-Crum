@@ -45,7 +45,7 @@ module.exports = {
   //Method for retrieving a single passenger
   retrieve(req, res) {
 
-    if (!req.body.id)
+    if (!req.params.id)
       return res.status(400).send({
         message: "The 'id' attribute cannot be empty."
       });
@@ -69,7 +69,7 @@ module.exports = {
   //Method for updating a passenger
   update(req, res) {
 
-    if (!req.body.id)
+    if (!req.params.id)
       return res.status(400).send({
         message: "The 'id' attribute cannot be empty."
       });
@@ -101,7 +101,7 @@ module.exports = {
   //Method to delete a passenger
   destroy(req, res) {
 
-    if (!req.body.id)
+    if (!req.params.id)
       return res.status(400).send({
         message: "The 'id' attribute cannot be empty."
       });

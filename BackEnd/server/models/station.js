@@ -28,15 +28,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DOUBLE
     },
     next_crafter_id: {
-      allowNull: false,
-      type: DataTypes.INTEGER
+      allowNull: true,
+      type: DataTypes.STRING
     },
   }, {});
   Station.associate = function (models) {
     Station.belongsTo(models.Crafter, {
       foreignKey: 'next_crafter_id',
-      as: 'next_crafter',
-      onDelete: 'CASCADE'
+      as: 'next_crafter'
     })
   };
   return Station;

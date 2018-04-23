@@ -1,5 +1,6 @@
 const Station = require('../models').Station;
 const Crafter = require('../models').Crafter;
+const Driver = require('../models').Driver;
 
 module.exports = {
 	create (req, res){

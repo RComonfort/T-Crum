@@ -1,14 +1,47 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var Review = sequelize.define('Review', {
-    driver_id: DataTypes.STRING,
-    passenger_id: DataTypes.STRING,
-    crafter_id: DataTypes.STRING,
-    comment: DataTypes.TEXT,
-    score: DataTypes.DOUBLE,
-    kindness_prize: DataTypes.BOOLEAN,
-    cleanliness_prize: DataTypes.BOOLEAN,
-    driving_skills_price: DataTypes.BOOLEAN
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
+    driver_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      onDelete: 'CASCADE',
+    },
+    passenger_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      onDelete: 'CASCADE',
+    },
+    crafter_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      onDelete: 'CASCADE',
+    },
+    comment: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    score: {
+      type: DataTypes.DOUBLE,
+      allowNull: false
+    },
+    kindness_prize: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    cleanliness_prize: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    driving_skills_prize: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
   }, {});
   Review.associate = function (models) {
     // associations can be defined here

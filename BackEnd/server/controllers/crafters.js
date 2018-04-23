@@ -61,24 +61,24 @@ module.exports = {
 	{
 		return Crafter
 			.findAll({
-				include: [
-					{
-						model: Station,
-						as: 'stations',
-						through: {
-							attributes: ['id']
-						},
-						required: false
-					}, 
-					{
-						model: Review,
-						as: 'reviews',
-						through: {
-							attributes: ['id']
-						},
-						required: false
-					}
-				]
+				// include: [
+				// 	{
+				// 		model: Station,
+				// 		as: 'stations',
+				// 		through: {
+				// 			attributes: ['id']
+				// 		},
+				// 		required: false
+				// 	}, 
+				// 	{
+				// 		model: Review,
+				// 		as: 'reviews',
+				// 		through: {
+				// 			attributes: ['id']
+				// 		},
+				// 		required: false
+				// 	}
+				// ]
 			})
 			.then(crafters => res.status(200).send(crafters))
             .catch(error => res.status(400).send(error));
@@ -93,24 +93,24 @@ module.exports = {
 
 		return Crafter
 			.findById(req.params.id, {
-				include: [
-					{
-						model: Station,
-						as: 'stations',
-						through: {
-							attributes: ['id']
-						},
-						required: false
-					}, 
-					{
-						model: Review,
-						as: 'reviews',
-						through: {
-							attributes: ['id']
-						},
-						required: false
-					}
-				]
+				// include: [
+				// 	{
+				// 		model: Station,
+				// 		as: 'stations',
+				// 		through: {
+				// 			attributes: ['id']
+				// 		},
+				// 		required: false
+				// 	}, 
+				// 	{
+				// 		model: Review,
+				// 		as: 'reviews',
+				// 		through: {
+				// 			attributes: ['id']
+				// 		},
+				// 		required: false
+				// 	}
+				// ]
 			})
 			.then(crafter => {
                 if (!crafter) {
