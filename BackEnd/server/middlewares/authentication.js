@@ -1,3 +1,5 @@
+"use strict";
+
 const jwt = require('jwt-simple');
 const moment = require('moment');
 const KEY = 'clave_secreta_proyecto';
