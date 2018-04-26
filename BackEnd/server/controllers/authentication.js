@@ -7,14 +7,16 @@ const jwt = require('../services/jwt');
 module.exports = {
     login(req, res) {
         // check that params are not null, undefined or empty string
-        if(!req.body.passenger_id || !req.body.password){ 
-            return res.status(400).send({message: 'The post body must contain a passenger_id and password field.'});
+        if(!req.body.id || !req.body.password){ 
+            return res.status(400).send({message: 'The post body must contain an id and password field.'});
         }
         
-        let passenger_id = (String)(req.body.passenger_id).toLocaleLowerCase();
+        //Get the parameters 
+        let id = (String)(req.body.id).toLocaleLowerCase();
         let password = req.body.password;
 
-        Passenger.findById(passenger_id)
+        //Look for the passenger
+        Passenger.findById(id)
         .then(passenger => {
             if(!passenger){
                 res.status(400).send({ message: 'Authentication failed. Passenger not found.'});
@@ -22,7 +24,7 @@ module.exports = {
 
             bcrypt.compare(password, passenger.password, (error, check) => {
                 if(check){
-                    // devolver miembro y token
+                    //Return the passenger and a token
                     let data = jwt.createToken(passenger);
                     passenger.password = '';
                     
