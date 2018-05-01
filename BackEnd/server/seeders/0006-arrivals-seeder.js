@@ -15,7 +15,7 @@ module.exports = {
                 },
                 {
                     id: 2,
-                    crafter_id: "VWLTGH567899",
+                    crafter_id: "VWLTGH567899442",
                     station_id: 4,
                     createdAt: Sequelize.fn('NOW'),
                     updatedAt: Sequelize.fn('NOW')

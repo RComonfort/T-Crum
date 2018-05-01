@@ -16,7 +16,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW'),
       },
       {
-        id: 'VWLTGH567899',
+        id: 'VWLTGH567899442',
         name: 'Crafter 2',
         lat: 19.120017,
         lng: -98.250696,
