@@ -24,6 +24,7 @@ module.exports = (app) => {
   //Routes for the Reviews table
   app.post('/api/reviews', reviewsController.create);
   app.get('/api/reviews', reviewsController.list);
+  app.get('/api/reviewsByUser/:passenger_id', reviewsController.listReviewsByUser);
   app.get('/api/reviews/:id', reviewsController.retrieve);
   app.put('/api/reviews/:id', reviewsController.update);
   app.delete('/api/reviews/:id', reviewsController.destroy);
