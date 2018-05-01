@@ -6,6 +6,7 @@ const reviewsController = require('../controllers').reviews;
 const craftersController = require('../controllers').crafters;
 const stationsController = require('../controllers').stations;
 const driversController = require('../controllers').drivers;
+const arrivalsController = require('../controllers').arrivals;
 
 module.exports = (app) => {
   
@@ -50,4 +51,9 @@ module.exports = (app) => {
   app.get('/api/stations/:id', stationsController.retrieve);
   app.put('/api/stations/:id', stationsController.update);
   app.delete('/api/stations/:id', stationsController.destroy);
+
+  //Routes for the Arrivals table
+  app.post('/api/arrivals', arrivalsController.create);
+  app.get('/api/arrivals', arrivalsController.list);
+  app.get('/api/arrivals/:id', arrivalsController.retrieve);
 };

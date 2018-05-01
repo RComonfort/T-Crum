@@ -5,6 +5,7 @@ const reviews = require('./reviews');
 const crafters = require('./crafters');
 const stations = require ('./stations');
 const drivers = require('./drivers');
+const arrivals = require('./arrivals');
 
 module.exports = {
    
@@ -13,5 +14,6 @@ module.exports = {
     reviews,
     drivers,
     crafters,
-    stations
+    stations,
+    arrivals
 };

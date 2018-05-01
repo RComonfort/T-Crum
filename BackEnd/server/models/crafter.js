@@ -42,6 +42,12 @@ module.exports = (sequelize, DataTypes) => {
       as: 'reviews',
       onDelete: 'Cascade'
     })
+
+    Crafter.hasMany (models.Arrival, {
+      foreignKey: 'crafter_id',
+      as: 'arrivals',
+      onDelete: 'Cascade'
+    })
   };
   return Crafter;
 };

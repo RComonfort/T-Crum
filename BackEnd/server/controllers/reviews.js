@@ -14,37 +14,32 @@ module.exports = {
             });
 
         if (!req.body.passenger_id)
-            return res.status(400).send({
+            return res.status(401).send({
                 message: "The 'passenger_id' attribute cannot be empty."
             });
 
         if (!req.body.crafter_id)
-            return res.status(400).send({
+            return res.status(402).send({
                 message: "The 'crafter_id' attribute cannot be empty."
             });
 
-        if (!req.body.comment)
-            return res.status(400).send({
-                message: "The 'comment' attribute cannot be empty."
-            });
-
         if (!req.body.score)
-            return res.status(400).send({
+            return res.status(404).send({
                 message: "The 'score' attribute cannot be empty."
             });
 
         if (!req.body.kindness_prize)
-            return res.status(400).send({
+            return res.status(405).send({
                 message: "The 'kindness_prize' attribute cannot be empty."
             });
 
         if (!req.body.cleanliness_prize)
-            return res.status(400).send({
+            return res.status(406).send({
                 message: "The 'cleanliness_prize' attribute cannot be empty."
             });
 
         if (!req.body.driving_skills_prize)
-            return res.status(400).send({
+            return res.status(407).send({
                 message: "The 'driving_skills_prize' attribute cannot be empty."
             });
 
@@ -60,8 +55,8 @@ module.exports = {
                 cleanliness_prize: req.body.cleanliness_prize,
                 driving_skills_prize: req.body.driving_skills_prize
             })
-            .then(todo => res.status(201).send(todo))
-            .catch(error => res.status(400).send(error));
+            .then(review => res.status(201).send(review))
+            .catch(error => res.status(408).send(error));
     },
     //Method for listing reviews
     list(req, res) {

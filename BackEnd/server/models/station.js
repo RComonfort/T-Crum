@@ -33,9 +33,16 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Station.associate = function (models) {
+    
     Station.belongsTo(models.Crafter, {
       foreignKey: 'next_crafter_id',
       as: 'next_crafter'
+    })
+
+    Station.hasMany (models.Arrival, {
+      foreignKey: 'station_id',
+      as: 'arrivals',
+      onDelete: 'Cascade'
     })
   };
   return Station;
