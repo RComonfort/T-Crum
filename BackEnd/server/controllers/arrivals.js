@@ -94,6 +94,71 @@ module.exports = {
             })
             .catch(error => res.status(400).send(error));
     },
+    //Method to update arrivals
+    update(req, res) {
 
-    
+        if (!req.params.id)
+            return res.status(400).send({
+                message: "The 'id' attribute cannot be empty."
+            });
+
+        return Arrival
+            .findById(req.params.id, {
+
+                attributes: ['id', 'crafter_id', 'station_id', 'createdAt', 'updatedAt']
+            })
+            .then(Arrival => {
+
+                if(!Arrival) {
+
+                    return res.status(400).send({
+
+                        message: 'Arrival not found'
+                    });
+                }
+
+                return Arrival
+                    .update({
+
+                        crafter_id: req.body.crafter_id || Arrival.crafter_id,
+                        station_id: req.body.station_id ||  Arrival.station_id
+                    })
+                    .then(() => res.status(200).send(Arrival))
+                    .catch((error) => res.status(400).send(error));
+            })
+            .catch((error) => res.status(400).send(error));
+    },
+    //Method to destroy arrivals
+    destroy(req, res) {
+
+        if (!req.params.id)
+            return res.status(400).send({
+                message: "The 'id' attribute cannot be empty."
+            });
+
+        return Arrival
+            .findById(req.params.id, {
+
+                attributes: ['id', 'crafter_id', 'station_id', 'createdAt', 'updatedAt']
+            })
+            .then(Arrival => {
+
+                if(!Arrival) {
+
+                    return res.status(400).send({
+
+                        message: 'Arrival not found'
+                    });
+                }
+
+                return Arrival
+                    .destroy()
+                    .then(() => res.status(200).send({
+
+                        message: 'The arrival was successfully deleted'
+                    }))
+                    .catch(error => res.status(400).send(error));
+            })
+            .catch(error => res.status(400).send(error));
+    }
 }
