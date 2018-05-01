@@ -89,6 +89,45 @@ module.exports = {
             .then(reviews => res.status(200).send(reviews))
             .catch(error => res.status(400).send(error));
     },
+    listReviewsByUser(req, res) {
+
+        if (!req.params.passenger_id)
+            return res.status(400).send({
+                message: "The 'passenger_id' attribute cannot be empty."
+            });
+
+        return Review
+            .findAll({
+
+                where: {
+                    passenger_id: req.params.passenger_id
+                },
+
+                include: [{
+                        model: Passenger,
+                        as: 'passenger',
+                        required: false,
+                        attributes: ['id', 'first_name', 'last_name']
+                    },
+                    {
+                        model: Driver,
+                        as: 'driver',
+                        required: false,
+                        attributes: ['id', 'first_name', 'last_name', 'review_count', 'review_avg', 'kindness_prize_count', 'cleanliness_prize_count', 'driving_skills_prize_count']
+                    },
+                    {
+                        model: Crafter,
+                        as: 'crafter',
+                        required: false,
+                        attributes: ['id', 'name', 'lat', 'lng', 'isActive', 'total_seats', 'occupied_seats']
+                    }
+                ],
+
+                attributes: ['id', 'driver_id', 'passenger_id', 'crafter_id', 'comment', 'score', 'kindness_prize', 'cleanliness_prize', 'driving_skills_prize', 'createdAt', 'updatedAt']
+            })
+            .then(reviews => res.status(200).send(reviews))
+            .catch(error => res.status(400).send(error));
+    },
     //Method for retrieving reviews
     retrieve(req, res) {
 

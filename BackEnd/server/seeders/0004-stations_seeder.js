@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Stations', 
     [
       {
-        name: 'Estacion 1',
+        name: 'Estación 1',
         lat: 19.129328,
         lng: -98.262249,
         waiting_people: 3,
@@ -15,7 +15,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW')
       },
       {
-        name: 'Estacion 2',
+        name: 'Estación 2',
         lat: 19.124635,
         lng: -98.258305,
         waiting_people: 6,
@@ -25,7 +25,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW')
       },
       {
-        name: 'Estacion 3',
+        name: 'Estación 3',
         lat: 19.120632,
         lng: -98.254359,
         waiting_people: 0,
@@ -35,7 +35,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW')
       },
       {
-        name: 'Estacion 4',
+        name: 'Estación 4',
         lat: 19.118661,
         lng: -98.252077,
         waiting_people: 0,
@@ -45,7 +45,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW')
       },
       {
-        name: 'Estacion 5',
+        name: 'Estación 5',
         lat: 19.121121,
         lng: -98.249496,
         waiting_people: 0,
@@ -55,7 +55,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW')
       },
       {
-        name: 'Estacion 6',
+        name: 'Estación 6',
         lat: 19.123222,
         lng: -98.247085,
         waiting_people: 0,
@@ -65,7 +65,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW')
       },
       {
-        name: 'Estacion 7',
+        name: 'Estación 7',
         lat: 19.126619,
         lng: -98.251735,
         waiting_people: 0,
@@ -75,7 +75,7 @@ module.exports = {
         updatedAt: Sequelize.fn('NOW')
       },
       {
-        name: 'Estacion 8',
+        name: 'Estación 8',
         lat: 19.131752,
         lng: -98.257714,
         waiting_people: 0,
