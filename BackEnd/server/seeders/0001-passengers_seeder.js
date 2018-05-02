@@ -15,7 +15,7 @@ module.exports = {
           updatedAt: Sequelize.fn('NOW'),
         },
         {
-          id: "passenger2",
+          id: "alberto.ramirez@vw.com.mx",
           password: "$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y",
           first_name: "Alberto",
           last_name: "Ramírez Cantú",
@@ -23,7 +23,7 @@ module.exports = {
           updatedAt: Sequelize.fn('NOW'),
         },
         {
-          id: "passenger3",
+          id: "israel.jimenez@vw.com.mx",
           password: "$2a$10$Ke6Aa11a.k2fu3UZ1zEL9.UqM63U720h/EwJ.DZMoXIA8ZRMNPY6y",
           first_name: "Israel",
           last_name: "Jiménez Juárez",
