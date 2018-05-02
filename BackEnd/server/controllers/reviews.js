@@ -89,7 +89,7 @@ module.exports = {
             .then(reviews => res.status(200).send(reviews))
             .catch(error => res.status(400).send(error));
     },
-    listReviewsByUser(req, res) {
+    listReviewsByPassenger(req, res) {
 
         if (!req.params.passenger_id)
             return res.status(400).send({
